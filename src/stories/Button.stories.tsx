@@ -1,8 +1,7 @@
-// import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import Button  from '../Button.component';
-import {ButtonProps} from "../Button.types"
+import Button  from '../components/Button.component';
+import {ButtonProps} from "../components/Button.types"
 
 export default {
     title: 'CommunityUI/Button',

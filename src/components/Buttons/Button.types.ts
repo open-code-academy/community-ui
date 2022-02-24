@@ -4,10 +4,11 @@ import {ButtonSizes} from "./Button.constants";
 
 export interface ButtonProps {
     text?: string,
-    primary?:boolean,
+    primary?: boolean,
     disabled?: boolean,
-    primaryColor?: string,
-    secondaryColor?: string,
+    buttonColor?: string,
+    textColor?: string,
     size?: ButtonSizes.SMALL | ButtonSizes.MEDIUM | ButtonSizes.LARGE,
+    textSizeOverride?: string,
     onClick?: MouseEventHandler<HTMLButtonElement>
 }

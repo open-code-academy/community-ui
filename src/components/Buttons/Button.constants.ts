@@ -6,5 +6,5 @@ export enum ButtonSizes {
 
 export enum ButtonColor {
     PRIMARY = '#e31b6d',
-    SECONDARY = '#ffffff',
+    TEXT_COLOR = '#ffffff',
 }

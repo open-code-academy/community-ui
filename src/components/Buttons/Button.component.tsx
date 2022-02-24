@@ -10,16 +10,16 @@ const StyledButton = styled.button<ButtonProps>`
 	padding: .7em 1.4em;
 	width: fit-content;
 	font-size: ${props => props.size == ButtonSizes.SMALL ? '10px' : (props.size == ButtonSizes.MEDIUM ? '15px' : '20px' )  };
-	color: ${props => props.primary ? props.secondaryColor : props.primaryColor};
-	background-color: ${props => props.primary ? props.primaryColor : 'transparent'};
-	border: solid 2px  ${props => props.primary ?  props.secondaryColor :  props.primaryColor};
+	color: ${props => props.primary ? props.textColor : props.buttonColor};
+	background-color: ${props => props.primary ? props.buttonColor : 'transparent'};
+	border: solid 2px  ${props => props.primary ?  props.textColor :  props.buttonColor};
 	transition: all 0.4s;
 	cursor: pointer;
 	box-sizing: content-box;
 
 	&:focus,
 	&:active {
-		outline: ${props => props.primaryColor};
+		outline: ${props => props.buttonColor};
 	}
 
 	&::after {
@@ -41,7 +41,7 @@ const StyledButton = styled.button<ButtonProps>`
 		top: -2%;
 		left: 50%;
 		transform: translateX(-50%);
-		background-color: ${props => props.disabled ? 'none' : props.primaryColor};
+		background-color: ${props => props.disabled ? 'none' : props.buttonColor};
 		border: none;
 		height: 104%;
 		width: 101%;
@@ -49,17 +49,17 @@ const StyledButton = styled.button<ButtonProps>`
 		z-index: -1;
 	}
 	&:hover {
-        border: solid 2px ${props => props.disabled ? 'none' :  props.primaryColor};
-        color:  ${props => props.secondaryColor};
+        border: solid 2px ${props => props.disabled ? 'none' :  props.buttonColor};
+        color:  ${props => props.textColor};
 	}
 `;
 
-const Button: FC<ButtonProps> = ({size, primary, disabled, text, onClick, primaryColor,secondaryColor, ...props}) => {
+const Button: FC<ButtonProps> = ({size, primary, disabled, text, onClick, buttonColor,textColor, ...props}) => {
 
-    let pc = primaryColor ? primaryColor : ButtonColor.PRIMARY;
-    let sc = secondaryColor ? secondaryColor : ButtonColor.SECONDARY;
+    let bColor = buttonColor ? buttonColor : ButtonColor.PRIMARY;
+    let tColor = textColor ? textColor : ButtonColor.TEXT_COLOR;
     if (disabled) {
-        pc += 'bb';
+        bColor += 'bb';
         primary = true;
     }
 
@@ -70,8 +70,8 @@ const Button: FC<ButtonProps> = ({size, primary, disabled, text, onClick, primar
             primary={primary}
             disabled={disabled}
             size={size}
-            primaryColor={pc}
-            secondaryColor={sc}
+            buttonColor={bColor}
+            textColor={tColor}
             {...props}
         >
             {text}

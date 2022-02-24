@@ -1,4 +1,6 @@
-import {  MouseEventHandler } from 'react'
+import {  MouseEventHandler } from 'react';
+import {ButtonSizes} from "./Button.constants";
+
 
 export interface ButtonProps {
     text?: string,
@@ -6,6 +8,6 @@ export interface ButtonProps {
     disabled?: boolean,
     primaryColor?: string,
     secondaryColor?: string,
-    size?: 'small' | 'medium' | 'large',
+    size?: ButtonSizes.SMALL | ButtonSizes.MEDIUM | ButtonSizes.LARGE,
     onClick?: MouseEventHandler<HTMLButtonElement>
 }

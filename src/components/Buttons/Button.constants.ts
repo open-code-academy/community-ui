@@ -3,8 +3,3 @@ export enum ButtonSizes {
     MEDIUM = 'medium',
     LARGE = 'large',
 }
-
-export enum ButtonColor {
-    PRIMARY = '#e31b6d',
-    TEXT_COLOR = '#ffffff',
-}

@@ -2,14 +2,14 @@ import React,{FC} from 'react'
 import styled from 'styled-components';
 
 import {ButtonProps} from './Button.types'
-import {ButtonColor, ButtonSizes} from "./Button.constants";
+import {ButtonSizes} from "./Button.constants";
+import {DefaultColors} from "../../config/DefaultColors.constants";
 
 const StyledButton = styled.button<ButtonProps>`
-  
     position: relative;
 	padding: .7em 1.4em;
 	width: fit-content;
-	font-size: ${props => props.size == ButtonSizes.SMALL ? '10px' : (props.size == ButtonSizes.MEDIUM ? '15px' : '20px' )  };
+	font-size: ${props =>props.sizeOverride ? props.sizeOverride : (props.size == ButtonSizes.SMALL ? '10px' : (props.size == ButtonSizes.MEDIUM ? '15px' : '20px' )) };
 	color: ${props => props.primary ? props.textColor : props.buttonColor};
 	background-color: ${props => props.primary ? props.buttonColor : 'transparent'};
 	border: solid 2px  ${props => props.primary ?  props.textColor :  props.buttonColor};
@@ -54,10 +54,10 @@ const StyledButton = styled.button<ButtonProps>`
 	}
 `;
 
-const Button: FC<ButtonProps> = ({size, primary, disabled, text, onClick, buttonColor,textColor, ...props}) => {
+const Button: FC<ButtonProps> = ({size, primary, disabled, children, onClick, buttonColor,textColor, ...props}) => {
 
-    let bColor = buttonColor ? buttonColor : ButtonColor.PRIMARY;
-    let tColor = textColor ? textColor : ButtonColor.TEXT_COLOR;
+    let bColor = buttonColor ? buttonColor : DefaultColors.PINK;
+    let tColor = textColor ? textColor : DefaultColors.WHITE;
     if (disabled) {
         bColor += 'bb';
         primary = true;
@@ -74,7 +74,7 @@ const Button: FC<ButtonProps> = ({size, primary, disabled, text, onClick, button
             textColor={tColor}
             {...props}
         >
-            {text}
+            {children}
         </StyledButton>
     )
 }

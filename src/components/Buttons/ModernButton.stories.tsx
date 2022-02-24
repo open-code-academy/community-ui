@@ -1,10 +1,11 @@
+import React from "react";
 import { Story, Meta } from '@storybook/react';
 
-import Button  from '../components/Buttons/Button.component';
-import {ButtonProps} from "../components"
+import Button  from './ModernButton.component';
+import {ButtonProps, ButtonSizes} from "../index"
 
 export default {
-    title: 'CommunityUI/Button',
+    title: 'Components/Buttons/ModernButton',
     component: Button,
     argTypes: {
     },
@@ -16,43 +17,49 @@ export const Primary = Template.bind({});
 Primary.args = {
     primary: true,
     disabled: false,
-    text: 'Primary',
+    children: 'Primary',
+    sizeOverride: ""
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
     primary: false,
     disabled: false,
-    text: "Secondary",
+    children: "Secondary",
+    sizeOverride: ""
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
     primary: false,
     disabled: true,
-    text: 'Disabled',
+    children: 'Disabled',
+    sizeOverride: ""
 };
 
 export const Small = Template.bind({});
 Small.args = {
     primary: true,
     disabled: false,
-    size:"small",
-    text: 'Small',
+    size: ButtonSizes.LARGE,
+    children: 'Small',
+    sizeOverride: ""
 };
 
 export const Medium = Template.bind({});
 Medium.args = {
     primary: true,
     disabled: false,
-    size:"medium",
-    text: 'Medium',
+    size: ButtonSizes.MEDIUM,
+    children: 'Medium',
+    sizeOverride: ""
 };
 
 export const Large = Template.bind({});
 Large.args = {
     primary: true,
     disabled: false,
-    size:"large",
-    text: 'Large',
+    size: ButtonSizes.LARGE,
+    children: 'Large',
+    sizeOverride: ""
 };

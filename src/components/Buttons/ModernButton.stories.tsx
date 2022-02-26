@@ -4,6 +4,7 @@ import {Meta, Story} from '@storybook/react';
 import Button from './ModernButton.component';
 import {ButtonVariant, TextButtonProps} from "../index"
 import {ButtonPadding, DefaultButtonThemes} from "./Button.constants";
+import {FontSize} from "../../config";
 
 export default {
     title: 'Components/Buttons',
@@ -20,9 +21,10 @@ ModernButton.args = {
     disabled: false,
     children: 'Modern Button',
     buttonTheme: DefaultButtonThemes.PRIMARY,
-    buttonPadding: ButtonPadding["3xl"],
-    fontSize: "",
+    buttonPadding: ButtonPadding.default,
+    fontSize: FontSize.default,
 };
+
 ModernButton.argTypes = {
     buttonVariant:  {
         options: [0,1],
@@ -45,6 +47,40 @@ ModernButton.argTypes = {
         control: {
             type: 'select',
             labels: ['Primary', 'Secondary', 'Error', 'Info', 'Success', 'Warning']
+        }
+    },
+    buttonPadding: {
+        options: [0,1,2,3,4,5,6],
+        mapping: [
+            ButtonPadding.default,
+            ButtonPadding.xs,
+            ButtonPadding.sm,
+            ButtonPadding.md,
+            ButtonPadding.lg,
+            ButtonPadding.xl,
+            ButtonPadding.xxl,
+            ButtonPadding["3xl"]
+        ],
+        control: {
+            type: 'select',
+            labels: ['xs', 'sm', 'md', 'lg', 'xl', 'xxl', '3xl']
+        }
+    },
+    fontSize: {
+        options: [0,1,2,3,4,5,6],
+        mapping: [
+            FontSize.default,
+            FontSize.xs,
+            FontSize.sm,
+            FontSize.md,
+            FontSize.lg,
+            FontSize.xl,
+            FontSize.xxl,
+            FontSize["3xl"]
+        ],
+        control: {
+            type: 'select',
+            labels: ['xs', 'sm', 'md', 'lg', 'xl', 'xxl', '3xl']
         }
     }
 }

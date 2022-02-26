@@ -1,17 +1,17 @@
 import {  MouseEventHandler } from 'react';
-import {Sizes} from "../../config";
+import {Size, FontSize} from "../../config";
 import {ColorPalette} from "../../config";
-import {ButtonPadding} from "./Button.constants";
+import {ButtonPadding, DefaultButtonThemes} from "./Button.constants";
 
 export interface ButtonProps {
-    buttonPadding?:  keyof Sizes | string,
+    buttonPadding?: typeof ButtonPadding.default | typeof ButtonPadding.xs | typeof ButtonPadding.sm | typeof ButtonPadding.md |  typeof ButtonPadding.lg |  typeof ButtonPadding.xl | typeof ButtonPadding.xxl | typeof ButtonPadding["3xl"]
     onClick?: MouseEventHandler<HTMLButtonElement>,
     disabled?: boolean
 }
 
 export interface ThemedButtonProps extends ButtonProps {
-    buttonVariant?: ButtonVariant,
-    buttonTheme?: ButtonTheme,
+    buttonVariant?: typeof ButtonVariant.OUTLINE | typeof ButtonVariant.SOLID,
+    buttonTheme?: typeof DefaultButtonThemes.PRIMARY | typeof DefaultButtonThemes.INFO | typeof DefaultButtonThemes.ERROR | typeof DefaultButtonThemes.SUCCESS | typeof DefaultButtonThemes.SECONDARY | typeof DefaultButtonThemes.WARNING | ButtonTheme,
 }
 
 export enum ButtonVariant {
@@ -20,11 +20,11 @@ export enum ButtonVariant {
 }
 
 export interface TextButtonProps extends ThemedButtonProps {
-    fontSize?: keyof Sizes | string,
+    fontSize?: typeof FontSize.default | typeof FontSize.xs | typeof FontSize.sm | typeof FontSize.md | typeof FontSize.lg | typeof FontSize.xl | typeof  FontSize.xxl | typeof FontSize["3xl"] | Size,
     children?: string,
 }
 
-export interface ButtonThemes {
+export type ButtonThemes = {
     PRIMARY:  ButtonTheme,
     SECONDARY: ButtonTheme,
     SUCCESS: ButtonTheme,
@@ -33,7 +33,7 @@ export interface ButtonThemes {
     INFO: ButtonTheme,
 }
 
-export interface ButtonTheme {
+export type ButtonTheme = {
     backgroundColor: keyof ColorPalette | string,
     borderColor: keyof ColorPalette | string,
     contentColor?: keyof ColorPalette | string,

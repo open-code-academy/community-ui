@@ -1,4 +1,4 @@
-export interface Sizes {
+export type Sizes = {
     default: Size,
     xs : Size,
     sm : Size,

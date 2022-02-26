@@ -61,6 +61,6 @@
     "react": "^17.0.2"
   },
   "lint-staged": {
-    "*.{js,css,md}": "prettier --write"
+    "*.{ts,js,css,md}": "prettier --write"
   }
 }

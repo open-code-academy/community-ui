@@ -1,7 +1,7 @@
 import { MouseEventHandler } from 'react';
-import { Size, FontSize } from '../../config';
+import { Size, FontSize, ButtonPadding } from '../../config';
 import { ColorPalette } from '../../config';
-import { ButtonPadding, DefaultButtonThemes } from './Button.constants';
+import { DefaultButtonThemes } from './Button.constants';
 
 export interface ButtonProps {
     buttonPadding?:
@@ -12,7 +12,8 @@ export interface ButtonProps {
         | typeof ButtonPadding.lg
         | typeof ButtonPadding.xl
         | typeof ButtonPadding.xxl
-        | typeof ButtonPadding['3xl'];
+        | typeof ButtonPadding['3xl']
+        | Size;
     onClick?: MouseEventHandler<HTMLButtonElement>;
     disabled?: boolean;
 }

@@ -2,15 +2,15 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 
 import { ButtonVariant, TextButtonProps } from './Button.types';
-import { ButtonPadding, DefaultButtonThemes } from './Button.constants';
-import { FontSize } from '../../config';
+import { DefaultButtonThemes } from './Button.constants';
+import { ButtonPadding, FontSize } from '../../config';
 import { Colors } from '../../config';
 
 const StyledButton = styled.button<TextButtonProps>`
     position: relative;
     padding: ${(props) => props.buttonPadding || ButtonPadding.default};
     width: fit-content;
-    font-size: ${(props) => props.fontSize || FontSize.default};
+    font-size: ${(props) => resolveFontSize(props)};
     color: ${(props) => getTextColorForVariant(props)};
     background-color: ${(props) => getBackgroundColorForVariant(props)};
     border: solid 0.125em ${(props) => resolveBorderColor(props)};
@@ -99,6 +99,36 @@ const resolveTextColor = ({ disabled, buttonTheme }: TextButtonProps) => {
         ? buttonTheme?.disabledContentColor ||
               DefaultButtonThemes.PRIMARY.disabledContentColor
         : color;
+};
+
+const resolveFontSize = (props: TextButtonProps) => {
+    if (props.fontSize) return props.fontSize;
+    let fontSize;
+    switch (props.buttonPadding) {
+        case ButtonPadding.default:
+            fontSize = FontSize.default;
+            break;
+        case ButtonPadding.xs:
+            fontSize = FontSize.xs;
+            break;
+        case ButtonPadding.sm:
+            fontSize = FontSize.sm;
+            break;
+        case ButtonPadding.md:
+            fontSize = FontSize.md;
+            break;
+        case ButtonPadding.lg:
+            fontSize = FontSize.lg;
+            break;
+        case ButtonPadding.xxl:
+            fontSize = FontSize.xxl;
+            break;
+        case ButtonPadding['3xl']:
+            fontSize = FontSize['3xl'];
+            break;
+    }
+
+    return fontSize;
 };
 
 const Button: FC<TextButtonProps> = ({

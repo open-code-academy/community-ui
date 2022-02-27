@@ -3,8 +3,8 @@ import { Meta, Story } from '@storybook/react';
 
 import Button from './ModernButton.component';
 import { ButtonVariant, TextButtonProps } from '../index';
-import { ButtonPadding, DefaultButtonThemes } from './Button.constants';
-import { FontSize } from '../../config';
+import { DefaultButtonThemes } from './Button.constants';
+import { ButtonPadding, FontSize } from '../../config';
 
 export default {
     title: 'Components/Buttons',
@@ -69,7 +69,7 @@ ModernButton.argTypes = {
         ],
         control: {
             type: 'select',
-            labels: ['xs', 'sm', 'md', 'lg', 'xl', 'xxl', '3xl'],
+            labels: ['default', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl', '3xl'],
         },
     },
     fontSize: {
@@ -86,7 +86,7 @@ ModernButton.argTypes = {
         ],
         control: {
             type: 'select',
-            labels: ['xs', 'sm', 'md', 'lg', 'xl', 'xxl', '3xl'],
+            labels: ['default', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl', '3xl'],
         },
     },
 };

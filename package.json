@@ -1,5 +1,5 @@
 {
-  "name": "communityui",
+  "name": "community-ui",
   "version": "0.0.0",
   "description": "A react component library and UI kit built by the community, for the community.",
   "main": "dist/cjs/index.js",

@@ -1,0 +1,8 @@
+/dist/
+/node_modules/
+/.idea/
+/storybook-static/
+.storybook
+tsconfig.json
+rollup.config.js
+README.md

@@ -1,2 +1,2 @@
 export * from './components/Buttons';
-export * from './config'
+export * from './config';

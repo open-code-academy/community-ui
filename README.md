@@ -1,6 +1,7 @@
 # CommunityUI
 ### A React component library and UI kit.
 ### Built by the Community, for the Community.
+![React Logo](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) ![Syled Components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white) ![Storybook Logo](https://i.imgur.com/1wo0uBy.png)
 ***
 ### Getting started:
 ***

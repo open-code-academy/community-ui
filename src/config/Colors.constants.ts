@@ -1,6 +1,6 @@
-import {ColorPalette} from "./Colors.types";
+import { ColorPalette } from './Colors.types';
 
-export const Colors : ColorPalette ={
+export const Colors: ColorPalette = {
     TRANSPARENT: 'transparent',
     BLACK: '#000',
     WHITE: '#fff',
@@ -268,4 +268,4 @@ export const Colors : ColorPalette ={
         90: '#9f1239',
         100: '#881337',
     },
-}
+};

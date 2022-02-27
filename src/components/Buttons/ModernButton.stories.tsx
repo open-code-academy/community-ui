@@ -1,65 +1,86 @@
 import React from "react";
-import { Story, Meta } from '@storybook/react';
+import {Meta, Story} from '@storybook/react';
 
-import Button  from './ModernButton.component';
-import {ButtonProps, ButtonSizes} from "../index"
+import Button from './ModernButton.component';
+import {ButtonVariant, TextButtonProps} from "../index"
+import {ButtonPadding, DefaultButtonThemes} from "./Button.constants";
+import {FontSize} from "../../config";
 
 export default {
-    title: 'Components/Buttons/ModernButton',
+    title: 'Components/Buttons',
     component: Button,
     argTypes: {
     },
 } as Meta<typeof Button>;
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />;
+const Template: Story<TextButtonProps> = (args) => <Button {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
-    primary: true,
+export const ModernButton = Template.bind({});
+ModernButton.args = {
+    buttonVariant: ButtonVariant.OUTLINE,
     disabled: false,
-    children: 'Primary',
-    sizeOverride: ""
+    children: 'Modern Button',
+    buttonTheme: DefaultButtonThemes.PRIMARY,
+    buttonPadding: ButtonPadding.default,
+    fontSize: FontSize.default,
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-    primary: false,
-    disabled: false,
-    children: "Secondary",
-    sizeOverride: ""
-};
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-    primary: false,
-    disabled: true,
-    children: 'Disabled',
-    sizeOverride: ""
-};
-
-export const Small = Template.bind({});
-Small.args = {
-    primary: true,
-    disabled: false,
-    size: ButtonSizes.LARGE,
-    children: 'Small',
-    sizeOverride: ""
-};
-
-export const Medium = Template.bind({});
-Medium.args = {
-    primary: true,
-    disabled: false,
-    size: ButtonSizes.MEDIUM,
-    children: 'Medium',
-    sizeOverride: ""
-};
-
-export const Large = Template.bind({});
-Large.args = {
-    primary: true,
-    disabled: false,
-    size: ButtonSizes.LARGE,
-    children: 'Large',
-    sizeOverride: ""
-};
+ModernButton.argTypes = {
+    buttonVariant:  {
+        options: [0,1],
+        mapping: [ButtonVariant.SOLID, ButtonVariant.OUTLINE],
+        control: {
+            type: 'select',
+            labels: ['solid', 'outline']
+        }
+    },
+    buttonTheme: {
+        options: [0,1,2,3,4,5],
+        mapping: [
+            DefaultButtonThemes.PRIMARY,
+            DefaultButtonThemes.SECONDARY,
+            DefaultButtonThemes.ERROR,
+            DefaultButtonThemes.INFO,
+            DefaultButtonThemes.SUCCESS,
+            DefaultButtonThemes.WARNING
+        ],
+        control: {
+            type: 'select',
+            labels: ['Primary', 'Secondary', 'Error', 'Info', 'Success', 'Warning']
+        }
+    },
+    buttonPadding: {
+        options: [0,1,2,3,4,5,6],
+        mapping: [
+            ButtonPadding.default,
+            ButtonPadding.xs,
+            ButtonPadding.sm,
+            ButtonPadding.md,
+            ButtonPadding.lg,
+            ButtonPadding.xl,
+            ButtonPadding.xxl,
+            ButtonPadding["3xl"]
+        ],
+        control: {
+            type: 'select',
+            labels: ['xs', 'sm', 'md', 'lg', 'xl', 'xxl', '3xl']
+        }
+    },
+    fontSize: {
+        options: [0,1,2,3,4,5,6],
+        mapping: [
+            FontSize.default,
+            FontSize.xs,
+            FontSize.sm,
+            FontSize.md,
+            FontSize.lg,
+            FontSize.xl,
+            FontSize.xxl,
+            FontSize["3xl"]
+        ],
+        control: {
+            type: 'select',
+            labels: ['xs', 'sm', 'md', 'lg', 'xl', 'xxl', '3xl']
+        }
+    }
+}

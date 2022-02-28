@@ -5,13 +5,13 @@
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",
     "scripts": {
-        "develop": "npm run build && npm run storybook",
-        "build": "rollup -c",
-        "storybook": "start-storybook -p 6006",
         "build-storybook": "build-storybook",
-        "prepare": "husky install",
+        "build": "rollup -c",
+        "develop": "npm run build && npm run storybook",
+        "format": "prettier --write .",
         "lint": "prettier --check .",
-        "format": "prettier --write ."
+        "prepare": "husky install",
+        "storybook": "start-storybook -p 6006"
     },
     "repository": {
         "type": "git",

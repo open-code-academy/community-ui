@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import { Meta, Story } from '@storybook/react';
 
-import Button from './ModernButton.component';
+import { ModernButton as Button } from './ModernButton.component';
 import { ButtonVariant, TextButtonProps } from '../index';
 import { ButtonPadding, DefaultButtonThemes } from './Button.constants';
 import { FontSize } from '../../config';

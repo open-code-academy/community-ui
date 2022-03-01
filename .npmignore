@@ -1,0 +1,10 @@
+.prettierignore
+.prettierrc.json
+rollup.config.json
+tsconfig.json
+/src
+/node_modules
+.gitignore
+/.storybook
+/.idea
+/.husky

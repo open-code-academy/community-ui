@@ -101,7 +101,7 @@ const resolveTextColor = ({ disabled, buttonTheme }: TextButtonProps) => {
         : color;
 };
 
-const Button: FC<TextButtonProps> = ({
+export const ModernButton: FC<TextButtonProps> = ({
     buttonTheme,
     buttonPadding,
     buttonVariant,
@@ -124,5 +124,3 @@ const Button: FC<TextButtonProps> = ({
         </StyledButton>
     );
 };
-
-export default Button;

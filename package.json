@@ -1,6 +1,6 @@
 {
     "name": "community-ui",
-    "version": "0.0.0-development",
+    "version": "0.0.3-development",
     "description": "A react component library and UI kit built by the community, for the community.",
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",

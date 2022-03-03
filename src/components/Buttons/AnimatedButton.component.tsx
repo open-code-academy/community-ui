@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
-import { TextButtonProps } from './base/Button.types';
-import { TextButton } from './base/TextButtonBase.component';
+import { TextButtonProps } from './base';
+import { TextButton } from './base';
 import {
     resolveBackgroundColor,
     getInitialBorderColor,

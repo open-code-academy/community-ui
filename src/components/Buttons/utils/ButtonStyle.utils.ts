@@ -1,13 +1,6 @@
-import {
-    ButtonShapes,
-    ButtonVariant,
-    TextButtonProps,
-} from '../base/Button.types';
+import { ButtonShapes, ButtonVariant, TextButtonProps } from '../base';
 import { Colors } from '../../../config';
-import {
-    DefaultButtonThemes,
-    PillButtonBorders,
-} from '../base/Button.constants';
+import { DefaultButtonThemes } from '../base';
 
 export const getInitialBackgroundColor = (props: TextButtonProps) => {
     switch (props.buttonVariant) {

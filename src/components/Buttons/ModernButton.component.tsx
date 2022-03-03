@@ -5,9 +5,10 @@ import { ButtonVariant, TextButtonProps } from './Button.types';
 import { ButtonPadding, DefaultButtonThemes } from './Button.constants';
 import { FontSize } from '../../config';
 import { Colors } from '../../config';
-import { BaseButtonStyledComponent } from './BaseButton.component';
+import { BaseButton } from './BaseButton.component';
 
-const styleProp = (props: TextButtonProps) => `
+const StyledButton = styled(BaseButton)<TextButtonProps>(
+    (props) => `
     position: relative;
     padding: ${props.buttonPadding || ButtonPadding.default};
     width: fit-content;
@@ -54,7 +55,8 @@ const styleProp = (props: TextButtonProps) => `
         border: solid 0.125em ${resolveBorderColor(props)};
         color: ${resolveTextColor(props)};
     }
-`;
+`
+);
 
 const getBackgroundColorForVariant = (props: TextButtonProps) => {
     switch (props.buttonVariant) {
@@ -103,18 +105,5 @@ const resolveTextColor = ({ disabled, buttonTheme }: TextButtonProps) => {
 };
 
 export const ModernButton: FC<TextButtonProps> = (props) => {
-    const StyledButton = BaseButtonStyledComponent(props);
-    return (
-        <StyledButton
-            type="button"
-            buttonVariant={buttonVariant}
-            buttonTheme={buttonTheme}
-            buttonPadding={buttonPadding}
-            fontSize={fontSize}
-            onClick={onClick}
-            {...props}
-        >
-            {children}
-        </StyledButton>
-    );
+    return <StyledButton {...props}>{props.children}</StyledButton>;
 };

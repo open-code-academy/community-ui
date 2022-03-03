@@ -5,22 +5,23 @@ import { ButtonVariant, TextButtonProps } from './Button.types';
 import { ButtonPadding, DefaultButtonThemes } from './Button.constants';
 import { FontSize } from '../../config';
 import { Colors } from '../../config';
+import { BaseButtonStyledComponent } from './BaseButton.component';
 
-const StyledButton = styled.button<TextButtonProps>`
+const styleProp = (props: TextButtonProps) => `
     position: relative;
-    padding: ${(props) => props.buttonPadding || ButtonPadding.default};
+    padding: ${props.buttonPadding || ButtonPadding.default};
     width: fit-content;
-    font-size: ${(props) => props.fontSize || FontSize.default};
-    color: ${(props) => getTextColorForVariant(props)};
-    background-color: ${(props) => getBackgroundColorForVariant(props)};
-    border: solid 0.125em ${(props) => resolveBorderColor(props)};
+    font-size: ${props.fontSize || FontSize.default};
+    color: ${getTextColorForVariant(props)};
+    background-color: ${getBackgroundColorForVariant(props)};
+    border: solid 0.125em ${resolveBorderColor(props)};
     transition: all 0.4s;
-    cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+    cursor: ${props.disabled ? 'not-allowed' : 'pointer'};
     box-sizing: content-box;
 
     &:focus,
     &:active {
-        outline: ${(props) => resolveBorderColor(props)};
+        outline: ${resolveBorderColor(props)};
     }
 
     &::after {
@@ -42,7 +43,7 @@ const StyledButton = styled.button<TextButtonProps>`
         top: -2%;
         left: 50%;
         transform: translateX(-50%);
-        background-color: ${(props) => resolveBackgroundColor(props)};
+        background-color: ${resolveBackgroundColor(props)};
         border: none;
         height: 104%;
         width: 101%;
@@ -50,8 +51,8 @@ const StyledButton = styled.button<TextButtonProps>`
         z-index: -1;
     }
     &:hover {
-        border: solid 0.125em ${(props) => resolveBorderColor(props)};
-        color: ${(props) => resolveTextColor(props)};
+        border: solid 0.125em ${resolveBorderColor(props)};
+        color: ${resolveTextColor(props)};
     }
 `;
 
@@ -101,15 +102,8 @@ const resolveTextColor = ({ disabled, buttonTheme }: TextButtonProps) => {
         : color;
 };
 
-export const ModernButton: FC<TextButtonProps> = ({
-    buttonTheme,
-    buttonPadding,
-    buttonVariant,
-    children,
-    fontSize,
-    onClick,
-    ...props
-}) => {
+export const ModernButton: FC<TextButtonProps> = (props) => {
+    const StyledButton = BaseButtonStyledComponent(props);
     return (
         <StyledButton
             type="button"

@@ -1,16 +1,16 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
-import { TextButtonProps } from './base/Button.types';
-import { ButtonPadding } from './base/Button.constants';
-import { FontSize } from '../../config';
-import { BaseButton } from './base/BaseButton.component';
+import { TextButtonProps } from './Button.types';
+import { ButtonPadding } from './Button.constants';
+import { FontSize } from '../../../config';
+import { BaseButton } from './ButtonBase.component';
 import {
     getInitialBackgroundColor,
     getInitialTextColor,
     getInitialBorderColor,
     getBorderRadius,
-} from './utils/ButtonStyle.utils';
+} from '../utils/ButtonStyle.utils';
 
 const StyledButton = styled(BaseButton)<TextButtonProps>(
     (props) => `

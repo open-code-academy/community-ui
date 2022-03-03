@@ -15,6 +15,7 @@ export interface ButtonProps {
         | typeof ButtonPadding['3xl'];
     onClick?: MouseEventHandler<HTMLButtonElement>;
     disabled?: boolean;
+    styles: string;
 }
 
 export interface ThemedButtonProps extends ButtonProps {

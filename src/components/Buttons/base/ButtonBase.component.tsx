@@ -7,12 +7,6 @@ const BaseButtonStyledComponent = styled.button<ButtonProps>(
     ({ styles }) => `${styles}`
 );
 
-const buildBaseButton = <T extends ButtonProps>(props: T) => {
-    const { ariaSettings } = props;
-    return styled(BaseButtonStyledComponent).attrs({ ...ariaSettings })``;
-};
-
-export const BaseButton: FC<ButtonProps> = (props) => {
-    const BaseButton = buildBaseButton(props);
-    return <BaseButton {...props} />;
+export const ButtonBase: FC<ButtonProps> = (props) => {
+    return <BaseButtonStyledComponent {...props} />;
 };

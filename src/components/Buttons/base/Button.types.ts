@@ -16,7 +16,7 @@ export interface ButtonProps {
     onClick?: MouseEventHandler<HTMLButtonElement>;
     disabled?: boolean;
     ariaSettings?: object;
-    styles: string;
+    styles?: string;
 }
 
 export interface ThemedButtonProps extends ButtonProps {

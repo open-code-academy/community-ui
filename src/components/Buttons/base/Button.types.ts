@@ -1,6 +1,6 @@
 import { MouseEventHandler } from 'react';
-import { Size, FontSize } from '../../config';
-import { ColorPalette } from '../../config';
+import { Size, FontSize } from '../../../config';
+import { ColorPalette } from '../../../config';
 import { ButtonPadding, DefaultButtonThemes } from './Button.constants';
 
 export interface ButtonProps {
@@ -15,6 +15,7 @@ export interface ButtonProps {
         | typeof ButtonPadding['3xl'];
     onClick?: MouseEventHandler<HTMLButtonElement>;
     disabled?: boolean;
+    ariaSettings?: object;
     styles: string;
 }
 
@@ -35,7 +36,15 @@ export enum ButtonVariant {
     OUTLINE = 'outline',
 }
 
+export enum ButtonShapes {
+    PILL = 'pill',
+    ROUNDED = 'rounded',
+    RECTANGLE = 'rectangle',
+}
+
 export interface TextButtonProps extends ThemedButtonProps {
+    buttonShape?: ButtonShapes;
+    borderRadius?: Size;
     fontSize?:
         | typeof FontSize.default
         | typeof FontSize.xs

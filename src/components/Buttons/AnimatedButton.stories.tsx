@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Meta, Story } from '@storybook/react';
 
-import { ModernButton as Button } from './ModernButton.component';
-import { ButtonVariant, TextButtonProps } from '../index';
-import { ButtonPadding, DefaultButtonThemes } from './Button.constants';
+import { AnimatedButton as Button } from './AnimatedButton.component';
+import { ButtonShapes, ButtonVariant, TextButtonProps } from '../index';
+import { ButtonPadding, DefaultButtonThemes } from './base/Button.constants';
 import { FontSize } from '../../config';
 
 export default {
@@ -14,17 +14,18 @@ export default {
 
 const Template: Story<TextButtonProps> = (args) => <Button {...args} />;
 
-export const ModernButton = Template.bind({});
-ModernButton.args = {
+export const RoundedButton = Template.bind({});
+RoundedButton.args = {
     buttonVariant: ButtonVariant.OUTLINE,
     disabled: false,
-    children: 'Modern Button',
+    children: 'Animated Button',
     buttonTheme: DefaultButtonThemes.PRIMARY,
     buttonPadding: ButtonPadding.default,
+    buttonShape: ButtonShapes.RECTANGLE,
     fontSize: FontSize.default,
 };
 
-ModernButton.argTypes = {
+RoundedButton.argTypes = {
     buttonVariant: {
         options: [0, 1],
         mapping: [ButtonVariant.SOLID, ButtonVariant.OUTLINE],
@@ -70,6 +71,18 @@ ModernButton.argTypes = {
         control: {
             type: 'select',
             labels: ['xs', 'sm', 'md', 'lg', 'xl', 'xxl', '3xl'],
+        },
+    },
+    buttonShape: {
+        options: [0, 1, 2],
+        mapping: [
+            ButtonShapes.ROUNDED,
+            ButtonShapes.RECTANGLE,
+            ButtonShapes.PILL,
+        ],
+        control: {
+            type: 'select',
+            labels: ['rounded', 'rectangle', 'pill'],
         },
     },
     fontSize: {

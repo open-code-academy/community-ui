@@ -1,6 +1,6 @@
-import { Sizes } from '../../config';
+import { Sizes } from '../../../config';
 import { ButtonThemes } from './Button.types';
-import { Colors } from '../../config';
+import { Colors } from '../../../config';
 
 export const ButtonPadding: Sizes = {
     default: '.7rem 1.4rem',

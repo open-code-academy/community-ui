@@ -10,12 +10,16 @@
     ]
   },
   "scripts": {
-    "build-storybook": "build-storybook",
-    "build": "rollup -c",
     "develop": "npm run build && npm run storybook",
+    "build": "npm run build:storybook && npm run build:lib",
+    "build:storybook": "build-storybook",
+    "build:lib": "rollup -c",
     "format": "prettier --write .",
     "lint": "prettier --check .",
-    "prepare": "husky install",
+    "setup" : "npm run setup:husky && npm run setup:cz",
+    "setup:husky": "husky install",
+    "setup:cz": "npm install -g commitizen",
+    "cz": "npx cz",
     "storybook": "start-storybook -p 6006",
     "test": "jest"
   },
@@ -58,6 +62,7 @@
     "@types/react": "^17.0.39",
     "@types/styled-components": "^5.1.23",
     "babel-loader": "^8.2.3",
+    "cz-conventional-changelog": "^3.3.0",
     "husky": "^7.0.4",
     "jest": "^27.5.1",
     "lint-staged": "^12.3.4",
@@ -82,5 +87,9 @@
   "lint-staged": {
     "*.{ts,tsx,js,jsx,css,md}": "prettier --write"
   },
-  "dependencies": {}
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }

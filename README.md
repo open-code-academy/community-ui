@@ -16,10 +16,10 @@ to the top of your file.
 
 
 ## Contributing
-We always welcome contributions. Check out our [contributing guidelines](https://github.com/open-code-academy/community-ui/tree/main/docs/CONTRIBUTING.md)
+We always welcome contributions. Check out our [contributing guidelines](https://github.com/open-code-academy/community-ui/tree/develop/docs/CONTRIBUTING.md)
 
 
 ## Documentation
 In order to view the documentation, until the project is hosted in a production environement, simply follow the 
-"Getting Started" steps in the [contributing guidelines](https://github.com/open-code-academy/community-ui/tree/main/docs/CONTRIBUTING.md)
+"Getting Started" steps in the [contributing guidelines](https://github.com/open-code-academy/community-ui/tree/develop/docs/CONTRIBUTING.md)
 Then, you should see the storybook documentation, which will continue to grow as the project does.

@@ -13,7 +13,6 @@
         "prepare": "husky install",
         "lint": "prettier --check .",
         "format": "prettier --write .",
-        "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
     },
     "repository": {
         "type": "git",
@@ -47,7 +46,6 @@
         "@types/react": "^17.0.39",
         "@types/styled-components": "^5.1.23",
         "babel-loader": "^8.2.3",
-        "conventional-changelog-cli": "^2.2.2",
         "husky": "^7.0.4",
         "lint-staged": "^12.3.4",
         "prettier": "2.5.1",

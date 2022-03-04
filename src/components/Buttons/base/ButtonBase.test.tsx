@@ -11,4 +11,12 @@ describe('Running tests for ButtonBase', () => {
             screen.getByRole('button', { name: 'ButtonBase' })
         ).toBeDisabled();
     });
+
+    test('Given styles passed explicitly, when rendering button, button takes on dynamically passed styles ', () => {
+        const expectedCss = 'padding: 20px 20px';
+        render(<ButtonBase children={'ButtonBase'} styles={expectedCss} />);
+        expect(screen.getByRole('button', { name: 'ButtonBase' })).toHaveStyle(
+            expectedCss
+        );
+    });
 });

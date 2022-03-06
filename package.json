@@ -16,7 +16,7 @@
     "build:lib": "rollup -c",
     "format": "prettier --write .",
     "lint": "prettier --check .",
-    "setup" : "npm run setup:husky && npm run setup:cz",
+    "setup": "npm run setup:husky && npm run setup:cz",
     "setup:husky": "husky install",
     "setup:cz": "npm install -g commitizen",
     "cz": "npx cz",
@@ -49,6 +49,7 @@
     "@rollup/plugin-commonjs": "^21.0.2",
     "@rollup/plugin-node-resolve": "^13.1.3",
     "@rollup/plugin-typescript": "^8.3.1",
+    "@semantic-release/changelog": "^6.0.1",
     "@storybook/addon-actions": "^6.4.19",
     "@storybook/addon-essentials": "^6.4.19",
     "@storybook/addon-interactions": "^6.4.19",
@@ -84,6 +85,22 @@
     "react-dom": "^17.0.2",
     "styled-components": "^5.3.3"
   },
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/changelog",
+      {
+        "changelogFile": "docs/CHANGELOG.md"
+      }
+    ],
+    [
+      "@semantic-release/git",
+      {
+        "assets": ["docs/CHANGELOG.md"]
+      }
+    ]
+  ],
   "lint-staged": {
     "*.{ts,tsx,js,jsx,css,md}": "prettier --write"
   },

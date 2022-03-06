@@ -26,6 +26,6 @@ const StyledButton = styled(ButtonBase)<TextButtonProps>(
 `
 );
 
-export const TextButton: FC<TextButtonProps> = (props) => {
+export const TextButtonBase: FC<TextButtonProps> = (props) => {
     return <StyledButton {...props}>{props.children}</StyledButton>;
 };

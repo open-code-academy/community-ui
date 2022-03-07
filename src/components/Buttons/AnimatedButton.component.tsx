@@ -2,14 +2,14 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 
 import { TextButtonProps } from './base';
-import { TextButtonBase } from './base';
+import { TextButton } from './base';
 import {
     resolveBackgroundColor,
     getInitialBorderColor,
     resolveTextColor,
 } from './utils/ButtonStyle.utils';
 
-const StyledButton = styled(TextButtonBase)<TextButtonProps>(
+const StyledButton = styled(TextButton)<TextButtonProps>(
     (props) => `
   position: relative;
   transition: all 0.4s;

@@ -54,3 +54,66 @@ Join the [OpenCodeAcademy.org discord server](https://discord.gg/feCpvsXFBf) (if
 7. Getting an issue assigned to you:
     - If you think you would like to get an issue assigned to you, comment that you would like to work on it, and we will assign it to you.
 8. PLEASE make sure you update/add documentation where appropriate
+
+## Structure of src folder
+
+A typical layout of the `src` folder:
+
+```
+|--components
+  |--Buttons
+    |--AnimatedButton
+    |--BaseButton
+    |--common
+      |--constants
+      |--styles
+      |--types
+      |--utils
+      |--index.ts
+    |--PlainButton
+    |--index.ts
+  |--index.ts
+|--core
+  |--constants
+  |--css-utils
+  |--default
+  |--theme
+  |--theme-resolver
+  |--types
+  |--index.ts
+
+```
+
+The `components` folder contains all the components grouped by type, e.g. a `Buttons` folder for buttons. Inside a component folder, there are sub-folders for each variation of the component. For example, in the `Buttons` folder, there are sub-folders like `BaseButton`, `PlainButton`, and `AnimatedButton`. Each of these folders will typically contain files specific to that component. A file ending with `.component.tsx` is the core component file. The `.stories.tsx` file contains storybook stories for a component. The `.test.ts` file contains tests for a component.
+
+```
+|--components
+  |--Buttons
+    |--AnimatedButton
+      |--AnimatedButton.component.tsx
+      |--AnimatedButton.stories.tsx
+      |--AnimatedButton.test.ts
+```
+
+The `common` folder contains styles, constants, type definitions, and various utilities that are used in components of a specific type.
+
+```
+|--Buttons
+  |--common
+      |--constants
+        |--Button.constants.ts
+        |--index.ts
+      |--styles
+        |--Button.styles.ts
+        |--index.ts
+      |--types
+        |--Button.types.ts
+        |--index.ts
+      |--utils
+        |--ButtonStyle.utils.ts
+        |--index.ts
+      |--index.ts
+
+```
+
+The `core` folder contains constants, type definitions, and CSS utility functions (like CSS utility classes) that are meant to be used throughout the project. It also has theme-related files and folders. The contents of this folder are not specific to any one component, rather they are things that are essential to the entire component library.

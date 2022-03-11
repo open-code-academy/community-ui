@@ -1,11 +1,7 @@
 import * as ButtonStyleUtils from './ButtonStyle.utils';
-import {
-    TextButtonProps,
-    ButtonVariant,
-    DefaultButtonThemes,
-    ButtonShapes,
-} from '../base';
-import { Colors } from '../../../config';
+import { TextButtonProps, ButtonVariant, ButtonShapes } from './../types';
+import { DefaultButtonThemes } from '../constants';
+import { Colors } from '../../../../core';
 
 const {
     getInitialBackgroundColor,

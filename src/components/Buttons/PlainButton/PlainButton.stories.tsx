@@ -1,10 +1,15 @@
 import * as React from 'react';
 import { Meta, Story } from '@storybook/react';
 
-import { AnimatedButton as Button } from './AnimatedButton.component';
-import { ButtonShapes, ButtonVariant, TextButtonProps } from '../index';
-import { ButtonPadding, DefaultButtonThemes } from './base/Button.constants';
-import { FontSize } from '../../config';
+import { PlainButton as Button } from './PlainButton.component';
+import {
+    ButtonShapes,
+    ButtonVariant,
+    TextButtonProps,
+    ButtonPadding,
+    DefaultButtonThemes,
+} from '../common';
+import { FontSize } from '../../../core';
 
 export default {
     title: 'Components/Buttons',
@@ -14,18 +19,18 @@ export default {
 
 const Template: Story<TextButtonProps> = (args) => <Button {...args} />;
 
-export const AnimatedButton = Template.bind({});
-AnimatedButton.args = {
-    buttonVariant: ButtonVariant.OUTLINE,
+export const PlainButton = Template.bind({});
+PlainButton.args = {
+    buttonVariant: ButtonVariant.SOLID,
     disabled: false,
-    children: 'Animated Button',
-    buttonTheme: DefaultButtonThemes.PRIMARY,
+    children: 'Plain Button',
+    buttonTheme: DefaultButtonThemes.SECONDARY,
     buttonPadding: ButtonPadding.default,
     buttonShape: ButtonShapes.RECTANGLE,
     fontSize: FontSize.default,
 };
 
-AnimatedButton.argTypes = {
+PlainButton.argTypes = {
     buttonVariant: {
         options: [0, 1],
         mapping: [ButtonVariant.SOLID, ButtonVariant.OUTLINE],

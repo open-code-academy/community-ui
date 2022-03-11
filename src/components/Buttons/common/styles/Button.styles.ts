@@ -1,10 +1,6 @@
-import React, { FC } from 'react';
-import styled from 'styled-components';
-
-import { TextButtonProps } from './Button.types';
-import { ButtonPadding } from './Button.constants';
-import { FontSize } from '../../../config';
-import { ButtonBase } from './ButtonBase.component';
+import { TextButtonProps } from './../types';
+import { FontSize } from '../../../../core';
+import { ButtonPadding } from '../constants';
 import {
     getInitialBackgroundColor,
     getInitialTextColor,
@@ -12,8 +8,7 @@ import {
     getBorderRadius,
 } from '../utils';
 
-const StyledButton = styled(ButtonBase)<TextButtonProps>(
-    (props) => `
+export const textButtonStyles = (props: TextButtonProps) => `
     padding: ${props.buttonPadding || ButtonPadding.default};
     width: fit-content;
     font-size: ${props.fontSize || FontSize.default};
@@ -23,9 +18,4 @@ const StyledButton = styled(ButtonBase)<TextButtonProps>(
     cursor: ${props.disabled ? 'not-allowed' : 'pointer'};
     box-sizing: content-box;
     border-radius: ${getBorderRadius(props)};
-`
-);
-
-export const TextButton: FC<TextButtonProps> = (props) => {
-    return <StyledButton {...props}>{props.children}</StyledButton>;
-};
+`;

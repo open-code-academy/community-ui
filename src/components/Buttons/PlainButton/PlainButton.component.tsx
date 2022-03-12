@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
-import { TextButtonProps } from './base/Button.types';
-import { TextButton } from './base/TextButtonBase.component';
+import { TextButtonProps } from '../base/Button.types';
+import { TextButton } from '../base/TextButtonBase.component';
 import {
     resolveBackgroundColor,
     getInitialBorderColor,
     resolveTextColor,
-} from './utils/ButtonStyle.utils';
-import { Colors } from '../../config';
+} from '../utils/ButtonStyle.utils';
+import { Colors } from '../../../config';
 
 const StyledButton = styled(TextButton)<TextButtonProps>(
     (props) => `

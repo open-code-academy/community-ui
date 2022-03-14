@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import { PlainButton } from './PlainButton.component';
 
 describe('PlainButton', () => {
-    test('its position should be set to relative and it should have expected transition by default', () => {
+    test('when not passed explicit arguments its position should be set to relative and it should have expected transition', () => {
         const expectedCss = 'position: relative;transition: all 0.2s;';
         render(<PlainButton children={'PlainButton'} />);
         expect(screen.getByRole('button', { name: 'PlainButton' })).toHaveStyle(
@@ -12,7 +12,7 @@ describe('PlainButton', () => {
         );
     });
 
-    test('if disabled attribute passed in should be disabled', () => {
+    test('when passed the disabled attribute component should be disabled', () => {
         render(<PlainButton children={'PlainButton'} disabled />);
         expect(
             screen.getByRole('button', { name: 'PlainButton' })

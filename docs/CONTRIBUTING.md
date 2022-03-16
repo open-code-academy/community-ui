@@ -42,78 +42,23 @@ Join the [OpenCodeAcademy.org discord server](https://discord.gg/feCpvsXFBf) (if
     - same as you would with a commit message, prefix the branch with the type of change being made
     - Follow that keyword with a "/" then the issue number, then and "\_" then use kabob case for the rest of the branch name
     - Example: feat/#3_add-readme, perf/#40_fix-slow-component, fix/#22_padding-error
-5. File naming conventions:
-    - File names should start with the component or name of the file, as you usually would name a file, followed by the function of the file, then the file extension.
-    - We will use .ts or .js for all non-jsx/tsx related files, and we will use .tsx and .jsx for all files which contain tsx/jsx respectively
-    - Example `Button.component.tsx`, `Button.test.ts`, `Button.types.ts`, `Button.constants.ts`, `Button.stories.tsx`
-    - Exception to this rule is the mandatory `index.ts` that must reside in each of the directories.
-6. When raising a pull request, you should use the [pull request template](https://github.com/open-code-academy/community-ui/tree/main/docs/PR_TEMPLATE.md)
+5. When raising a pull request, you should use the [pull request template](https://github.com/open-code-academy/community-ui/tree/main/docs/PR_TEMPLATE.md)
     - PR's must include the following sections: "Summary", "What was changed?", "Why was this important?", "Testing?" (with an explanation why not, if none)
     - Include a statement in the summary that indicates which issue the PR resolves, by including the phrase `resolves #<issue_number>`.
         - Example: you are working on issue #5, simply add a statement that says `resolves #5` to the summary section, and github will link that issue for you
-7. Getting an issue assigned to you:
+6. Getting an issue assigned to you:
     - If you think you would like to get an issue assigned to you, comment that you would like to work on it, and we will assign it to you.
-8. PLEASE make sure you update/add documentation where appropriate
+7. PLEASE make sure you update/add documentation where appropriate
 
-## Structure of src folder
+## Project structure and naming conventions
 
-A typical layout of the `src` folder:
-
-```
-|--components
-  |--Buttons
-    |--AnimatedButton
-    |--BaseButton
-    |--common
-      |--constants
-      |--styles
-      |--types
-      |--utils
-      |--index.ts
-    |--PlainButton
-    |--index.ts
-  |--index.ts
-|--core
-  |--constants
-  |--css-utils
-  |--default
-  |--theme
-  |--theme-resolver
-  |--types
-  |--index.ts
-
-```
-
-The `components` folder contains all the components grouped by type, e.g. a `Buttons` folder for buttons. Inside a component folder, there are sub-folders for each variation of the component. For example, in the `Buttons` folder, there are sub-folders like `BaseButton`, `PlainButton`, and `AnimatedButton`. Each of these folders will typically contain files specific to that component. A file ending with `.component.tsx` is the core component file. The `.stories.tsx` file contains storybook stories for a component. The `.test.ts` file contains tests for a component.
-
-```
-|--components
-  |--Buttons
-    |--AnimatedButton
-      |--AnimatedButton.component.tsx
-      |--AnimatedButton.stories.tsx
-      |--AnimatedButton.test.ts
-```
-
-The `common` folder contains styles, constants, type definitions, and various utilities that are used in components of a specific type.
-
-```
-|--Buttons
-  |--common
-      |--constants
-        |--Button.constants.ts
-        |--index.ts
-      |--styles
-        |--Button.styles.ts
-        |--index.ts
-      |--types
-        |--Button.types.ts
-        |--index.ts
-      |--utils
-        |--ButtonStyle.utils.ts
-        |--index.ts
-      |--index.ts
-
-```
-
-The `core` folder contains constants, type definitions, and CSS utility functions (like CSS utility classes) that are meant to be used throughout the project. It also has theme-related files and folders. The contents of this folder are not specific to any one component, rather they are things that are essential to the entire component library.
+-   The root directory should have project-level configuration files and folders and the `src` directory
+-   The `src` directory should contain directories that act as modules, for example, the `components` module and `core` module. These modules will contain the source code for the library.
+-   Inside the `components` module, there should be directories for different types of components, for example, a `Buttons` module
+-   A component module may have directories for different variations of the component, and a `common` module for things that are necessary for that component module; for example, `Buttons` module could have directories like `AnimatedButton`, `PlainButton` and so on
+-   The `core` module should contain things that are needed by the `components` module
+-   File naming conventions:
+    -   File names should start with the component or name of the file, as you usually would name a file, followed by the function of the file, then the file extension.
+    -   We will use .ts or .js for all non-jsx/tsx related files, and we will use .tsx and .jsx for all files which contain tsx/jsx respectively
+    -   Example: `Button.component.tsx`, `Button.test.ts`, `Button.types.ts`, `Button.constants.ts`, `Button.stories.tsx`
+    -   Exception to this rule is the mandatory `index.ts` that must reside in each of the directories that are meant to act as modules.

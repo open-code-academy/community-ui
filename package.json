@@ -110,5 +110,8 @@
         "commitizen": {
             "path": "./node_modules/cz-conventional-changelog"
         }
+    },
+    "dependencies": {
+        "go-clonr": "^1.7.1"
     }
 }

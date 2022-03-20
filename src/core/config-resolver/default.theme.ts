@@ -1,9 +1,9 @@
-module.exports = {
-    theme: {
-        button: {
-            size: {
-                xs: '20px'
-            }
-        }
-    }
+import { DefaultTheme } from './theme.types';
+
+const defaultTheme : DefaultTheme =  {
+    somethingElse: 'value',
+    buttonSize: 'default'
 }
+
+
+export default defaultTheme;

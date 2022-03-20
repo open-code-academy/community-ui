@@ -1,34 +1,56 @@
-let theme = {}
+import { DefaultTheme, Theme } from './theme.types';
+
+let theme : Theme;
 
 
-export const getTheme = () => {
+export const getTheme = () : Theme => {
     return theme;
 }
 
-export const mergeTheme = (customTheme: Object) => {
-    return {...theme, ...customTheme};
-}
+const merge = (...args : any[]) => {
 
+    let target: any = {};
 
-const mergeAndSetGlobalTheme = (customTheme: Object) => {
-    theme = mergeTheme(customTheme);
-}
+    const merger = (obj : any) => {
+        for (let prop in obj) {
+            if (obj.hasOwnProperty(prop)) {
+                if (Object.prototype.toString.call(obj[prop]) === '[object Object]') {
+                    target[prop] = merge(target[prop], obj[prop]);
+                } else {
+                    target[prop] = obj[prop];
+                }
+            }
+        }
+    };
 
-const resolveCustomTheme = () => {
-    // This is just a proof-of-concept, so this method would need to be refactored to
-    return require('../../../community-ui.config')
-}
+    for (let i = 0; i < args.length; i++) {
+        merger(args[i]);
+    }
 
-const resolveDefaultTheme = () => {
-    return require('./default.theme').theme
-}
-
-const init = () => {
-    theme = resolveDefaultTheme();
-    mergeAndSetGlobalTheme(resolveCustomTheme());
+    return target;
 };
 
-init();
+
+const mergeAndSetGlobalTheme = (customTheme: Theme) => {
+    theme = merge(customTheme);
+}
+
+const resolveCustomTheme = () : Theme => {
+    // This is just a proof-of-concept, so this method would need to be refactored to
+    // resolve to the root (/) of the project. Research will need to be done to figure out the best way to do this properly.
+    return require('../../../community-ui.config.ts').default
+}
+
+const resolveDefaultTheme = () : DefaultTheme => {
+    return require('./default.theme').default
+}
+
+
+(function init(){
+    theme = resolveDefaultTheme();
+    theme = merge(theme, resolveCustomTheme());
+})()
+
 
 
 

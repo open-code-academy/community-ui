@@ -2,9 +2,14 @@ import * as React from 'react';
 import { Meta, Story } from '@storybook/react';
 
 import { PlainButton as Button } from './PlainButton.component';
-import { ButtonShapes, ButtonVariant, TextButtonProps } from '../../index';
-import { ButtonPadding, DefaultButtonThemes } from '../base/Button.constants';
-import { FontSize } from '../../../config';
+import {
+    ButtonShapes,
+    ButtonVariant,
+    TextButtonProps,
+    ButtonPadding,
+    DefaultButtonThemes,
+} from '../common';
+import { FontSize } from '../../../core';
 
 export default {
     title: 'Components/Buttons',
@@ -18,7 +23,7 @@ export const PlainButton = Template.bind({});
 PlainButton.args = {
     buttonVariant: ButtonVariant.SOLID,
     disabled: false,
-    children: 'Animated Button',
+    children: 'Plain Button',
     buttonTheme: DefaultButtonThemes.SECONDARY,
     buttonPadding: ButtonPadding.default,
     buttonShape: ButtonShapes.RECTANGLE,
@@ -57,7 +62,7 @@ PlainButton.argTypes = {
         },
     },
     buttonPadding: {
-        options: [0, 1, 2, 3, 4, 5, 6],
+        options: [0, 1, 2, 3, 4, 5, 6, 7],
         mapping: [
             ButtonPadding.default,
             ButtonPadding.xs,
@@ -70,7 +75,7 @@ PlainButton.argTypes = {
         ],
         control: {
             type: 'select',
-            labels: ['xs', 'sm', 'md', 'lg', 'xl', 'xxl', '3xl'],
+            labels: ['default', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl', '3xl'],
         },
     },
     buttonShape: {
@@ -86,7 +91,7 @@ PlainButton.argTypes = {
         },
     },
     fontSize: {
-        options: [0, 1, 2, 3, 4, 5, 6],
+        options: [0, 1, 2, 3, 4, 5, 6, 7],
         mapping: [
             FontSize.default,
             FontSize.xs,
@@ -99,7 +104,7 @@ PlainButton.argTypes = {
         ],
         control: {
             type: 'select',
-            labels: ['xs', 'sm', 'md', 'lg', 'xl', 'xxl', '3xl'],
+            labels: ['default', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl', '3xl'],
         },
     },
 };

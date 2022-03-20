@@ -1,7 +1,6 @@
 import { MouseEventHandler } from 'react';
-import { Size, FontSize } from '../../../config';
-import { ColorPalette } from '../../../config';
-import { ButtonPadding, DefaultButtonThemes } from './Button.constants';
+import { Size, FontSize, ColorPalette } from '../../../../core';
+import { ButtonPadding, DefaultButtonThemes } from '../constants';
 
 export interface ButtonProps {
     buttonPadding?:

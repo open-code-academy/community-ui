@@ -1,16 +1,19 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
-import { TextButtonProps } from './base';
-import { TextButton } from './base';
+import { BaseButton } from '../BaseButton/BaseButton.component';
 import {
+    TextButtonProps,
+    textButtonStyles,
     resolveBackgroundColor,
     getInitialBorderColor,
     resolveTextColor,
-} from './utils/ButtonStyle.utils';
+} from '../common';
 
-const StyledButton = styled(TextButton)<TextButtonProps>(
+const StyledButton = styled(BaseButton)<TextButtonProps>(
     (props) => `
+  ${textButtonStyles(props)}
+
   position: relative;
   transition: all 0.4s;
   overflow: hidden;

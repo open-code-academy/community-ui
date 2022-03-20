@@ -2,9 +2,14 @@ import * as React from 'react';
 import { Meta, Story } from '@storybook/react';
 
 import { AnimatedButton as Button } from './AnimatedButton.component';
-import { ButtonShapes, ButtonVariant, TextButtonProps } from '../index';
-import { ButtonPadding, DefaultButtonThemes } from './base/Button.constants';
-import { FontSize } from '../../config';
+import {
+    ButtonShapes,
+    ButtonVariant,
+    TextButtonProps,
+    ButtonPadding,
+    DefaultButtonThemes,
+} from '../common';
+import { FontSize } from '../../../core';
 
 export default {
     title: 'Components/Buttons',
@@ -57,7 +62,7 @@ AnimatedButton.argTypes = {
         },
     },
     buttonPadding: {
-        options: [0, 1, 2, 3, 4, 5, 6],
+        options: [0, 1, 2, 3, 4, 5, 6, 7],
         mapping: [
             ButtonPadding.default,
             ButtonPadding.xs,
@@ -70,7 +75,7 @@ AnimatedButton.argTypes = {
         ],
         control: {
             type: 'select',
-            labels: ['xs', 'sm', 'md', 'lg', 'xl', 'xxl', '3xl'],
+            labels: ['default', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl', '3xl'],
         },
     },
     buttonShape: {
@@ -86,7 +91,7 @@ AnimatedButton.argTypes = {
         },
     },
     fontSize: {
-        options: [0, 1, 2, 3, 4, 5, 6],
+        options: [0, 1, 2, 3, 4, 5, 6, 7],
         mapping: [
             FontSize.default,
             FontSize.xs,
@@ -99,7 +104,7 @@ AnimatedButton.argTypes = {
         ],
         control: {
             type: 'select',
-            labels: ['xs', 'sm', 'md', 'lg', 'xl', 'xxl', '3xl'],
+            labels: ['default', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl', '3xl'],
         },
     },
 };

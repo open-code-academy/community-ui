@@ -1,95 +1,117 @@
 {
-  "name": "community-ui",
-  "version": "1.0.0-development",
-  "description": "A react component library and UI kit built by the community, for the community.",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "release": {
-    "branches": [
-      "main"
-    ]
-  },
-  "scripts": {
-    "develop": "npm run build && npm run storybook",
-    "build": "npm run build:storybook && npm run build:lib",
-    "build:storybook": "build-storybook",
-    "build:lib": "rollup -c",
-    "format": "prettier --write .",
-    "lint": "prettier --check .",
-    "setup" : "npm run setup:husky && npm run setup:cz",
-    "setup:husky": "husky install",
-    "setup:cz": "npm install -g commitizen",
-    "cz": "npx cz",
-    "storybook": "start-storybook -p 6006",
-    "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/open-code-academy/community-ui.git"
-  },
-  "keywords": [
-    "component",
-    "library",
-    "react",
-    "ui",
-    "kit",
-    "communityui",
-    "community-ui"
-  ],
-  "author": "OpenCodeAcademy.org",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/open-code-academy/community-ui/issues"
-  },
-  "homepage": "https://github.com/open-code-academy/community-ui#readme",
-  "devDependencies": {
-    "@babel/core": "^7.17.5",
-    "@commitlint/cli": "^16.2.1",
-    "@commitlint/config-conventional": "^16.2.1",
-    "@rollup/plugin-commonjs": "^21.0.2",
-    "@rollup/plugin-node-resolve": "^13.1.3",
-    "@rollup/plugin-typescript": "^8.3.1",
-    "@storybook/addon-actions": "^6.4.19",
-    "@storybook/addon-essentials": "^6.4.19",
-    "@storybook/addon-interactions": "^6.4.19",
-    "@storybook/addon-links": "^6.4.19",
-    "@storybook/react": "^6.4.19",
-    "@storybook/testing-library": "^0.0.9",
-    "@testing-library/jest-dom": "^5.16.2",
-    "@testing-library/react": "^12.1.3",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.4.1",
-    "@types/react": "^17.0.39",
-    "@types/styled-components": "^5.1.23",
-    "babel-loader": "^8.2.3",
-    "cz-conventional-changelog": "^3.3.0",
-    "husky": "^7.0.4",
-    "jest": "^27.5.1",
-    "lint-staged": "^12.3.4",
-    "prettier": "2.5.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "rollup": "^2.68.0",
-    "rollup-plugin-dts": "^4.1.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-terser": "^7.0.2",
-    "semantic-release": "^19.0.2",
-    "semantic-release-npm-github-publish": "^1.5.1",
-    "styled-components": "^5.3.3",
-    "ts-jest": "^27.1.3",
-    "typescript": "^4.5.5"
-  },
-  "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "styled-components": "^5.3.3"
-  },
-  "lint-staged": {
-    "*.{ts,tsx,js,jsx,css,md}": "prettier --write"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+    "name": "community-ui",
+    "version": "1.0.0-development",
+    "description": "A react component library and UI kit built by the community, for the community.",
+    "main": "dist/cjs/index.js",
+    "module": "dist/esm/index.js",
+    "release": {
+        "branches": [
+            "main"
+        ],
+        "plugins": [
+            "@semantic-release/commit-analyzer",
+            "@semantic-release/release-notes-generator",
+            [
+                "@semantic-release/changelog",
+                {
+                    "changelogFile": "docs/CHANGELOG.md"
+                }
+            ],
+            [
+                "@semantic-release/git",
+                {
+                    "assets": [
+                        "docs/CHANGELOG.md"
+                    ]
+                }
+            ]
+        ]
+    },
+    "scripts": {
+        "develop": "npm run build && npm run storybook",
+        "build": "npm run build:storybook && npm run build:lib",
+        "build:storybook": "build-storybook",
+        "build:lib": "rollup -c",
+        "format": "prettier --write .",
+        "lint": "prettier --check .",
+        "setup": "npm run setup:husky && npm run setup:cz",
+        "setup:husky": "husky install",
+        "setup:cz": "npm install -g commitizen",
+        "cz": "npx cz",
+        "storybook": "start-storybook -p 6006",
+        "test": "jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/open-code-academy/community-ui.git"
+    },
+    "keywords": [
+        "component",
+        "library",
+        "react",
+        "ui",
+        "kit",
+        "communityui",
+        "community-ui"
+    ],
+    "author": "OpenCodeAcademy.org",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/open-code-academy/community-ui/issues"
+    },
+    "homepage": "https://github.com/open-code-academy/community-ui#readme",
+    "devDependencies": {
+        "@babel/core": "^7.17.5",
+        "@commitlint/cli": "^16.2.1",
+        "@commitlint/config-conventional": "^16.2.1",
+        "@rollup/plugin-commonjs": "^21.0.2",
+        "@rollup/plugin-node-resolve": "^13.1.3",
+        "@rollup/plugin-typescript": "^8.3.1",
+        "@semantic-release/changelog": "^6.0.1",
+        "@storybook/addon-actions": "^6.4.19",
+        "@storybook/addon-essentials": "^6.4.19",
+        "@storybook/addon-interactions": "^6.4.19",
+        "@storybook/addon-links": "^6.4.19",
+        "@storybook/react": "^6.4.19",
+        "@storybook/testing-library": "^0.0.9",
+        "@testing-library/jest-dom": "^5.16.2",
+        "@testing-library/react": "^12.1.3",
+        "@testing-library/user-event": "^13.5.0",
+        "@types/jest": "^27.4.1",
+        "@types/react": "^17.0.39",
+        "@types/styled-components": "^5.1.23",
+        "babel-loader": "^8.2.3",
+        "cz-conventional-changelog": "^3.3.0",
+        "husky": "^7.0.4",
+        "jest": "^27.5.1",
+        "lint-staged": "^12.3.4",
+        "prettier": "2.5.1",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "rollup": "^2.68.0",
+        "rollup-plugin-dts": "^4.1.0",
+        "rollup-plugin-peer-deps-external": "^2.2.4",
+        "rollup-plugin-terser": "^7.0.2",
+        "semantic-release": "^19.0.2",
+        "semantic-release-npm-github-publish": "^1.5.1",
+        "styled-components": "^5.3.3",
+        "ts-jest": "^27.1.3",
+        "typescript": "^4.5.5"
+    },
+    "peerDependencies": {
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "styled-components": "^5.3.3"
+    },
+    "lint-staged": {
+        "*.{ts,tsx,js,jsx,css,md}": "prettier --write"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    },
+    "dependencies": {
+        "go-clonr": "^1.7.1"
     }
-  }
 }

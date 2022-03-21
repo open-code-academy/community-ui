@@ -2,9 +2,14 @@ import * as React from 'react';
 import { Meta, Story } from '@storybook/react';
 
 import { AnimatedButton as Button } from './AnimatedButton.component';
-import { ButtonShapes, ButtonVariant, TextButtonProps } from '../index';
-import { ButtonPadding, DefaultButtonThemes } from './base/Button.constants';
-import { FontSize } from '../../config';
+import {
+    ButtonShapes,
+    ButtonVariant,
+    TextButtonProps,
+    ButtonPadding,
+    DefaultButtonThemes,
+} from '../common';
+import { FontSize } from '../../../core';
 
 export default {
     title: 'Components/Buttons',

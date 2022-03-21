@@ -1,4 +1,4 @@
-import { Sizes } from './Sizes.types';
+import { Sizes } from '../types';
 
 export const FontSize: Sizes = {
     default: '.75rem',

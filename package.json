@@ -112,7 +112,6 @@
         }
     },
     "dependencies": {
-        "@types/inherits": "^0.0.30",
-        "inherits": "^2.0.4"
+        "go-clonr": "^1.7.1"
     }
 }

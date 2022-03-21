@@ -1,4 +1,4 @@
-import { ColorPalette } from './Colors.types';
+import { ColorPalette } from '../types';
 
 export const Colors: ColorPalette = {
     TRANSPARENT: 'transparent',

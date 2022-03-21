@@ -5,23 +5,27 @@
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",
     "release": {
-        "branches": ["main"],
-
+        "branches": [
+            "main"
+        ],
         "plugins": [
             "@semantic-release/commit-analyzer",
             "@semantic-release/release-notes-generator",
             [
-                "@semantic-release/changelog", {
+                "@semantic-release/changelog",
+                {
                     "changelogFile": "docs/CHANGELOG.md"
                 }
             ],
             [
-                "@semantic-release/git", {
-                    "assets": ["docs/CHANGELOG.md"]
+                "@semantic-release/git",
+                {
+                    "assets": [
+                        "docs/CHANGELOG.md"
+                    ]
                 }
             ]
         ]
-
     },
     "scripts": {
         "develop": "npm run build && npm run storybook",
@@ -106,5 +110,9 @@
         "commitizen": {
             "path": "./node_modules/cz-conventional-changelog"
         }
+    },
+    "dependencies": {
+        "@types/inherits": "^0.0.30",
+        "inherits": "^2.0.4"
     }
 }

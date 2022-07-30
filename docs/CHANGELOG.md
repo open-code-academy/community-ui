@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/open-code-academy/community-ui/compare/v1.1.4...v1.1.5) (2022-07-30)
+
+
+### Bug Fixes
+
+* fixes config issue ([e93c828](https://github.com/open-code-academy/community-ui/commit/e93c82898235ddb661ebdeb56136e7697168d6bd))
+
 ## [1.1.4](https://github.com/open-code-academy/community-ui/compare/v1.1.3...v1.1.4) (2022-07-30)
 
 

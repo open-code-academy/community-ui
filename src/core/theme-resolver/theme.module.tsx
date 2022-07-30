@@ -24,17 +24,21 @@ export function themed<T>(Component: React.ComponentType<T>) {
     };
 }
 
-const resolveCustomTheme = (): Theme => {
+const resolveCustomTheme = (): Theme | {} => {
     // fixme: need a better way to do this
     try {
         return require('/community-ui.config.ts')?.default;
     } catch (e) {
-        return require('../../../community-ui.config').default;
+        try {
+            return require('../../../community-ui.config').default;
+        } catch (e) {
+            return {};
+        }
     }
 };
 
 const resolveDefaultTheme = (): Theme => {
-    return require('./defaultTheme').default;
+    return require('./defaultTheme.ts').default;
 };
 
 (function init() {

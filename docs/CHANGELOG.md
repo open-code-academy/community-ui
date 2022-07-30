@@ -1,3 +1,11 @@
+## [1.1.2](https://github.com/open-code-academy/community-ui/compare/v1.1.1...v1.1.2) (2022-07-30)
+
+
+### Bug Fixes
+
+* trying to fix semantic release issue again ([dd333b5](https://github.com/open-code-academy/community-ui/commit/dd333b52ca24d84a9c316f427a272bb7915bfc04))
+* trying to fix semantic release issue again ([86a58c3](https://github.com/open-code-academy/community-ui/commit/86a58c37956f73a135b67f60dd7b11db47f31b2f))
+
 ## [1.1.1](https://github.com/open-code-academy/community-ui/compare/v1.1.0...v1.1.1) (2022-07-30)
 
 

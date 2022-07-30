@@ -25,17 +25,9 @@ export function themed<T>(Component: React.ComponentType<T>) {
     };
 }
 
-const resolveCustomTheme = (): Theme | {} => {
-    // fixme: need a better way to do this
-    try {
-        return require('/community-ui.config.ts')?.default;
-    } catch (e) {
-        try {
-            return require('../../../community-ui.config').default;
-        } catch (e) {
-            return {};
-        }
-    }
+export const applyCustomTheme = (customTheme: Theme | {}): Theme | {} => {
+    theme = merge(theme, customTheme);
+    return theme;
 };
 
 const resolveDefaultTheme = (): Theme => {
@@ -43,5 +35,5 @@ const resolveDefaultTheme = (): Theme => {
 };
 
 (function init() {
-    theme = merge(resolveDefaultTheme(), resolveCustomTheme());
+    theme = resolveDefaultTheme();
 })();

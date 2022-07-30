@@ -1,3 +1,4 @@
 export * from './defaultTheme';
 export * from './theme.module';
-export * from './theme.types';
+export * from './types';
+export * from './constants';

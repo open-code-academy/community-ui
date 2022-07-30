@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { getTheme } from './theme.module';
-import { Colors } from '../constants';
+import { Colors } from './constants';
 
 describe('Running tests for ButtonBase', () => {
     test('Given disabled prop then button disabled', () => {

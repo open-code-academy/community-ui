@@ -1,4 +1,3 @@
-export * from './constants';
+export * from './theme-resolver/constants';
 export * from './util';
-export * from './types';
 export * from './theme-resolver';

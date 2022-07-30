@@ -1,6 +1,5 @@
-import { ButtonThemes, Theme } from './theme.types';
-import { Sizes } from '../types';
-import { Colors } from '../constants';
+import { ButtonThemes, Theme, Sizes } from './types';
+import { Colors } from './constants';
 
 const DefaultFontSizes: Sizes = {
     default: '.75rem',

@@ -1,4 +1,4 @@
-import { Theme, Themeable } from './theme.types';
+import { Theme, Themeable } from './types/Theme.types';
 import { merge } from '../util';
 import React, { Component } from 'react';
 import { Subtract } from 'utility-types';

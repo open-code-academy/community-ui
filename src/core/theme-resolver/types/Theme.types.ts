@@ -1,4 +1,4 @@
-import { ColorPalette, Sizes } from '../types';
+import { ColorPalette, Sizes } from './index';
 
 export interface Themeable {
     theme?: Theme;

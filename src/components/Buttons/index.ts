@@ -1,4 +1,5 @@
-export * from './AnimatedButton/AnimatedButton.component';
-export * from './PlainButton/PlainButton.component';
+export * from './AnimatedButton';
+export * from './BaseButton';
+export * from './PlainButton';
 export * from './styles';
 export * from './types';

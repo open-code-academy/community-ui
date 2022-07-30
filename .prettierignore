@@ -3,6 +3,9 @@
 /.idea/
 /storybook-static/
 .storybook
+.github/workflows/release.yml
 tsconfig.json
 rollup.config.js
 README.md
+package.json
+package-lock.json

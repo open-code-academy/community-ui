@@ -1,1 +1,1 @@
-export * from './PlainButton.component'
+export * from './PlainButton.component';

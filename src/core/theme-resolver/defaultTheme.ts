@@ -1,8 +1,19 @@
-import { Sizes } from '../../../../core';
-import { Colors } from '../../../../core';
-import { ButtonThemes } from '../types';
+import { ButtonThemes, Theme } from './theme.types';
+import { Sizes } from '../types';
+import { Colors } from '../constants';
 
-export const ButtonPadding: Sizes = {
+const DefaultFontSizes: Sizes = {
+    default: '.75rem',
+    xs: '.5rem',
+    sm: '.625rem',
+    md: '.75rem',
+    lg: '1rem',
+    xl: '1.25rem',
+    xxl: '1.5rem',
+    '3xl': '2rem',
+};
+
+const DefaultButtonPadding: Sizes = {
     default: '.7rem 1.4rem',
     xs: '.25rem .5rem',
     sm: '.5rem 1.0rem',
@@ -13,7 +24,7 @@ export const ButtonPadding: Sizes = {
     '3xl': '2rem 4rem',
 };
 
-export const DefaultButtonThemes: ButtonThemes = {
+const DefaultButtonThemes: ButtonThemes = {
     PRIMARY: {
         backgroundColor: Colors.CYAN['60'],
         borderColor: Colors.CYAN['60'],
@@ -63,3 +74,13 @@ export const DefaultButtonThemes: ButtonThemes = {
         disabledBackgroundColor: Colors.GRAY['30'],
     },
 };
+
+const DefaultTheme: Theme = {
+    buttonTheme: {
+        fontSize: DefaultFontSizes,
+        buttonPadding: DefaultButtonPadding,
+        buttonThemes: DefaultButtonThemes,
+    },
+};
+
+export default DefaultTheme;

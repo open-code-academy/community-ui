@@ -1,12 +1,10 @@
 export type Sizes = {
-    default: Size;
-    xs: Size;
-    sm: Size;
-    md: Size;
-    lg: Size;
-    xl: Size;
-    xxl: Size;
-    '3xl': Size;
+    default: string;
+    xs: string;
+    sm: string;
+    md: string;
+    lg: string;
+    xl: string;
+    xxl: string;
+    '3xl': string;
 };
-
-export type Size = string;

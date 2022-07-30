@@ -1,1 +1,1 @@
-export * from './AnimatedButton.component'
+export * from './AnimatedButton.component';

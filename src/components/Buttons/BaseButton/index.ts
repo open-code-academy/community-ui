@@ -1,1 +1,1 @@
-export * from './BaseButton.component'
+export * from './BaseButton.component';

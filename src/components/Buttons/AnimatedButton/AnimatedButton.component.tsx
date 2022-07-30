@@ -2,16 +2,18 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 
 import { BaseButton } from '../BaseButton/BaseButton.component';
+import { themed } from '../../../core';
 import {
-    TextButtonProps,
-    textButtonStyles,
-    resolveBackgroundColor,
     getInitialBorderColor,
+    resolveBackgroundColor,
     resolveTextColor,
-} from '../common';
+    textButtonStyles,
+} from '../styles';
+import { StyledTextButtonProps } from '../types';
 
-const StyledButton = styled(BaseButton)<TextButtonProps>(
-    (props) => `
+const StyledButton = themed(
+    styled(BaseButton)<StyledTextButtonProps>(
+        (props) => `
   ${textButtonStyles(props)}
 
   position: relative;
@@ -54,8 +56,9 @@ const StyledButton = styled(BaseButton)<TextButtonProps>(
     border: solid 0.125rem ${getInitialBorderColor(props)};
     color: ${resolveTextColor(props)};
   }`
+    )
 );
 
-export const AnimatedButton: FC<TextButtonProps> = (props) => {
+export const AnimatedButton: FC<StyledTextButtonProps> = (props) => {
     return <StyledButton {...props}>{props.children}</StyledButton>;
 };

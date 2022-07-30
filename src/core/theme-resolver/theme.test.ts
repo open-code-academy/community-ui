@@ -1,11 +1,12 @@
 import '@testing-library/jest-dom';
-import {getTheme } from './theme.util';
+import { getTheme } from './theme.module';
+import { Colors } from '../constants';
 
 describe('Running tests for ButtonBase', () => {
     test('Given disabled prop then button disabled', () => {
         const theme = getTheme();
-        console.log(theme)
-        expect(theme.buttonSize).toEqual("overridden")
-        expect(theme.somethingElse).toEqual("value")
+        expect(
+            theme.buttonTheme?.buttonThemes?.PRIMARY?.backgroundColor
+        ).toEqual(Colors.CYAN['70']);
     });
 });

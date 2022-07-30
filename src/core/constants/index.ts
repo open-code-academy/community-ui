@@ -1,2 +1,2 @@
 export * from './Colors.constants';
-export * from './DefaultSizes.constants';
+export * from './Size.constants';

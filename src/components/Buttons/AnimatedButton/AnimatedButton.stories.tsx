@@ -2,14 +2,8 @@ import * as React from 'react';
 import { Meta, Story } from '@storybook/react';
 
 import { AnimatedButton as Button } from './AnimatedButton.component';
-import {
-    ButtonShapes,
-    ButtonVariant,
-    TextButtonProps,
-    ButtonPadding,
-    DefaultButtonThemes,
-} from '../common';
-import { FontSize } from '../../../core';
+import { ButtonShapes, ButtonVariant, StyledTextButtonProps } from '../types';
+import { getTheme } from '../../../core/theme-resolver/theme.module';
 
 export default {
     title: 'Components/Buttons',
@@ -17,17 +11,19 @@ export default {
     argTypes: {},
 } as Meta<typeof Button>;
 
-const Template: Story<TextButtonProps> = (args) => <Button {...args} />;
+const Template: Story<StyledTextButtonProps> = (args) => (
+    <Button {...args} children={args.children} />
+);
 
 export const AnimatedButton = Template.bind({});
 AnimatedButton.args = {
     buttonVariant: ButtonVariant.OUTLINE,
     disabled: false,
     children: 'Animated Button',
-    buttonTheme: DefaultButtonThemes.PRIMARY,
-    buttonPadding: ButtonPadding.default,
+    buttonTheme: getTheme()?.buttonTheme?.buttonThemes?.PRIMARY,
+    buttonPadding: getTheme()?.buttonTheme?.buttonPadding?.default,
     buttonShape: ButtonShapes.RECTANGLE,
-    fontSize: FontSize.default,
+    fontSize: getTheme()?.buttonTheme?.fontSize?.default,
 };
 
 AnimatedButton.argTypes = {
@@ -42,12 +38,12 @@ AnimatedButton.argTypes = {
     buttonTheme: {
         options: [0, 1, 2, 3, 4, 5],
         mapping: [
-            DefaultButtonThemes.PRIMARY,
-            DefaultButtonThemes.SECONDARY,
-            DefaultButtonThemes.ERROR,
-            DefaultButtonThemes.INFO,
-            DefaultButtonThemes.SUCCESS,
-            DefaultButtonThemes.WARNING,
+            getTheme()?.buttonTheme?.buttonThemes?.PRIMARY,
+            getTheme()?.buttonTheme?.buttonThemes?.SECONDARY,
+            getTheme()?.buttonTheme?.buttonThemes?.ERROR,
+            getTheme()?.buttonTheme?.buttonThemes?.INFO,
+            getTheme()?.buttonTheme?.buttonThemes?.SUCCESS,
+            getTheme()?.buttonTheme?.buttonThemes?.WARNING,
         ],
         control: {
             type: 'select',
@@ -64,14 +60,14 @@ AnimatedButton.argTypes = {
     buttonPadding: {
         options: [0, 1, 2, 3, 4, 5, 6, 7],
         mapping: [
-            ButtonPadding.default,
-            ButtonPadding.xs,
-            ButtonPadding.sm,
-            ButtonPadding.md,
-            ButtonPadding.lg,
-            ButtonPadding.xl,
-            ButtonPadding.xxl,
-            ButtonPadding['3xl'],
+            getTheme()?.buttonTheme?.buttonPadding?.default,
+            getTheme()?.buttonTheme?.buttonPadding?.xs,
+            getTheme()?.buttonTheme?.buttonPadding?.sm,
+            getTheme()?.buttonTheme?.buttonPadding?.md,
+            getTheme()?.buttonTheme?.buttonPadding?.lg,
+            getTheme()?.buttonTheme?.buttonPadding?.xl,
+            getTheme()?.buttonTheme?.buttonPadding?.xxl,
+            getTheme()?.buttonTheme?.buttonPadding?.['3xl'],
         ],
         control: {
             type: 'select',
@@ -93,14 +89,14 @@ AnimatedButton.argTypes = {
     fontSize: {
         options: [0, 1, 2, 3, 4, 5, 6, 7],
         mapping: [
-            FontSize.default,
-            FontSize.xs,
-            FontSize.sm,
-            FontSize.md,
-            FontSize.lg,
-            FontSize.xl,
-            FontSize.xxl,
-            FontSize['3xl'],
+            getTheme()?.buttonTheme?.fontSize?.default,
+            getTheme()?.buttonTheme?.fontSize?.xs,
+            getTheme()?.buttonTheme?.fontSize?.sm,
+            getTheme()?.buttonTheme?.fontSize?.md,
+            getTheme()?.buttonTheme?.fontSize?.lg,
+            getTheme()?.buttonTheme?.fontSize?.xl,
+            getTheme()?.buttonTheme?.fontSize?.xxl,
+            getTheme()?.buttonTheme?.fontSize?.['3xl'],
         ],
         control: {
             type: 'select',

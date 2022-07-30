@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
-import { ButtonProps } from '../common';
+import { themed } from '../../../core/theme-resolver/theme.module';
+import { ButtonProps } from '../types';
 
-const BaseButtonStyledComponent = styled.button<ButtonProps>(
-    ({ styles }) => `${styles}`
+const BaseButtonStyledComponent = themed(
+    styled.button<ButtonProps>(({ styles }) => `${styles}`)
 );
 
 export const BaseButton: FC<ButtonProps> = (props) => {

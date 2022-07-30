@@ -1,7 +1,14 @@
-import { Theme } from './src/core/theme-resolver/theme.types';
+import { Theme } from './src/core/';
+import { Colors } from './src/core';
 
-const customTheme : Theme =  {
-        buttonSize: 'overridden'
-}
+const customTheme: Theme = {
+    buttonTheme: {
+        buttonThemes: {
+            PRIMARY: {
+                backgroundColor: Colors.CYAN['70'],
+            },
+        },
+    },
+};
 
 export default customTheme;

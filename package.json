@@ -1,6 +1,6 @@
 {
     "name": "community-ui",
-    "version": "1.0.0-development",
+    "version": "0.0.0-dev",
     "description": "A react component library and UI kit built by the community, for the community.",
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",
@@ -20,9 +20,7 @@
             [
                 "@semantic-release/git",
                 {
-                    "assets": [
-                        "docs/CHANGELOG.md"
-                    ]
+                    "assets": ["dist/**/*.{js,css}", "docs/CHANGELOG.md", "package.json"]
                 }
             ]
         ]

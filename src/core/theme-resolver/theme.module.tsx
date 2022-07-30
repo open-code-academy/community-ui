@@ -2,6 +2,7 @@ import { Theme, Themeable } from './types/Theme.types';
 import { merge } from '../util';
 import React, { Component } from 'react';
 import { Subtract } from 'utility-types';
+import * as defaultConfig from './defaultTheme';
 
 let theme: Theme;
 
@@ -38,7 +39,7 @@ const resolveCustomTheme = (): Theme | {} => {
 };
 
 const resolveDefaultTheme = (): Theme => {
-    return require('./defaultTheme.ts').default;
+    return defaultConfig.default;
 };
 
 (function init() {

@@ -1,4 +1,4 @@
-import { Theme } from './src/core/';
+import { Theme } from './src/core';
 import { Colors } from './src/core';
 
 const customTheme: Theme = {

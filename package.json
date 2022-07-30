@@ -31,7 +31,7 @@
         "develop": "npm run build && npm run storybook",
         "build": "npm run build:storybook && npm run build:lib",
         "build:storybook": "build-storybook",
-        "build:lib": "rollup -c 'rollup.config.js'",
+        "build:lib": "rollup -c",
         "format": "prettier --write .",
         "lint": "prettier --check .",
         "setup": "npm run setup:husky && npm run setup:cz",

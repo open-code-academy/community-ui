@@ -1,4 +1,4 @@
-import { Theme, Themeable } from './types/Theme.types';
+import { Theme, Themeable } from './types';
 import { merge } from '../util';
 import React, { Component } from 'react';
 import { Subtract } from 'utility-types';
@@ -29,14 +29,10 @@ export function themed<T>(Component: React.ComponentType<T>) {
         };
 
         componentWillUnmount() {
-            console.log('unmounting');
             themeSubscribers.delete(this);
         }
 
         render() {
-            console.log(
-                getTheme().buttonTheme?.buttonThemes?.PRIMARY?.backgroundColor
-            );
             return (
                 <Component {...(this.props as T)} theme={this.state.theme} />
             );

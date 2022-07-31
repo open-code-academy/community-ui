@@ -1,3 +1,11 @@
+## [1.1.6](https://github.com/open-code-academy/community-ui/compare/v1.1.5...v1.1.6) (2022-07-31)
+
+
+### Bug Fixes
+
+* theme will now update globally ([15d9a7e](https://github.com/open-code-academy/community-ui/commit/15d9a7e68df50c48e3c011077f4af5202101158a))
+* theme will now update globally ([2b394d9](https://github.com/open-code-academy/community-ui/commit/2b394d960d347ad0eb59f229ed457152e331b9c5))
+
 ## [1.1.5](https://github.com/open-code-academy/community-ui/compare/v1.1.4...v1.1.5) (2022-07-30)
 
 ### Bug Fixes

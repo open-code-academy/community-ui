@@ -6,18 +6,37 @@ import * as defaultConfig from './defaultTheme';
 
 let theme: Theme;
 
+type SubscriberMap = Map<React.Component<any>, React.Component<any>>;
+const themeSubscribers: SubscriberMap = new Map();
+
 export const getTheme = (): Theme => {
     return theme;
 };
 
 export function themed<T>(Component: React.ComponentType<T>) {
     return class extends React.Component<Subtract<T, Themeable>> {
-        state = { theme: {} as Theme };
-        async componentDidMount() {
-            const theme = await getTheme();
-            this.setState({ theme });
+        constructor(
+            props: Subtract<T, Themeable> | Readonly<Subtract<T, Themeable>>
+        ) {
+            super(props);
+            themeSubscribers.set(this, this);
+            this.state = {
+                theme: theme,
+            };
         }
+        state = {
+            theme: {} as Theme,
+        };
+
+        componentWillUnmount() {
+            console.log('unmounting');
+            themeSubscribers.delete(this);
+        }
+
         render() {
+            console.log(
+                getTheme().buttonTheme?.buttonThemes?.PRIMARY?.backgroundColor
+            );
             return (
                 <Component {...(this.props as T)} theme={this.state.theme} />
             );
@@ -27,6 +46,11 @@ export function themed<T>(Component: React.ComponentType<T>) {
 
 export const applyCustomTheme = (customTheme: Theme | {}): Theme | {} => {
     theme = merge(theme, customTheme);
+    if (themeSubscribers) {
+        themeSubscribers.forEach((elem) => {
+            elem.setState({ theme: theme });
+        });
+    }
     return theme;
 };
 

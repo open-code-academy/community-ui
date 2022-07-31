@@ -12,14 +12,13 @@ export const getInitialBackgroundColor = (props: StyledButtonProps) => {
             return Colors.TRANSPARENT;
         case ButtonVariant.SOLID:
             return resolveBackgroundColor(props);
+        default:
+            return resolveBackgroundColor(props);
     }
 };
 
-export const resolveBackgroundColor = ({
-    buttonTheme,
-    disabled,
-    theme,
-}: StyledButtonProps) => {
+export const resolveBackgroundColor = (props: StyledButtonProps) => {
+    const { buttonTheme, disabled, theme } = props;
     let color =
         buttonTheme?.backgroundColor ||
         theme?.buttonTheme?.buttonThemes?.PRIMARY?.backgroundColor;
@@ -48,6 +47,8 @@ export const getInitialTextColor = (props: StyledTextButtonProps) => {
         case ButtonVariant.OUTLINE:
             return getInitialBorderColor(props);
         case ButtonVariant.SOLID:
+            return resolveTextColor(props);
+        default:
             return resolveTextColor(props);
     }
 };

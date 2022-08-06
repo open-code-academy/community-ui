@@ -8,18 +8,26 @@ A React component library and UI kit.
 
 To install the library run the following command:
 `npm install community-ui`
-You'll also need styled components
-`npm install styled-componnents`
 Then you can import the component of your choice by using the named import syntax. 
 For example, if you want to import `AnimatedButton`, you'll need to add `import { AnimatedButton } from 'community-ui'` 
 to the top of your file.
 
+## Documentation
+
+### Theming
+
+By default, community-ui has a default theme applied. 
+For the full documentation on theming, view the [theme-resolver docs](https://github.com/open-code-academy/community-ui/tree/main/src/core/theme-resolver/README.md)
+
+
+This method triggers a state update for all `Themeable` components which have been passed through the `themed()` method.
+### Storybook
+In order to view the storybook documentation, until the project is hosted in a production environement, simply follow the
+"Getting Started" steps in the [contributing guidelines](https://github.com/open-code-academy/community-ui/tree/develop/docs/CONTRIBUTING.md)
+Then, you should see the storybook documentation, which will continue to grow as the project does.
 
 ## Contributing
 We always welcome contributions. Check out our [contributing guidelines](https://github.com/open-code-academy/community-ui/tree/develop/docs/CONTRIBUTING.md)
 
 
-## Documentation
-In order to view the documentation, until the project is hosted in a production environement, simply follow the 
-"Getting Started" steps in the [contributing guidelines](https://github.com/open-code-academy/community-ui/tree/develop/docs/CONTRIBUTING.md)
-Then, you should see the storybook documentation, which will continue to grow as the project does.
+

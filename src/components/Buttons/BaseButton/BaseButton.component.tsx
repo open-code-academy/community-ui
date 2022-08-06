@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
-import { themed } from '../../../core/theme-resolver/theme.module';
+import { themed } from '../../../core';
 import { ButtonProps } from '../types';
 
 const BaseButtonStyledComponent = themed(

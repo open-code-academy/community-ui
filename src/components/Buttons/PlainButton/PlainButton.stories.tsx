@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react';
 
 import { PlainButton as Button } from './PlainButton.component';
 import { ButtonShapes, ButtonVariant, StyledTextButtonProps } from '../types';
-import { getTheme } from '../../../core/theme-resolver/theme.module';
+import { getGlobalTheme } from '../../../core';
 
 export default {
     title: 'Components/Buttons',
@@ -20,10 +20,10 @@ PlainButton.args = {
     buttonVariant: ButtonVariant.SOLID,
     disabled: false,
     children: 'Plain Button',
-    buttonTheme: getTheme()?.buttonTheme?.buttonThemes?.SECONDARY,
-    buttonPadding: getTheme()?.buttonTheme?.buttonPadding?.default,
+    buttonTheme: getGlobalTheme().buttonTheme.buttonThemes.SECONDARY,
+    buttonPadding: getGlobalTheme().buttonTheme.buttonPadding.default,
     buttonShape: ButtonShapes.RECTANGLE,
-    fontSize: getTheme()?.buttonTheme?.fontSize?.default,
+    fontSize: getGlobalTheme().buttonTheme.fontSize.default,
 };
 
 PlainButton.argTypes = {
@@ -38,12 +38,12 @@ PlainButton.argTypes = {
     buttonTheme: {
         options: [0, 1, 2, 3, 4, 5],
         mapping: [
-            getTheme()?.buttonTheme?.buttonThemes?.PRIMARY,
-            getTheme()?.buttonTheme?.buttonThemes?.SECONDARY,
-            getTheme()?.buttonTheme?.buttonThemes?.ERROR,
-            getTheme()?.buttonTheme?.buttonThemes?.INFO,
-            getTheme()?.buttonTheme?.buttonThemes?.SUCCESS,
-            getTheme()?.buttonTheme?.buttonThemes?.WARNING,
+            getGlobalTheme().buttonTheme.buttonThemes.PRIMARY,
+            getGlobalTheme().buttonTheme.buttonThemes.SECONDARY,
+            getGlobalTheme().buttonTheme.buttonThemes.ERROR,
+            getGlobalTheme().buttonTheme.buttonThemes.INFO,
+            getGlobalTheme().buttonTheme.buttonThemes.SUCCESS,
+            getGlobalTheme().buttonTheme.buttonThemes.WARNING,
         ],
         control: {
             type: 'select',
@@ -60,14 +60,14 @@ PlainButton.argTypes = {
     buttonPadding: {
         options: [0, 1, 2, 3, 4, 5, 6, 7],
         mapping: [
-            getTheme()?.buttonTheme?.buttonPadding?.default,
-            getTheme()?.buttonTheme?.buttonPadding?.xs,
-            getTheme()?.buttonTheme?.buttonPadding?.sm,
-            getTheme()?.buttonTheme?.buttonPadding?.md,
-            getTheme()?.buttonTheme?.buttonPadding?.lg,
-            getTheme()?.buttonTheme?.buttonPadding?.xl,
-            getTheme()?.buttonTheme?.buttonPadding?.xxl,
-            getTheme()?.buttonTheme?.buttonPadding?.['3xl'],
+            getGlobalTheme().buttonTheme.buttonPadding.default,
+            getGlobalTheme().buttonTheme.buttonPadding.xs,
+            getGlobalTheme().buttonTheme.buttonPadding.sm,
+            getGlobalTheme().buttonTheme.buttonPadding.md,
+            getGlobalTheme().buttonTheme.buttonPadding.lg,
+            getGlobalTheme().buttonTheme.buttonPadding.xl,
+            getGlobalTheme().buttonTheme.buttonPadding.xxl,
+            getGlobalTheme().buttonTheme.buttonPadding['3xl'],
         ],
         control: {
             type: 'select',
@@ -89,14 +89,14 @@ PlainButton.argTypes = {
     fontSize: {
         options: [0, 1, 2, 3, 4, 5, 6, 7],
         mapping: [
-            getTheme()?.buttonTheme?.fontSize?.default,
-            getTheme()?.buttonTheme?.fontSize?.xs,
-            getTheme()?.buttonTheme?.fontSize?.sm,
-            getTheme()?.buttonTheme?.fontSize?.md,
-            getTheme()?.buttonTheme?.fontSize?.lg,
-            getTheme()?.buttonTheme?.fontSize?.xl,
-            getTheme()?.buttonTheme?.fontSize?.xxl,
-            getTheme()?.buttonTheme?.fontSize?.['3xl'],
+            getGlobalTheme().buttonTheme.fontSize.default,
+            getGlobalTheme().buttonTheme.fontSize.xs,
+            getGlobalTheme().buttonTheme.fontSize.sm,
+            getGlobalTheme().buttonTheme.fontSize.md,
+            getGlobalTheme().buttonTheme.fontSize.lg,
+            getGlobalTheme().buttonTheme.fontSize.xl,
+            getGlobalTheme().buttonTheme.fontSize.xxl,
+            getGlobalTheme().buttonTheme.fontSize['3xl'],
         ],
         control: {
             type: 'select',

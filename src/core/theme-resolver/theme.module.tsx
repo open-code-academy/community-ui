@@ -1,44 +1,44 @@
-import { Theme, Themeable } from './types/Theme.types';
+import { PartialTheme, Theme, Themeable } from './types';
 import { merge } from '../util';
 import React, { Component } from 'react';
-import { Subtract } from 'utility-types';
 import * as defaultConfig from './defaultTheme';
 
 let theme: Theme;
+const themeSubscribers: Map<
+    React.Component<Themeable>,
+    React.Component<Themeable>
+> = new Map();
 
-type SubscriberMap = Map<React.Component<any>, React.Component<any>>;
-const themeSubscribers: SubscriberMap = new Map();
-
-export const getTheme = (): Theme => {
+export const getGlobalTheme = (): Theme => {
     return theme;
 };
 
-export function themed<T>(Component: React.ComponentType<T>) {
-    return class extends React.Component<Subtract<T, Themeable>> {
-        constructor(
-            props: Subtract<T, Themeable> | Readonly<Subtract<T, Themeable>>
-        ) {
+export function themed<T extends object>(Component: React.ComponentType<T>) {
+    return class extends React.Component<Themeable> {
+        constructor(props: Themeable) {
             super(props);
             themeSubscribers.set(this, this);
             this.state = {
-                theme: theme,
+                theme: merge(theme, props.localTheme),
+                localTheme: props.localTheme || {},
             };
         }
-        state = {
+        state: Themeable = {
             theme: {} as Theme,
+            localTheme: {} as PartialTheme,
         };
 
         componentWillUnmount() {
-            console.log('unmounting');
             themeSubscribers.delete(this);
         }
 
         render() {
-            console.log(
-                getTheme().buttonTheme?.buttonThemes?.PRIMARY?.backgroundColor
-            );
             return (
-                <Component {...(this.props as T)} theme={this.state.theme} />
+                <Component
+                    {...(this.props as T)}
+                    theme={this.state.theme}
+                    localTheme={this.state.localTheme}
+                />
             );
         }
     };
@@ -48,7 +48,11 @@ export const applyCustomTheme = (customTheme: Theme | {}): Theme | {} => {
     theme = merge(theme, customTheme);
     if (themeSubscribers) {
         themeSubscribers.forEach((elem) => {
-            elem.setState({ theme: theme });
+            const currentState = elem.state as Themeable;
+            elem.setState({
+                theme: merge(theme, currentState.localTheme),
+                ...elem.state,
+            });
         });
     }
     return theme;

@@ -5,7 +5,7 @@ import {
     StyledTextButtonProps,
     StyledButtonProps,
 } from '../types';
-import { Colors, getTheme } from '../../../core';
+import { Colors, getGlobalTheme } from '../../../core';
 
 const {
     getInitialBackgroundColor,
@@ -24,12 +24,13 @@ describe('Running tests for ButtonStyle utils', () => {
     describe('Running tests for background color of solid buttons', () => {
         const props: StyledButtonProps = {
             buttonVariant: ButtonVariant.SOLID,
-            theme: getTheme(),
+            theme: getGlobalTheme(),
         };
 
         test('Given no defaultTheme, when getInitialBackgroundColor is called, background color is the default one', () => {
             expect(getInitialBackgroundColor(props)).toBe(
-                getTheme()?.buttonTheme?.buttonThemes?.PRIMARY?.backgroundColor
+                getGlobalTheme()?.buttonTheme?.buttonThemes?.PRIMARY
+                    ?.backgroundColor
             );
         });
 
@@ -38,10 +39,10 @@ describe('Running tests for ButtonStyle utils', () => {
                 getInitialBackgroundColor({
                     ...props,
                     buttonTheme:
-                        getTheme()?.buttonTheme?.buttonThemes?.SECONDARY,
+                        getGlobalTheme()?.buttonTheme?.buttonThemes?.SECONDARY,
                 })
             ).toBe(
-                getTheme()?.buttonTheme?.buttonThemes?.SECONDARY
+                getGlobalTheme()?.buttonTheme?.buttonThemes?.SECONDARY
                     ?.backgroundColor
             );
         });
@@ -50,7 +51,7 @@ describe('Running tests for ButtonStyle utils', () => {
             expect(
                 getInitialBackgroundColor({ ...props, disabled: true })
             ).toBe(
-                getTheme()?.buttonTheme?.buttonThemes?.PRIMARY
+                getGlobalTheme()?.buttonTheme?.buttonThemes?.PRIMARY
                     ?.disabledBackgroundColor
             );
         });
@@ -61,10 +62,10 @@ describe('Running tests for ButtonStyle utils', () => {
                     ...props,
                     disabled: true,
                     buttonTheme:
-                        getTheme()?.buttonTheme?.buttonThemes?.SECONDARY,
+                        getGlobalTheme()?.buttonTheme?.buttonThemes?.SECONDARY,
                 })
             ).toBe(
-                getTheme()?.buttonTheme?.buttonThemes?.SECONDARY
+                getGlobalTheme()?.buttonTheme?.buttonThemes?.SECONDARY
                     ?.disabledBackgroundColor
             );
         });
@@ -73,8 +74,11 @@ describe('Running tests for ButtonStyle utils', () => {
     describe('Running tests for border color', () => {
         test('Given defaultTheme, when getInitialBorderColor is called, border color is the default one', () => {
             expect(
-                getInitialBorderColor({ children: '', theme: getTheme() })
-            ).toBe(getTheme()?.buttonTheme?.buttonThemes?.PRIMARY?.borderColor);
+                getInitialBorderColor({ children: '', theme: getGlobalTheme() })
+            ).toBe(
+                getGlobalTheme()?.buttonTheme?.buttonThemes?.PRIMARY
+                    ?.borderColor
+            );
         });
 
         test('Given a defaultTheme, when getInitialBorderColor is called, border color is the default color for that defaultTheme', () => {
@@ -82,10 +86,11 @@ describe('Running tests for ButtonStyle utils', () => {
                 getInitialBorderColor({
                     children: '',
                     buttonTheme:
-                        getTheme()?.buttonTheme?.buttonThemes?.SECONDARY,
+                        getGlobalTheme()?.buttonTheme?.buttonThemes?.SECONDARY,
                 })
             ).toBe(
-                getTheme()?.buttonTheme?.buttonThemes?.SECONDARY?.borderColor
+                getGlobalTheme()?.buttonTheme?.buttonThemes?.SECONDARY
+                    ?.borderColor
             );
         });
 
@@ -93,11 +98,11 @@ describe('Running tests for ButtonStyle utils', () => {
             expect(
                 getInitialBorderColor({
                     children: '',
-                    theme: getTheme(),
+                    theme: getGlobalTheme(),
                     disabled: true,
                 })
             ).toBe(
-                getTheme()?.buttonTheme?.buttonThemes?.PRIMARY
+                getGlobalTheme()?.buttonTheme?.buttonThemes?.PRIMARY
                     ?.disabledBorderColor
             );
         });
@@ -108,10 +113,10 @@ describe('Running tests for ButtonStyle utils', () => {
                     children: '',
                     disabled: true,
                     buttonTheme:
-                        getTheme()?.buttonTheme?.buttonThemes?.SECONDARY,
+                        getGlobalTheme()?.buttonTheme?.buttonThemes?.SECONDARY,
                 })
             ).toBe(
-                getTheme()?.buttonTheme?.buttonThemes?.SECONDARY
+                getGlobalTheme()?.buttonTheme?.buttonThemes?.SECONDARY
                     ?.disabledBorderColor
             );
         });
@@ -121,7 +126,7 @@ describe('Running tests for ButtonStyle utils', () => {
         const props: StyledTextButtonProps = {
             children: '',
             buttonVariant: ButtonVariant.OUTLINE,
-            theme: getTheme(),
+            theme: getGlobalTheme(),
         };
         const spy = jest.spyOn(ButtonStyleUtils, 'getInitialBorderColor');
 
@@ -137,12 +142,13 @@ describe('Running tests for ButtonStyle utils', () => {
         const props: StyledTextButtonProps = {
             children: '',
             buttonVariant: ButtonVariant.SOLID,
-            theme: getTheme(),
+            theme: getGlobalTheme(),
         };
 
         test('Given defaultTheme, when getInitialTextColor is called, text color is the default content color', () => {
             expect(getInitialTextColor(props)).toBe(
-                getTheme()?.buttonTheme?.buttonThemes?.PRIMARY?.contentColor
+                getGlobalTheme()?.buttonTheme?.buttonThemes?.PRIMARY
+                    ?.contentColor
             );
         });
 
@@ -151,16 +157,17 @@ describe('Running tests for ButtonStyle utils', () => {
                 getInitialTextColor({
                     ...props,
                     buttonTheme:
-                        getTheme()?.buttonTheme?.buttonThemes?.SECONDARY,
+                        getGlobalTheme()?.buttonTheme?.buttonThemes?.SECONDARY,
                 })
             ).toBe(
-                getTheme()?.buttonTheme?.buttonThemes?.SECONDARY?.contentColor
+                getGlobalTheme()?.buttonTheme?.buttonThemes?.SECONDARY
+                    ?.contentColor
             );
         });
 
         test('Given disabled prop and defaultTheme, when getInitialTextColor is called, text color is the default disabled content color', () => {
             expect(getInitialTextColor({ ...props, disabled: true })).toBe(
-                getTheme()?.buttonTheme?.buttonThemes?.PRIMARY
+                getGlobalTheme()?.buttonTheme?.buttonThemes?.PRIMARY
                     ?.disabledContentColor
             );
         });
@@ -171,10 +178,10 @@ describe('Running tests for ButtonStyle utils', () => {
                     ...props,
                     disabled: true,
                     buttonTheme:
-                        getTheme()?.buttonTheme?.buttonThemes?.SECONDARY,
+                        getGlobalTheme()?.buttonTheme?.buttonThemes?.SECONDARY,
                 })
             ).toBe(
-                getTheme()?.buttonTheme?.buttonThemes?.SECONDARY
+                getGlobalTheme()?.buttonTheme?.buttonThemes?.SECONDARY
                     ?.disabledContentColor
             );
         });

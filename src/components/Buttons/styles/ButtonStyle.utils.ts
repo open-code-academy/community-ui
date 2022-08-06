@@ -12,20 +12,19 @@ export const getInitialBackgroundColor = (props: StyledButtonProps) => {
             return Colors.TRANSPARENT;
         case ButtonVariant.SOLID:
             return resolveBackgroundColor(props);
+        default:
+            return resolveBackgroundColor(props);
     }
 };
 
-export const resolveBackgroundColor = ({
-    buttonTheme,
-    disabled,
-    theme,
-}: StyledButtonProps) => {
+export const resolveBackgroundColor = (props: StyledButtonProps) => {
+    const { buttonTheme, disabled, theme } = props;
     let color =
         buttonTheme?.backgroundColor ||
-        theme?.buttonTheme?.buttonThemes?.PRIMARY?.backgroundColor;
+        theme?.buttonTheme.buttonThemes.PRIMARY.backgroundColor;
     return disabled
         ? buttonTheme?.disabledBackgroundColor ||
-              theme?.buttonTheme?.buttonThemes?.PRIMARY?.disabledBackgroundColor
+              theme?.buttonTheme.buttonThemes.PRIMARY.disabledBackgroundColor
         : color;
 };
 
@@ -36,10 +35,10 @@ export const getInitialBorderColor = ({
 }: StyledTextButtonProps) => {
     let color =
         buttonTheme?.borderColor ||
-        theme?.buttonTheme?.buttonThemes?.PRIMARY?.borderColor;
+        theme?.buttonTheme.buttonThemes.PRIMARY.borderColor;
     return disabled
         ? buttonTheme?.disabledBorderColor ||
-              theme?.buttonTheme?.buttonThemes?.PRIMARY?.disabledBorderColor
+              theme?.buttonTheme.buttonThemes.PRIMARY.disabledBorderColor
         : color;
 };
 
@@ -48,6 +47,8 @@ export const getInitialTextColor = (props: StyledTextButtonProps) => {
         case ButtonVariant.OUTLINE:
             return getInitialBorderColor(props);
         case ButtonVariant.SOLID:
+            return resolveTextColor(props);
+        default:
             return resolveTextColor(props);
     }
 };
@@ -59,15 +60,15 @@ export const resolveTextColor = ({
 }: StyledTextButtonProps) => {
     let color =
         buttonTheme?.contentColor ||
-        theme?.buttonTheme?.buttonThemes?.PRIMARY?.contentColor;
+        theme?.buttonTheme.buttonThemes.PRIMARY.contentColor;
     return disabled
         ? buttonTheme?.disabledContentColor ||
-              theme?.buttonTheme?.buttonThemes?.PRIMARY?.disabledContentColor
+              theme?.buttonTheme.buttonThemes.PRIMARY.disabledContentColor
         : color;
 };
 
 export const getBorderRadius = (props: StyledTextButtonProps) => {
-    const { buttonShape, borderRadius, buttonPadding } = props;
+    const { buttonShape, borderRadius } = props;
     if (borderRadius) return borderRadius;
 
     switch (buttonShape) {

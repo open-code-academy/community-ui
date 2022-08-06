@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
-import { BaseButton } from '../BaseButton/BaseButton.component';
+import { BaseButton } from '../BaseButton';
 import { themed } from '../../../core';
 import {
     getInitialBorderColor,

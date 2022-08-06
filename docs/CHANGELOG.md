@@ -1,3 +1,11 @@
+# [1.2.0](https://github.com/open-code-academy/community-ui/compare/v1.1.6...v1.2.0) (2022-08-06)
+
+
+### Features
+
+* adding support for local theme override and updating readme ([b9f313a](https://github.com/open-code-academy/community-ui/commit/b9f313a4b55568e7a7457a599f80a59be8520897))
+* should have default behavior ([38e1edb](https://github.com/open-code-academy/community-ui/commit/38e1edbc0b80300360a8919d56909d5e44bf938e))
+
 ## [1.1.6](https://github.com/open-code-academy/community-ui/compare/v1.1.5...v1.1.6) (2022-07-31)
 
 

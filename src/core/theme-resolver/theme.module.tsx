@@ -50,8 +50,8 @@ export const applyCustomTheme = (customTheme: Theme | {}): Theme | {} => {
         themeSubscribers.forEach((elem) => {
             const currentState = elem.state as Themeable;
             elem.setState({
-                theme: merge(theme, currentState.localTheme),
                 ...elem.state,
+                theme: merge(theme, currentState.localTheme),
             });
         });
     }

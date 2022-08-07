@@ -42,8 +42,39 @@ describe('Running Tests for theme-resolver', () => {
         );
         const button = screen.getByRole('button', { name: 'PlainButton' });
         const style = window.getComputedStyle(button);
-        console.log(style);
         const backgroundColor = style.backgroundColor;
         expect(backgroundColor).toEqual(expectedColor);
+    });
+
+    test('When applyCustomTheme(), components should re-render with new theme', () => {
+        const initialColor = 'rgb(1, 1, 1)';
+        const expectedColor = 'rgb(0, 0, 0)';
+
+        applyCustomTheme({
+            buttonTheme: {
+                buttonThemes: {
+                    PRIMARY: { backgroundColor: initialColor },
+                },
+            },
+        });
+        render(<PlainButton children={'PlainButton'} />);
+        const buttonBefore = screen.getByRole('button', {
+            name: 'PlainButton',
+        });
+        const styleBefore = window.getComputedStyle(buttonBefore);
+        const backgroundColorBefore = styleBefore.backgroundColor;
+        expect(backgroundColorBefore).toEqual(initialColor);
+
+        applyCustomTheme({
+            buttonTheme: {
+                buttonThemes: {
+                    PRIMARY: { backgroundColor: expectedColor },
+                },
+            },
+        });
+        const buttonAfter = screen.getByRole('button', { name: 'PlainButton' });
+        const styleAfter = window.getComputedStyle(buttonAfter);
+        const backgroundColorAfter = styleAfter.backgroundColor;
+        expect(backgroundColorAfter).toEqual(expectedColor);
     });
 });

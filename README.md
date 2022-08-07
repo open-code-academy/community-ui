@@ -19,8 +19,6 @@ to the top of your file.
 By default, community-ui has a default theme applied. 
 For the full documentation on theming, view the [theme-resolver docs](https://github.com/open-code-academy/community-ui/tree/main/src/core/theme-resolver/README.md)
 
-
-This method triggers a state update for all `Themeable` components which have been passed through the `themed()` method.
 ### Storybook
 In order to view the storybook documentation, until the project is hosted in a production environement, simply follow the
 "Getting Started" steps in the [contributing guidelines](https://github.com/open-code-academy/community-ui/tree/develop/docs/CONTRIBUTING.md)

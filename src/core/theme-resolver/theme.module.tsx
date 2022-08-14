@@ -2,6 +2,7 @@ import { PartialTheme, Theme, Themeable } from './types';
 import { merge } from '../util';
 import React, { Component } from 'react';
 import * as defaultConfig from './defaultTheme';
+import { Subtract } from 'utility-types';
 
 let theme: Theme;
 const themeSubscribers: Map<
@@ -13,9 +14,9 @@ export const getGlobalTheme = (): Theme => {
     return theme;
 };
 
-export function themed<T extends object>(Component: React.ComponentType<T>) {
-    return class extends React.Component<Themeable> {
-        constructor(props: Themeable) {
+export function themed<T extends Themeable>(Component: React.ComponentType<T>) {
+    return class Themed extends React.Component<Subtract<T, Themeable>> {
+        constructor(props: T) {
             super(props);
             themeSubscribers.set(this, this);
             this.state = {

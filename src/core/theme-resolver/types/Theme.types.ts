@@ -1,4 +1,4 @@
-import { ColorPalette, Sizes } from './index';
+import { Sizes } from './index';
 import { DeepPartial } from 'utility-types';
 
 export interface Themeable {
@@ -6,32 +6,66 @@ export interface Themeable {
     localTheme?: PartialTheme;
 }
 
+export interface Styleable {
+    styles?: string;
+}
+
+export interface Disableable {
+    disabled?: boolean;
+}
+
+export interface Accessible {
+    ariaSettings?: object;
+}
+
+export interface CUIComponent extends Themeable, Accessible {}
+export interface StyleableCUIComponent extends Styleable, CUIComponent {}
+
 export type Theme = {
+    typography: TypographyTheme;
     buttonTheme: ButtonTheme;
+    formTheme: FormTheme;
 };
 
 export type PartialTheme = DeepPartial<Theme>;
 
-export type ButtonTheme = {
-    buttonThemes: ButtonThemes;
-    buttonPadding: Sizes;
+export type TypographyTheme = {
     fontSize: Sizes;
 };
 
-export type ButtonThemes = {
-    PRIMARY: ButtonColor;
-    SECONDARY: ButtonColor;
-    SUCCESS: ButtonColor;
-    ERROR: ButtonColor;
-    WARNING: ButtonColor;
-    INFO: ButtonColor;
+export type ButtonTheme = {
+    buttonThemes: ButtonThemes;
+    buttonPadding: Sizes;
+    fontSize: Sizes; // fixme
 };
 
-export type ButtonColor = {
-    backgroundColor: keyof ColorPalette | string;
-    borderColor: keyof ColorPalette | string;
-    contentColor: keyof ColorPalette | string;
-    disabledBorderColor: keyof ColorPalette | string;
-    disabledBackgroundColor: keyof ColorPalette | string;
-    disabledContentColor: keyof ColorPalette | string;
+export type ButtonThemes = {
+    PRIMARY: ColoredComponent;
+    SECONDARY: ColoredComponent;
+    SUCCESS: ColoredComponent;
+    ERROR: ColoredComponent;
+    WARNING: ColoredComponent;
+    INFO: ColoredComponent;
+};
+
+export type ColoredComponent = {
+    backgroundColor: string;
+    borderColor: string;
+    contentColor: string;
+    disabledBorderColor: string;
+    disabledBackgroundColor: string;
+    disabledContentColor: string;
+};
+
+export type FormTheme = {
+    formThemes: FormThemes;
+    inputHeight: Sizes;
+    inputPadding: Sizes;
+};
+
+export type FormThemes = {
+    PRIMARY: ColoredComponent;
+    SECONDARY: ColoredComponent;
+    ERROR: ColoredComponent;
+    WARNING: ColoredComponent;
 };

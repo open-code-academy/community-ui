@@ -1,4 +1,4 @@
-import { ButtonThemes, Theme, Sizes } from './types';
+import { ButtonThemes, Theme, Sizes, FormThemes } from './types';
 import { Colors } from './constants';
 
 const DefaultFontSizes: Sizes = {
@@ -74,11 +74,76 @@ const DefaultButtonThemes: ButtonThemes = {
     },
 };
 
+const DefaultFormThemes: FormThemes = {
+    PRIMARY: {
+        backgroundColor: Colors.BLUE['20'],
+        borderColor: Colors.BLUE['90'],
+        contentColor: Colors.BLACK,
+        disabledContentColor: Colors.GRAY['60'],
+        disabledBorderColor: Colors.GRAY['60'],
+        disabledBackgroundColor: Colors.GRAY['30'],
+    },
+    SECONDARY: {
+        backgroundColor: Colors.PINK['20'],
+        borderColor: Colors.PINK['90'],
+        contentColor: Colors.BLACK,
+        disabledContentColor: Colors.GRAY['60'],
+        disabledBorderColor: Colors.GRAY['60'],
+        disabledBackgroundColor: Colors.GRAY['30'],
+    },
+    ERROR: {
+        backgroundColor: Colors.RED['60'],
+        borderColor: Colors.RED['60'],
+        contentColor: Colors.WHITE,
+        disabledContentColor: Colors.GRAY['60'],
+        disabledBorderColor: Colors.GRAY['60'],
+        disabledBackgroundColor: Colors.GRAY['30'],
+    },
+    WARNING: {
+        backgroundColor: Colors.YELLOW['50'],
+        borderColor: Colors.YELLOW['50'],
+        contentColor: Colors.WHITE,
+        disabledContentColor: Colors.GRAY['60'],
+        disabledBorderColor: Colors.GRAY['60'],
+        disabledBackgroundColor: Colors.GRAY['30'],
+    },
+};
+
+const DefaultFormInputPadding: Sizes = {
+    default: '.7rem',
+    xs: '.25rem',
+    sm: '.5rem',
+    md: '.7rem',
+    lg: '1rem',
+    xl: '1.2rem',
+    xxl: '1.5rem',
+    '3xl': '2rem',
+};
+
+const DefaultFormInputHeight: Sizes = {
+    default: '1.4rem',
+    xs: '.8rem',
+    sm: '1.0rem',
+    md: '1.4rem',
+    lg: '2rem',
+    xl: '2.4rem',
+    xxl: '3rem',
+    '3xl': '4rem',
+};
+
 const DefaultTheme: Theme = {
-    buttonTheme: {
+    typography: {
         fontSize: DefaultFontSizes,
+    },
+    buttonTheme: {
         buttonPadding: DefaultButtonPadding,
         buttonThemes: DefaultButtonThemes,
+        fontSize: DefaultFontSizes, // fixme
+    },
+    formTheme: {
+        formThemes: DefaultFormThemes,
+        inputPadding: DefaultFormInputPadding,
+        inputHeight: DefaultFormInputHeight,
     },
 };
 

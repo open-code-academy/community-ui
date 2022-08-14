@@ -1,5 +1,12 @@
 import { MouseEventHandler } from 'react';
-import { ButtonColor, Themeable } from '../../../core';
+import {
+    Accessible,
+    ColoredComponent,
+    CUIComponent,
+    Disableable,
+    Styleable,
+    Themeable,
+} from '../../../core';
 
 export enum ButtonVariant {
     SOLID = 'solid',
@@ -12,11 +19,12 @@ export enum ButtonShapes {
     RECTANGLE = 'rectangle',
 }
 
-export interface ButtonProps extends Themeable {
+export interface ButtonProps
+    extends Disableable,
+        Styleable,
+        Themeable,
+        Accessible {
     onClick?: MouseEventHandler<HTMLButtonElement>;
-    disabled?: boolean;
-    ariaSettings?: object;
-    styles?: string;
     children?: any;
 }
 
@@ -27,7 +35,7 @@ export interface TextButtonProps extends ButtonProps {
 export interface StyledButtonProps extends ButtonProps {
     buttonPadding?: string;
     buttonVariant?: typeof ButtonVariant.OUTLINE | typeof ButtonVariant.SOLID;
-    buttonTheme?: ButtonColor;
+    buttonTheme?: ColoredComponent;
     buttonShape?: ButtonShapes;
     borderRadius?: string;
     fontSize?: string;

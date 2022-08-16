@@ -5,48 +5,27 @@ import React, { ChangeEvent, FC, useState } from 'react';
 import { StyledInputProps, StyledLabelProps } from '../types/Input.types';
 import { BaseInput } from '../Base/BaseInput.component';
 import { BaseLabel } from '../Base/BaseLabel.component';
-import {
-    resolveSize,
-    SizeUtil,
-} from '../../../core/theme-resolver/util/size.util';
+import { resolveSize, SizeUtil } from '../../../core/theme-resolver/util/size.util';
 
 const StyledInput = themed(
     styled(BaseInput)<StyledInputProps>(
         (props) => `
-        background-color: ${
-            props.theme?.formTheme.formThemes.PRIMARY.backgroundColor
-        };
-        font-size: ${resolveSize(
-            props.fontSize,
-            props.theme?.typography.fontSize
-        )};
+        background-color: ${props.theme?.formTheme.formThemes.PRIMARY.backgroundColor};
+        font-size: ${resolveSize(props.fontSize, props.theme?.typography.fontSize)};
         color: ${props.theme?.formTheme.formThemes.PRIMARY.contentColor};
         width: ${props.width ? props.width : '100%'};
-        height: ${resolveSize(
-            props.height,
-            props.theme?.formTheme.inputHeight
-        )};
-        border: 1px solid ${
-            props.theme?.formTheme.formThemes.PRIMARY.borderColor
-        };
-        padding: ${resolveSize(
-            props.padding,
-            props.theme?.formTheme.inputPadding
-        )};
+        height: ${resolveSize(props.height, props.theme?.formTheme.inputHeight)};
+        border: 1px solid ${props.theme?.formTheme.formThemes.PRIMARY.borderColor};
+        padding: ${resolveSize(props.padding, props.theme?.formTheme.inputPadding)};
         font-family: sans-serif;
 
         &::placeholder {
-            font-size: ${resolveSize(
-                props.fontSize,
-                props.theme?.typography.fontSize
-            )};
+            font-size: ${resolveSize(props.fontSize, props.theme?.typography.fontSize)};
             color: ${props.theme?.formTheme.formThemes.PRIMARY.contentColor};
         }
         &:focus {
             outline: none;
-            border: 2px solid ${
-                props.theme?.formTheme.formThemes.PRIMARY.borderColor
-            }; 
+            border: 2px solid ${props.theme?.formTheme.formThemes.PRIMARY.borderColor}; 
         }
     `
     )
@@ -56,35 +35,21 @@ const StyledLabel = themed(
     styled(BaseLabel)<StyledLabelProps>(
         (props) => `
         position: absolute;
-        font-size: ${new SizeUtil(
-            resolveSize(props.fontSize, props.theme?.typography.fontSize)
-        )
+        font-size: ${new SizeUtil(resolveSize(props.fontSize, props.theme?.typography.fontSize))
             .multiply(props.active ? 0.6 : 1)
             .get()};
         font-family: sans-serif;
         color: ${props.theme?.formTheme.formThemes.PRIMARY.contentColor};
         align-self: start;
-        padding: ${new SizeUtil(
-            resolveSize(props.padding, props.theme?.formTheme.inputPadding)
-        )
+        padding: ${new SizeUtil(resolveSize(props.padding, props.theme?.formTheme.inputPadding))
             .left(0.5)
             .get(CSSDirection.LEFT)};
         top: ${
             props.active
-                ? new SizeUtil(
-                      resolveSize(
-                          props.fontSize,
-                          props.theme?.typography.fontSize
-                      )
-                  )
-                      .multiply(0.25)
-                      .get()
+                ? new SizeUtil(resolveSize(props.fontSize, props.theme?.typography.fontSize)).multiply(0.25).get()
                 : resolveSize(props.fontSize, props.theme?.typography.fontSize)
         };
-        left: ${resolveSize(
-            props.padding,
-            props.theme?.formTheme.inputPadding
-        )};
+        left: ${resolveSize(props.padding, props.theme?.formTheme.inputPadding)};
         opacity: ${props.active ? '1' : '0'};
         transition: all 0.2s ease;
     `

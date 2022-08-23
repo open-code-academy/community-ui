@@ -1,71 +1,69 @@
 import { Sizes } from './index';
 import { DeepPartial } from 'utility-types';
 
-export interface Themeable {
-    theme?: Theme;
-    localTheme?: PartialTheme;
-}
-
-export interface Styleable {
-    styles?: string;
-}
-
-export interface Disableable {
-    disabled?: boolean;
-}
-
-export interface Accessible {
-    ariaSettings?: object;
-}
-
-export interface CUIComponent extends Themeable, Accessible {}
-export interface StyleableCUIComponent extends Styleable, CUIComponent {}
+export type PartialTheme = DeepPartial<Theme>;
 
 export type Theme = {
+    colors: ThemeColors;
     typography: TypographyTheme;
-    buttonTheme: ButtonTheme;
-    formTheme: FormTheme;
+    sizes: ThemeSizes;
 };
 
-export type PartialTheme = DeepPartial<Theme>;
+export enum Palette {
+    PRIMARY = 'primary',
+    SECONDARY = 'secondary',
+    SUCCESS = 'success',
+    ERROR = 'error',
+    WARNING = 'warning',
+    INFO = 'info',
+    DISABLED = 'disabled',
+}
+
+export type Palettes = {
+    PRIMARY: ColorPalette;
+    SECONDARY: ColorPalette;
+    SUCCESS: ColorPalette;
+    ERROR: ColorPalette;
+    WARNING: ColorPalette;
+    INFO: ColorPalette;
+    DISABLED: ColorPalette;
+};
+
+export type ColorPalette = {
+    primary: string;
+    light: string;
+    dark: string;
+    contrast: string;
+};
 
 export type TypographyTheme = {
     fontSize: Sizes;
+    fontFamily: string;
+    textColor: string;
 };
 
-export type ButtonTheme = {
-    buttonThemes: ButtonThemes;
+export type ThemeSizes = {
+    global: GlobalSizes;
+    buttons: ButtonSizes;
+    forms: FormSizes;
+};
+
+export type ThemeColors = {
+    palettes: Palettes;
+    global: {
+        whitespaceColor: string;
+    };
+};
+
+export type GlobalSizes = {
+    borderRadius: string;
+};
+
+export type ButtonSizes = {
     buttonPadding: Sizes;
-    fontSize: Sizes; // fixme
 };
 
-export type ButtonThemes = {
-    PRIMARY: ColoredComponent;
-    SECONDARY: ColoredComponent;
-    SUCCESS: ColoredComponent;
-    ERROR: ColoredComponent;
-    WARNING: ColoredComponent;
-    INFO: ColoredComponent;
-};
-
-export type ColoredComponent = {
-    backgroundColor: string;
-    borderColor: string;
-    contentColor: string;
-    disabledBorderColor: string;
-    disabledBackgroundColor: string;
-    disabledContentColor: string;
-};
-
-export type FormTheme = {
-    formThemes: FormThemes;
+export type FormSizes = {
     inputHeight: Sizes;
-    inputPadding: Sizes;
-};
-
-export type FormThemes = {
-    PRIMARY: ColoredComponent;
-    SECONDARY: ColoredComponent;
-    ERROR: ColoredComponent;
-    WARNING: ColoredComponent;
+    inputWidth: Sizes;
 };

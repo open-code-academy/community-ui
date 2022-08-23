@@ -3,13 +3,9 @@ import styled from 'styled-components';
 
 import { BaseButton } from '../BaseButton';
 import { themed } from '../../../core';
-import {
-    getInitialBorderColor,
-    resolveBackgroundColor,
-    resolveTextColor,
-    textButtonStyles,
-} from '../styles';
-import { StyledTextButtonProps } from '../types';
+import { textButtonStyles } from '../styles';
+import { ButtonVariant, StyledTextButtonProps } from '../types';
+import { resolvePalette } from '../../../core/theme-resolver/util/resolvePalette.util';
 
 const StyledButton = themed(
     styled(BaseButton)<StyledTextButtonProps>(
@@ -23,7 +19,7 @@ const StyledButton = themed(
 
   &:focus,
   &:active {
-    outline: ${getInitialBorderColor(props)};
+    outline: ${resolvePalette(props).primary};
   }
 
   &::after {
@@ -45,16 +41,17 @@ const StyledButton = themed(
     top: -3%;
     left: 50%;
     transform: translateX(-50%);
-    background-color: ${resolveBackgroundColor(props)};
+    background-color: ${
+        props.buttonVariant == ButtonVariant.OUTLINE ? resolvePalette(props).primary : resolvePalette(props).dark
+    };
     height: 110%;
     width: 110%;
     opacity: 1;
-    z-index: -1;
   }
 
   &:hover {
-    border: solid 0.125rem ${getInitialBorderColor(props)};
-    color: ${resolveTextColor(props)};
+    border: solid 0.125rem ${resolvePalette(props).primary};
+    color: ${resolvePalette(props).contrast};
   }`
     )
 );

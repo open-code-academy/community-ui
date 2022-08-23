@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { themed, Colors } from '../../../core';
-import { BaseButton } from '../BaseButton/BaseButton.component';
-import { getInitialBorderColor, textButtonStyles } from '../styles';
+import { themed, CuiColors } from '../../../core';
+import { BaseButton } from '../BaseButton';
+import { textButtonStyles } from '../styles';
 import { StyledTextButtonProps } from '../types';
+import { resolvePalette } from '../../../core/theme-resolver/util/resolvePalette.util';
 
 const StyledButton = themed(
     styled(BaseButton)<StyledTextButtonProps>(
@@ -14,8 +15,8 @@ const StyledButton = themed(
   transition: all 0.2s;
   
   &:hover {
-    border: solid 0.125rem ${getInitialBorderColor(props)};
-    box-shadow: 0px 0px 5px ${Colors.GRAY['80']}
+    border: solid 0.125rem ${resolvePalette(props).primary};
+    box-shadow: 0px 0px 5px ${CuiColors.GRAY['80']}
   }`
     )
 );

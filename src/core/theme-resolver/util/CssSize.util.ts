@@ -1,6 +1,6 @@
-import { CSSDirection, Size, Sizes } from '../types';
+import { CSSDirection, Sizes } from '../types';
 
-export class SizeUtil {
+export class CssSize {
     constructor(size: keyof Sizes | string | undefined) {
         if (!size) {
             throw Error('Size is required');
@@ -11,29 +11,29 @@ export class SizeUtil {
     sizeArr: string[];
     sizeArrLength: number;
 
-    multiply = (ratio?: number, direction?: CSSDirection): SizeUtil => {
+    multiply = (ratio?: number, direction?: CSSDirection): CssSize => {
         this.applyToDirection(direction, (s) => {
             return this._multiplyNum(s, ratio || 1);
         });
         return this;
     };
 
-    up = (ratio?: number): SizeUtil => {
+    up = (ratio?: number): CssSize => {
         this.multiply(ratio, CSSDirection.UP);
         return this;
     };
 
-    down = (ratio: number): SizeUtil => {
+    down = (ratio: number): CssSize => {
         this.multiply(ratio, CSSDirection.DOWN);
         return this;
     };
 
-    left = (ratio: number): SizeUtil => {
+    left = (ratio: number): CssSize => {
         this.multiply(ratio, CSSDirection.LEFT);
         return this;
     };
 
-    right = (ratio: number): SizeUtil => {
+    right = (ratio: number): CssSize => {
         this.multiply(ratio, CSSDirection.RIGHT);
         return this;
     };
@@ -47,10 +47,7 @@ export class SizeUtil {
         return str.trim();
     };
 
-    applyToDirection = (
-        direction: CSSDirection | undefined,
-        callback: (s: string) => string
-    ): string => {
+    applyToDirection = (direction: CSSDirection | undefined, callback: (s: string) => string): string => {
         switch (direction) {
             case CSSDirection.UP:
                 return this._modifyInPlace(0, callback);
@@ -93,35 +90,3 @@ export class SizeUtil {
         return num + letters;
     };
 }
-
-export const resolveSize = (
-    choice: keyof Sizes | string | undefined,
-    sizes: Sizes | undefined
-) => {
-    if (!sizes) {
-        return choice;
-    }
-    if (choice) {
-        switch (choice) {
-            case Size.default:
-                return sizes.default;
-            case Size.xs:
-                return sizes.xs;
-            case Size.sm:
-                return sizes.sm;
-            case Size.md:
-                return sizes.md;
-            case Size.lg:
-                return sizes.lg;
-            case Size.xl:
-                return sizes.xl;
-            case Size.xxl:
-                return sizes.xxl;
-            case Size['3xl']:
-                return sizes['3xl'];
-            default:
-                return choice;
-        }
-    }
-    return sizes.default;
-};

@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react';
 
 import { AnimatedButton as Button } from './AnimatedButton.component';
 import { ButtonShapes, ButtonVariant, StyledTextButtonProps } from '../types';
-import { getGlobalTheme } from '../../../core';
+import { Palette, Size } from '../../../core';
 
 export default {
     title: 'Components/Buttons',
@@ -11,19 +11,13 @@ export default {
     argTypes: {},
 } as Meta<typeof Button>;
 
-const Template: Story<StyledTextButtonProps> = (args) => (
-    <Button {...args} children={args.children} />
-);
+const Template: Story<StyledTextButtonProps> = (args) => <Button {...args} children={args.children} />;
 
 export const AnimatedButton = Template.bind({});
 AnimatedButton.args = {
     buttonVariant: ButtonVariant.OUTLINE,
     disabled: false,
     children: 'Animated Button',
-    buttonTheme: getGlobalTheme().buttonTheme.buttonThemes.PRIMARY,
-    buttonPadding: getGlobalTheme().buttonTheme.buttonPadding.default,
-    buttonShape: ButtonShapes.RECTANGLE,
-    fontSize: getGlobalTheme().buttonTheme.fontSize.default,
 };
 
 AnimatedButton.argTypes = {
@@ -35,40 +29,25 @@ AnimatedButton.argTypes = {
             labels: ['solid', 'outline'],
         },
     },
-    buttonTheme: {
-        options: [0, 1, 2, 3, 4, 5],
+    palette: {
+        options: [0, 1, 2, 3, 4, 5, 6],
         mapping: [
-            getGlobalTheme().buttonTheme.buttonThemes.PRIMARY,
-            getGlobalTheme().buttonTheme.buttonThemes.SECONDARY,
-            getGlobalTheme().buttonTheme.buttonThemes.ERROR,
-            getGlobalTheme().buttonTheme.buttonThemes.INFO,
-            getGlobalTheme().buttonTheme.buttonThemes.SUCCESS,
-            getGlobalTheme().buttonTheme.buttonThemes.WARNING,
+            Palette.PRIMARY,
+            Palette.SECONDARY,
+            Palette.ERROR,
+            Palette.INFO,
+            Palette.SUCCESS,
+            Palette.WARNING,
+            Palette.DISABLED,
         ],
         control: {
             type: 'select',
-            labels: [
-                'Primary',
-                'Secondary',
-                'Error',
-                'Info',
-                'Success',
-                'Warning',
-            ],
+            labels: ['primary', 'secondary', 'error', 'info', 'success', 'warning', 'disabled'],
         },
     },
     buttonPadding: {
         options: [0, 1, 2, 3, 4, 5, 6, 7],
-        mapping: [
-            getGlobalTheme().buttonTheme.buttonPadding.default,
-            getGlobalTheme().buttonTheme.buttonPadding.xs,
-            getGlobalTheme().buttonTheme.buttonPadding.sm,
-            getGlobalTheme().buttonTheme.buttonPadding.md,
-            getGlobalTheme().buttonTheme.buttonPadding.lg,
-            getGlobalTheme().buttonTheme.buttonPadding.xl,
-            getGlobalTheme().buttonTheme.buttonPadding.xxl,
-            getGlobalTheme().buttonTheme.buttonPadding['3xl'],
-        ],
+        mapping: [Size.default, Size.xs, Size.sm, Size.md, Size.lg, Size.xl, Size.xxl, Size['3xl']],
         control: {
             type: 'select',
             labels: ['default', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl', '3xl'],
@@ -76,11 +55,7 @@ AnimatedButton.argTypes = {
     },
     buttonShape: {
         options: [0, 1, 2],
-        mapping: [
-            ButtonShapes.ROUNDED,
-            ButtonShapes.RECTANGLE,
-            ButtonShapes.PILL,
-        ],
+        mapping: [ButtonShapes.DEFAULT, ButtonShapes.RECTANGLE, ButtonShapes.PILL],
         control: {
             type: 'select',
             labels: ['rounded', 'rectangle', 'pill'],
@@ -88,16 +63,7 @@ AnimatedButton.argTypes = {
     },
     fontSize: {
         options: [0, 1, 2, 3, 4, 5, 6, 7],
-        mapping: [
-            getGlobalTheme().buttonTheme.fontSize.default,
-            getGlobalTheme().buttonTheme.fontSize.xs,
-            getGlobalTheme().buttonTheme.fontSize.sm,
-            getGlobalTheme().buttonTheme.fontSize.md,
-            getGlobalTheme().buttonTheme.fontSize.lg,
-            getGlobalTheme().buttonTheme.fontSize.xl,
-            getGlobalTheme().buttonTheme.fontSize.xxl,
-            getGlobalTheme().buttonTheme.fontSize['3xl'],
-        ],
+        mapping: [Size.default, Size.xs, Size.sm, Size.md, Size.lg, Size.xl, Size.xxl, Size['3xl']],
         control: {
             type: 'select',
             labels: ['default', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl', '3xl'],

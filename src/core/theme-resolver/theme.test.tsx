@@ -1,29 +1,25 @@
 import * as React from 'react';
 import '@testing-library/jest-dom';
 import { applyCustomTheme, getGlobalTheme } from './theme.module';
-import { Colors } from './constants';
+import { CuiColors } from './constants';
 import { render, screen } from '@testing-library/react';
 import { PlainButton } from '../../components';
 
 describe('Running Tests for theme-resolver', () => {
     test('When Applying Custom Theme, theme object should update', () => {
-        expect(
-            getGlobalTheme().buttonTheme.buttonThemes.PRIMARY.backgroundColor
-        ).toEqual(Colors.CYAN['60']);
+        expect(getGlobalTheme().colors.palettes.PRIMARY.primary).toEqual(CuiColors.CYAN['60']);
 
         applyCustomTheme({
-            buttonTheme: {
-                buttonThemes: {
+            colors: {
+                palettes: {
                     PRIMARY: {
-                        backgroundColor: Colors.CYAN['70'],
+                        primary: CuiColors.CYAN['70'],
                     },
                 },
             },
         });
 
-        expect(
-            getGlobalTheme().buttonTheme.buttonThemes.PRIMARY.backgroundColor
-        ).toEqual(Colors.CYAN['70']);
+        expect(getGlobalTheme().colors.palettes.PRIMARY.primary).toEqual(CuiColors.CYAN['70']);
     });
 
     test('When Applying Local Theme, Component should merge local theme with global theme', () => {
@@ -32,9 +28,11 @@ describe('Running Tests for theme-resolver', () => {
             <PlainButton
                 children={'PlainButton'}
                 localTheme={{
-                    buttonTheme: {
-                        buttonThemes: {
-                            PRIMARY: { backgroundColor: expectedColor },
+                    colors: {
+                        palettes: {
+                            PRIMARY: {
+                                primary: expectedColor,
+                            },
                         },
                     },
                 }}
@@ -51,9 +49,11 @@ describe('Running Tests for theme-resolver', () => {
         const expectedColor = 'rgb(0, 0, 0)';
 
         applyCustomTheme({
-            buttonTheme: {
-                buttonThemes: {
-                    PRIMARY: { backgroundColor: initialColor },
+            colors: {
+                palettes: {
+                    PRIMARY: {
+                        primary: initialColor,
+                    },
                 },
             },
         });
@@ -66,9 +66,11 @@ describe('Running Tests for theme-resolver', () => {
         expect(backgroundColorBefore).toEqual(initialColor);
 
         applyCustomTheme({
-            buttonTheme: {
-                buttonThemes: {
-                    PRIMARY: { backgroundColor: expectedColor },
+            colors: {
+                palettes: {
+                    PRIMARY: {
+                        primary: expectedColor,
+                    },
                 },
             },
         });

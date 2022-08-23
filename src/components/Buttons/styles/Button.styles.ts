@@ -1,20 +1,28 @@
-import { StyledTextButtonProps } from '../types';
-import {
-    getBorderRadius,
-    getInitialBackgroundColor,
-    getInitialBorderColor,
-    getInitialTextColor,
-} from './ButtonStyle.utils';
+import { ButtonVariant, StyledTextButtonProps } from '../types';
+import { getBorderRadius } from './ButtonStyle.utils';
+import { resolveSize } from '../../../core/theme-resolver/util/resolveSize.util';
+import { resolvePalette } from '../../../core/theme-resolver/util/resolvePalette.util';
+import { CuiColors } from '../../../core';
 
 export const textButtonStyles = (props: StyledTextButtonProps) => `
     padding: ${
-        props.buttonPadding || props.theme?.buttonTheme?.buttonPadding?.default
+        props.buttonPadding
+            ? resolveSize(props.buttonPadding, props.theme?.sizes.buttons.buttonPadding)
+            : resolveSize(props.size, props.theme?.sizes.buttons.buttonPadding)
     };
     width: fit-content;
-    font-size: ${props.fontSize || props.theme?.buttonTheme?.fontSize?.default};
-    color: ${getInitialTextColor(props)};
-    background-color: ${getInitialBackgroundColor(props)};
-    border: solid 0.125rem ${getInitialBorderColor(props)};
+    font-size: ${
+        props.fontSize
+            ? resolveSize(props.fontSize, props.theme?.typography.fontSize)
+            : resolveSize(props.size, props.theme?.typography.fontSize)
+    };
+    color: ${
+        props.buttonVariant === ButtonVariant.OUTLINE ? resolvePalette(props).primary : resolvePalette(props).contrast
+    };
+    background-color: ${
+        props.buttonVariant === ButtonVariant.OUTLINE ? CuiColors.TRANSPARENT : resolvePalette(props).primary
+    };
+    border: solid 0.125rem ${resolvePalette(props).primary};
     cursor: ${props.disabled ? 'not-allowed' : 'pointer'};
     box-sizing: content-box;
     border-radius: ${getBorderRadius(props)};

@@ -1,5 +1,5 @@
-import { ButtonThemes, Theme, Sizes, FormThemes } from './types';
-import { Colors } from './constants';
+import { Palettes, Theme, Sizes, ThemeSizes, TypographyTheme, ThemeColors } from './types';
+import { CuiColors } from './constants';
 
 const DefaultFontSizes: Sizes = {
     default: '.75rem',
@@ -13,138 +13,113 @@ const DefaultFontSizes: Sizes = {
 };
 
 const DefaultButtonPadding: Sizes = {
-    default: '.7rem 1.4rem',
-    xs: '.25rem .5rem',
-    sm: '.5rem 1.0rem',
-    md: '.7rem 1.4rem',
+    default: '.75rem 1.5rem',
+    xs: '.5rem 1rem',
+    sm: '.625rem 1.25rem',
+    md: '.75rem 1.5rem',
     lg: '1rem 2rem',
-    xl: '1.2rem 2.4rem',
+    xl: '1.25rem 2.5rem',
     xxl: '1.5rem 3rem',
     '3xl': '2rem 4rem',
 };
 
-const DefaultButtonThemes: ButtonThemes = {
+const DefaultColorPalettes: Palettes = {
     PRIMARY: {
-        backgroundColor: Colors.CYAN['60'],
-        borderColor: Colors.CYAN['60'],
-        contentColor: Colors.WHITE,
-        disabledContentColor: Colors.GRAY['60'],
-        disabledBorderColor: Colors.GRAY['60'],
-        disabledBackgroundColor: Colors.GRAY['30'],
+        primary: CuiColors.CYAN['60'],
+        light: CuiColors.CYAN['50'],
+        dark: CuiColors.CYAN['70'],
+        contrast: CuiColors.WHITE,
     },
     SECONDARY: {
-        backgroundColor: Colors.PINK['60'],
-        borderColor: Colors.PINK['60'],
-        contentColor: Colors.WHITE,
-        disabledContentColor: Colors.GRAY['60'],
-        disabledBorderColor: Colors.GRAY['60'],
-        disabledBackgroundColor: Colors.GRAY['30'],
+        primary: CuiColors.PINK['60'],
+        light: CuiColors.PINK['50'],
+        dark: CuiColors.PINK['70'],
+        contrast: CuiColors.WHITE,
     },
     ERROR: {
-        backgroundColor: Colors.RED['60'],
-        borderColor: Colors.RED['60'],
-        contentColor: Colors.WHITE,
-        disabledContentColor: Colors.GRAY['60'],
-        disabledBorderColor: Colors.GRAY['60'],
-        disabledBackgroundColor: Colors.GRAY['30'],
+        primary: CuiColors.RED['60'],
+        light: CuiColors.RED['50'],
+        dark: CuiColors.RED['70'],
+        contrast: CuiColors.WHITE,
     },
     INFO: {
-        backgroundColor: Colors.BLUE['70'],
-        borderColor: Colors.BLUE['70'],
-        contentColor: Colors.WHITE,
-        disabledContentColor: Colors.GRAY['60'],
-        disabledBorderColor: Colors.GRAY['60'],
-        disabledBackgroundColor: Colors.GRAY['30'],
+        primary: CuiColors.BLUE['70'],
+        light: CuiColors.BLUE['60'],
+        dark: CuiColors.BLUE['80'],
+        contrast: CuiColors.WHITE,
     },
     SUCCESS: {
-        backgroundColor: Colors.GREEN['70'],
-        borderColor: Colors.GREEN['70'],
-        contentColor: Colors.WHITE,
-        disabledContentColor: Colors.GRAY['60'],
-        disabledBorderColor: Colors.GRAY['60'],
-        disabledBackgroundColor: Colors.GRAY['30'],
+        primary: CuiColors.GREEN['70'],
+        light: CuiColors.GREEN['60'],
+        dark: CuiColors.GREEN['80'],
+        contrast: CuiColors.WHITE,
     },
     WARNING: {
-        backgroundColor: Colors.YELLOW['50'],
-        borderColor: Colors.YELLOW['50'],
-        contentColor: Colors.WHITE,
-        disabledContentColor: Colors.GRAY['60'],
-        disabledBorderColor: Colors.GRAY['60'],
-        disabledBackgroundColor: Colors.GRAY['30'],
+        primary: CuiColors.YELLOW['50'],
+        light: CuiColors.YELLOW['40'],
+        dark: CuiColors.YELLOW['60'],
+        contrast: CuiColors.WHITE,
     },
-};
-
-const DefaultFormThemes: FormThemes = {
-    PRIMARY: {
-        backgroundColor: Colors.BLUE['20'],
-        borderColor: Colors.BLUE['90'],
-        contentColor: Colors.BLACK,
-        disabledContentColor: Colors.GRAY['60'],
-        disabledBorderColor: Colors.GRAY['60'],
-        disabledBackgroundColor: Colors.GRAY['30'],
+    DISABLED: {
+        primary: CuiColors.GRAY['60'],
+        light: CuiColors.GRAY['40'],
+        dark: CuiColors.GRAY['80'],
+        contrast: CuiColors.GRAY['30'],
     },
-    SECONDARY: {
-        backgroundColor: Colors.PINK['20'],
-        borderColor: Colors.PINK['90'],
-        contentColor: Colors.BLACK,
-        disabledContentColor: Colors.GRAY['60'],
-        disabledBorderColor: Colors.GRAY['60'],
-        disabledBackgroundColor: Colors.GRAY['30'],
-    },
-    ERROR: {
-        backgroundColor: Colors.RED['60'],
-        borderColor: Colors.RED['60'],
-        contentColor: Colors.WHITE,
-        disabledContentColor: Colors.GRAY['60'],
-        disabledBorderColor: Colors.GRAY['60'],
-        disabledBackgroundColor: Colors.GRAY['30'],
-    },
-    WARNING: {
-        backgroundColor: Colors.YELLOW['50'],
-        borderColor: Colors.YELLOW['50'],
-        contentColor: Colors.WHITE,
-        disabledContentColor: Colors.GRAY['60'],
-        disabledBorderColor: Colors.GRAY['60'],
-        disabledBackgroundColor: Colors.GRAY['30'],
-    },
-};
-
-const DefaultFormInputPadding: Sizes = {
-    default: '.7rem',
-    xs: '.25rem',
-    sm: '.5rem',
-    md: '.7rem',
-    lg: '1rem',
-    xl: '1.2rem',
-    xxl: '1.5rem',
-    '3xl': '2rem',
 };
 
 const DefaultFormInputHeight: Sizes = {
-    default: '1.4rem',
-    xs: '.8rem',
-    sm: '1.0rem',
-    md: '1.4rem',
+    default: '1.5rem',
+    xs: '1rem',
+    sm: '1.25rem',
+    md: '1.5rem',
     lg: '2rem',
-    xl: '2.4rem',
+    xl: '2.5rem',
     xxl: '3rem',
     '3xl': '4rem',
 };
 
-const DefaultTheme: Theme = {
-    typography: {
-        fontSize: DefaultFontSizes,
+const DefaultFormInputWidth: Sizes = {
+    default: '36.875rem',
+    xs: '20.47rem',
+    sm: '25.59rem',
+    md: '30.72rem',
+    lg: '36.875rem',
+    xl: '49.05rem',
+    xxl: '61.30rem',
+    '3xl': '73.56rem',
+};
+
+const DefaultSizes: ThemeSizes = {
+    global: {
+        borderRadius: '0.5rem',
     },
-    buttonTheme: {
+    buttons: {
         buttonPadding: DefaultButtonPadding,
-        buttonThemes: DefaultButtonThemes,
-        fontSize: DefaultFontSizes, // fixme
     },
-    formTheme: {
-        formThemes: DefaultFormThemes,
-        inputPadding: DefaultFormInputPadding,
+    forms: {
         inputHeight: DefaultFormInputHeight,
+        inputWidth: DefaultFormInputWidth,
     },
+};
+
+const DefaultTypography: TypographyTheme = {
+    fontSize: DefaultFontSizes,
+    fontFamily: 'Roboto',
+    textColor: CuiColors.GRAY['90'],
+};
+
+const Colors: ThemeColors = {
+    global: {
+        whitespaceColor: CuiColors.GRAY['10'],
+    },
+    palettes: DefaultColorPalettes,
+};
+
+const DefaultTheme: Theme = {
+    typography: DefaultTypography,
+    colors: Colors,
+    sizes: DefaultSizes,
 };
 
 export default DefaultTheme;

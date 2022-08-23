@@ -1,4 +1,4 @@
-export interface ColorPalette {
+export interface Colors {
     TRANSPARENT: 'transparent';
     BLACK: string;
     WHITE: string;

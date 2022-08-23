@@ -1,6 +1,6 @@
-import { ColorPalette } from '../types';
+import { Colors } from '../types';
 
-export const Colors: ColorPalette = {
+export const CuiColors: Colors = {
     TRANSPARENT: 'transparent',
     BLACK: '#000',
     WHITE: '#fff',

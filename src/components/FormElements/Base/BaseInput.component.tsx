@@ -2,21 +2,18 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 
 import { themed } from '../../../core';
-import { InputProps } from '../types/Input.types';
+import { StyleableInputProps } from '../types/Input.types';
 
 const BaseInputStyledComponent = themed(
-    styled.input<InputProps>(({ styles }) => `${styles}`)
-);
-
-const Input = themed(
-    styled.input.attrs<InputProps>((props) => ({
+    styled.input.attrs<StyleableInputProps>((props) => ({
         type: props.type,
         form: props.form,
     }))`
-        ${(props: InputProps) => props.styles}
+        ${(props: StyleableInputProps) => props.styles}
     `
 );
 
-export const BaseInput: FC<InputProps> = (props) => {
-    return <BaseInputStyledComponent {...props} />;
+export const BaseInput: FC<StyleableInputProps> = (props) => {
+    const { size, ...rest } = props; // size is incompatible, it can't be passed down
+    return <BaseInputStyledComponent {...rest} />;
 };

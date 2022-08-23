@@ -1,57 +1,93 @@
-import { CSSDirection, themed } from '../../../core';
+import { CuiColors, themed } from '../../../core';
 import styled from 'styled-components';
 
 import React, { ChangeEvent, FC, useState } from 'react';
-import { StyledInputProps, StyledLabelProps } from '../types/Input.types';
+import {
+    BorderVariant,
+    StyleableInputGroupProps,
+    StyleableInputProps,
+    StyleableLabelProps,
+} from '../types/Input.types';
 import { BaseInput } from '../Base/BaseInput.component';
 import { BaseLabel } from '../Base/BaseLabel.component';
-import { resolveSize, SizeUtil } from '../../../core/theme-resolver/util/size.util';
+import { CssSize } from '../../../core/theme-resolver/util/CssSize.util';
+import { resolveSize } from '../../../core/theme-resolver/util/resolveSize.util';
+import { resolvePalette } from '../../../core/theme-resolver/util/resolvePalette.util';
 
 const StyledInput = themed(
-    styled(BaseInput)<StyledInputProps>(
-        (props) => `
-        background-color: ${props.theme?.formTheme.formThemes.PRIMARY.backgroundColor};
-        font-size: ${resolveSize(props.fontSize, props.theme?.typography.fontSize)};
-        color: ${props.theme?.formTheme.formThemes.PRIMARY.contentColor};
-        width: ${props.width ? props.width : '100%'};
-        height: ${resolveSize(props.height, props.theme?.formTheme.inputHeight)};
-        border: 1px solid ${props.theme?.formTheme.formThemes.PRIMARY.borderColor};
-        padding: ${resolveSize(props.padding, props.theme?.formTheme.inputPadding)};
-        font-family: sans-serif;
+    styled(BaseInput)<StyleableInputProps>(
+        (props: StyleableInputProps) => `
+        background-color: ${
+            props.backgroundColor
+                ? props.backgroundColor
+                : props.borderVariant === BorderVariant.NONE
+                ? CuiColors.GRAY['20']
+                : props.theme
+        };
+        font-size: ${resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize)};
+        color: ${props.textColor ? props.textColor : props.theme?.typography.textColor}; 
+        width: ${resolveSize(props.width || props.size, props.theme?.sizes.forms.inputWidth)};
+        max-width: 100%;
+        height: ${resolveSize(props.height || props.size, props.theme?.sizes.forms.inputHeight)};        
+        outline: none;
+        ${resolveBorderType(props)}
+        padding: 0 ${resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize)};
+        font-family: ${props.fontFamily ? props.fontFamily : props.theme?.typography.fontFamily || 'sans-serif'};
 
         &::placeholder {
-            font-size: ${resolveSize(props.fontSize, props.theme?.typography.fontSize)};
-            color: ${props.theme?.formTheme.formThemes.PRIMARY.contentColor};
+            font-size: ${resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize)};
+            color: ${props.placeholderColor ? props.placeholderColor : props.theme?.typography.textColor}; 
         }
         &:focus {
-            outline: none;
-            border: 2px solid ${props.theme?.formTheme.formThemes.PRIMARY.borderColor}; 
+            border-color: ${props.borderColor ? props.borderColor : resolvePalette(props).primary};
+            ${props.borderVariant === BorderVariant.UNDERLINE ? 'border-bottom: 2px' : 'outline: 1px'} solid ${
+            props.borderColor ? props.borderColor : resolvePalette(props).primary
+        }; 
+            ${props.borderVariant === BorderVariant.UNDERLINE ? 'margin-bottom: -1px' : ''}
         }
+        ${props.styles}
     `
     )
 );
 
+const resolveBorderType = (props: StyleableInputProps): string => {
+    if (props.borderVariant === BorderVariant.OUTLINE || props.borderVariant == undefined) {
+        return `border:  1px solid ${props.borderColor ? props.borderColor : props.theme?.typography.textColor};`;
+    }
+    if (props.borderVariant === BorderVariant.UNDERLINE) {
+        return `
+        border: none;
+        border-bottom: 1px solid ${props.borderColor ? props.borderColor : props.theme?.typography.textColor};
+        `;
+    }
+    if (props.borderVariant === BorderVariant.NONE) {
+        return `border: none;`;
+    }
+    return '';
+};
+
 const StyledLabel = themed(
-    styled(BaseLabel)<StyledLabelProps>(
+    styled(BaseLabel)<StyleableLabelProps>(
         (props) => `
         position: absolute;
-        font-size: ${new SizeUtil(resolveSize(props.fontSize, props.theme?.typography.fontSize))
+        font-size: ${new CssSize(resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize))
             .multiply(props.active ? 0.6 : 1)
             .get()};
         font-family: sans-serif;
-        color: ${props.theme?.formTheme.formThemes.PRIMARY.contentColor};
+        color: ${props.labelColor ? props.labelColor : props.theme?.typography.textColor};
         align-self: start;
-        padding: ${new SizeUtil(resolveSize(props.padding, props.theme?.formTheme.inputPadding))
-            .left(0.5)
-            .get(CSSDirection.LEFT)};
         top: ${
             props.active
-                ? new SizeUtil(resolveSize(props.fontSize, props.theme?.typography.fontSize)).multiply(0.25).get()
-                : resolveSize(props.fontSize, props.theme?.typography.fontSize)
+                ? new CssSize(resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize))
+                      .multiply(0.25)
+                      .get()
+                : resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize)
         };
-        left: ${resolveSize(props.padding, props.theme?.formTheme.inputPadding)};
+        left: ${resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize)};
         opacity: ${props.active ? '1' : '0'};
         transition: all 0.2s ease;
+        background-color: red;
+        ${props.styles}
     `
     )
 );
@@ -67,7 +103,7 @@ const OuterDiv = styled.div`
     display: flex;
 `;
 
-export const StyledTextInput: FC<StyledInputProps> = (props) => {
+export const StyledTextInput: FC<StyleableInputGroupProps> = (props) => {
     const [active, setActive] = useState(false);
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.value.length > 0) {
@@ -81,12 +117,18 @@ export const StyledTextInput: FC<StyledInputProps> = (props) => {
     return (
         <OuterDiv>
             <FullWidthDiv>
-                <StyledLabel {...props} htmlFor={props.id} active={active}>
-                    {props.placeholder}
+                <StyledLabel {...props} styles={props.labelStyles} htmlFor={props.id} active={active}>
+                    {props.labelText ? props.labelText : props.placeholder}
                 </StyledLabel>
             </FullWidthDiv>
             <FullWidthDiv>
-                <StyledInput {...props} onChange={(e) => handleChange(e)} />
+                <StyledInput
+                    {...props}
+                    id={props.id}
+                    type={props.type}
+                    styles={props.inputStyles}
+                    onChange={(e) => handleChange(e)}
+                />
             </FullWidthDiv>
         </OuterDiv>
     );

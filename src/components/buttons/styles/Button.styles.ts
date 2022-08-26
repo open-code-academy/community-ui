@@ -4,6 +4,7 @@ import { resolvePalette } from '../../../core/theme-resolver/util/resolvePalette
 import { CuiColors } from '../../../core';
 
 export const textButtonStyles = (props: StyledTextButtonProps) => `
+    box-sizing: border-box;
     padding: ${
         props.buttonPadding
             ? resolveSize(props.buttonPadding, props.theme?.sizes.buttons.buttonPadding)
@@ -23,6 +24,5 @@ export const textButtonStyles = (props: StyledTextButtonProps) => `
     };
     border: solid 0.125rem ${resolvePalette(props).primary};
     cursor: ${props.disabled ? 'not-allowed' : 'pointer'};
-    box-sizing: content-box;
-    border-radius: ${props.borderRadius || props.theme?.sizes.global.borderRadius};
+    border-radius: ${props.borderRadius || props.theme?.sizes.common.borderRadius};
 `;

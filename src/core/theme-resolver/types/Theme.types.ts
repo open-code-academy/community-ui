@@ -4,6 +4,7 @@ import { DeepPartial } from 'utility-types';
 export type PartialTheme = DeepPartial<Theme>;
 
 export type Theme = {
+    common: Common;
     colors: ThemeColors;
     typography: TypographyTheme;
     sizes: ThemeSizes;
@@ -43,20 +44,25 @@ export type TypographyTheme = {
 };
 
 export type ThemeSizes = {
-    global: GlobalSizes;
+    common: CommonSizes;
     buttons: ButtonSizes;
     forms: FormSizes;
 };
 
 export type ThemeColors = {
     palettes: Palettes;
-    global: {
+    common: {
         whitespaceColor: string;
     };
 };
 
-export type GlobalSizes = {
+export type CommonSizes = {
     borderRadius: string;
+    borderWidth: string;
+};
+
+export type Common = {
+    borderStyle: 'solid' | 'inset' | 'dotted' | 'dashed' | 'double' | 'groove' | 'ridge' | 'outset';
 };
 
 export type ButtonSizes = {

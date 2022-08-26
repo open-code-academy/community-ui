@@ -22,7 +22,7 @@ const StyledInput = themed(
                 ? props.backgroundColor
                 : props.borderVariant === BorderVariant.NONE
                 ? CuiColors.GRAY['20']
-                : props.theme?.colors.global.whitespaceColor
+                : props.theme?.colors.common.whitespaceColor
         };
         font-size: ${resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize)};
         color: ${props.textColor ? props.textColor : props.theme?.typography.textColor}; 
@@ -31,15 +31,16 @@ const StyledInput = themed(
         height: ${resolveSize(props.height || props.size, props.theme?.sizes.forms.inputHeight)};        
         outline: none;
         ${resolveBorderType(props)}
-        border-radius: ${props.borderRadius || props.theme?.sizes.global.borderRadius};
+        border-radius: ${props.borderRadius || props.theme?.sizes.common.borderRadius};
         padding: ${new CssSize(resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize))
             .multiply(0.1)
             .get()} ${resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize)} 0;
-        font-family: ${props.fontFamily ? props.fontFamily : props.theme?.typography.fontFamily || 'sans-serif'};
+        font-family: ${props.fontFamily ? props.fontFamily : props.theme?.typography.fontFamily};
 
         &::placeholder {
             font-size: ${resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize)};
             color: ${props.placeholderColor ? props.placeholderColor : props.theme?.typography.textColor}; 
+            font-family: ${props.fontFamily ? props.fontFamily : props.theme?.typography.fontFamily};
         }
         &:focus {
             border-color: ${props.borderColor ? props.borderColor : resolvePalette(props).primary};
@@ -54,14 +55,15 @@ const StyledInput = themed(
 );
 
 const resolveBorderType = (props: StyleableInputProps): string => {
-    console.log(props.theme);
     if (props.borderVariant === BorderVariant.OUTLINE || props.borderVariant == undefined) {
-        return `border:  1px solid ${props.borderColor ? props.borderColor : props.theme?.typography.textColor};`;
+        return `border: solid 0.125rem  ${props.borderColor ? props.borderColor : props.theme?.typography.textColor};`;
     }
     if (props.borderVariant === BorderVariant.UNDERLINE) {
         return `
         border: none;
-        border-bottom: 1px solid ${props.borderColor ? props.borderColor : props.theme?.typography.textColor};
+        border-bottom: solid ${props.theme?.sizes.common.borderWidth} ${
+            props.borderColor ? props.borderColor : props.theme?.typography.textColor
+        };
         `;
     }
     if (props.borderVariant === BorderVariant.NONE) {
@@ -77,18 +79,12 @@ const StyledLabel = themed(
         font-size: ${new CssSize(resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize))
             .multiply(props.active ? 0.6 : 1)
             .get()};
-        font-family: sans-serif;
+        font-family: ${props.fontFamily ? props.fontFamily : props.theme?.typography.fontFamily};
         color: ${props.labelColor ? props.labelColor : props.theme?.typography.textColor};
         align-self: start;
-        top: ${
-            props.active
-                ? new CssSize(resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize))
-                      .multiply(0.01)
-                      .get()
-                : new CssSize(resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize))
-                      .multiply(0.9)
-                      .get()
-        };
+        top: ${new CssSize(resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize))
+            .multiply(props.active ? 0.2 : 0.9)
+            .get()};
         left: ${resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize)};
         opacity: ${props.active ? '1' : '0'};
         transition: all 0.2s ease-in;

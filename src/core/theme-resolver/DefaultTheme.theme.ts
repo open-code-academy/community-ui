@@ -1,27 +1,5 @@
-import { Palettes, Theme, Sizes, ThemeSizes, TypographyTheme, ThemeColors } from './types';
+import { Palettes, Theme, Sizes, ThemeSizes, TypographyTheme, ThemeColors, Common } from './types';
 import { CuiColors } from './constants';
-
-const DefaultFontSizes: Sizes = {
-    default: '.75rem',
-    xs: '.5rem',
-    sm: '.625rem',
-    md: '.75rem',
-    lg: '1rem',
-    xl: '1.25rem',
-    xxl: '1.5rem',
-    '3xl': '2rem',
-};
-
-const DefaultButtonPadding: Sizes = {
-    default: '.75rem 1.5rem',
-    xs: '.5rem 1rem',
-    sm: '.625rem 1.25rem',
-    md: '.75rem 1.5rem',
-    lg: '1rem 2rem',
-    xl: '1.25rem 2.5rem',
-    xxl: '1.5rem 3rem',
-    '3xl': '2rem 4rem',
-};
 
 const DefaultColorPalettes: Palettes = {
     PRIMARY: {
@@ -68,15 +46,37 @@ const DefaultColorPalettes: Palettes = {
     },
 };
 
+const DefaultFontSizes: Sizes = {
+    default: '.75rem',
+    xs: '.5rem',
+    sm: '.625rem',
+    md: '.75rem',
+    lg: '1rem',
+    xl: '1.25rem',
+    xxl: '1.5rem',
+    '3xl': '2rem',
+};
+
+const DefaultButtonPadding: Sizes = {
+    default: '.75rem 1.5rem',
+    xs: '.5rem 1rem',
+    sm: '.625rem 1.25rem',
+    md: '.75rem 1.5rem',
+    lg: '1rem 2rem',
+    xl: '1.25rem 2.5rem',
+    xxl: '1.5rem 3rem',
+    '3xl': '2rem 4rem',
+};
+
 const DefaultFormInputHeight: Sizes = {
-    default: '1.6rem',
-    xs: '1.1rem',
-    sm: '1.35rem',
-    md: '1.6rem',
-    lg: '2.1rem',
-    xl: '2.6rem',
-    xxl: '3.1rem',
-    '3xl': '4.1rem',
+    default: '2.25rem',
+    xs: '1.5rem',
+    sm: '1.875rem',
+    md: '2.25rem',
+    lg: '3rem',
+    xl: '3.75rem',
+    xxl: '4.5rem',
+    '3xl': '6rem',
 };
 
 const DefaultFormInputWidth: Sizes = {
@@ -91,8 +91,9 @@ const DefaultFormInputWidth: Sizes = {
 };
 
 const DefaultSizes: ThemeSizes = {
-    global: {
+    common: {
         borderRadius: '0.5rem',
+        borderWidth: '0.125rem',
     },
     buttons: {
         buttonPadding: DefaultButtonPadding,
@@ -105,18 +106,23 @@ const DefaultSizes: ThemeSizes = {
 
 const DefaultTypography: TypographyTheme = {
     fontSize: DefaultFontSizes,
-    fontFamily: 'Roboto',
+    fontFamily: 'sans-serif',
     textColor: CuiColors.GRAY['90'],
 };
 
 const Colors: ThemeColors = {
-    global: {
+    common: {
         whitespaceColor: CuiColors.GRAY['10'],
     },
     palettes: DefaultColorPalettes,
 };
 
+const DefaultCommon: Common = {
+    borderStyle: 'solid',
+};
+
 const DefaultTheme: Theme = {
+    common: DefaultCommon,
     typography: DefaultTypography,
     colors: Colors,
     sizes: DefaultSizes,

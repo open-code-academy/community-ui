@@ -1,4 +1,4 @@
-import { CuiColors, themed } from '../../../core';
+import { CuiColors, themed } from '../../../../core';
 import styled from 'styled-components';
 
 import React, { ChangeEvent, FC, useState } from 'react';
@@ -7,12 +7,12 @@ import {
     StyleableInputGroupProps,
     StyleableInputProps,
     StyleableLabelProps,
-} from '../types/Input.types';
-import { BaseInput } from '../Base/BaseInput.component';
-import { BaseLabel } from '../Base/BaseLabel.component';
-import { CssSize } from '../../../core/theme-resolver/util/CssSize.util';
-import { resolveSize } from '../../../core/theme-resolver/util/resolveSize.util';
-import { resolvePalette } from '../../../core/theme-resolver/util/resolvePalette.util';
+} from '../../types/Input.types';
+import { BaseInput } from '../../base/BaseInput.component';
+import { BaseLabel } from '../../base/BaseLabel.component';
+import { CssSize } from '../../../../core/theme-resolver/util/CssSize.util';
+import { resolveSize } from '../../../../core/theme-resolver/util/resolveSize.util';
+import { resolvePalette } from '../../../../core/theme-resolver/util/resolvePalette.util';
 
 const StyledInput = themed(
     styled(BaseInput)<StyleableInputProps>(
@@ -22,7 +22,7 @@ const StyledInput = themed(
                 ? props.backgroundColor
                 : props.borderVariant === BorderVariant.NONE
                 ? CuiColors.GRAY['20']
-                : props.theme
+                : props.theme?.colors.global.whitespaceColor
         };
         font-size: ${resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize)};
         color: ${props.textColor ? props.textColor : props.theme?.typography.textColor}; 
@@ -31,7 +31,10 @@ const StyledInput = themed(
         height: ${resolveSize(props.height || props.size, props.theme?.sizes.forms.inputHeight)};        
         outline: none;
         ${resolveBorderType(props)}
-        padding: 0 ${resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize)};
+        border-radius: ${props.borderRadius || props.theme?.sizes.global.borderRadius};
+        padding: ${new CssSize(resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize))
+            .multiply(0.1)
+            .get()} ${resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize)} 0;
         font-family: ${props.fontFamily ? props.fontFamily : props.theme?.typography.fontFamily || 'sans-serif'};
 
         &::placeholder {
@@ -79,14 +82,15 @@ const StyledLabel = themed(
         top: ${
             props.active
                 ? new CssSize(resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize))
-                      .multiply(0.25)
+                      .multiply(0.01)
                       .get()
-                : resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize)
+                : new CssSize(resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize))
+                      .multiply(0.9)
+                      .get()
         };
         left: ${resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize)};
         opacity: ${props.active ? '1' : '0'};
-        transition: all 0.2s ease;
-        background-color: red;
+        transition: all 0.2s ease-in;
         ${props.styles}
     `
     )
@@ -103,7 +107,8 @@ const OuterDiv = styled.div`
     display: flex;
 `;
 
-export const StyledTextInput: FC<StyleableInputGroupProps> = (props) => {
+export const TextInput: FC<StyleableInputGroupProps> = (props) => {
+    const { labelProps, labelText, ...inputProps } = props;
     const [active, setActive] = useState(false);
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.value.length > 0) {
@@ -111,24 +116,18 @@ export const StyledTextInput: FC<StyleableInputGroupProps> = (props) => {
         } else {
             setActive(false);
         }
-        props.onChange(e);
+        inputProps.onChange(e);
     };
 
     return (
         <OuterDiv>
             <FullWidthDiv>
-                <StyledLabel {...props} styles={props.labelStyles} htmlFor={props.id} active={active}>
-                    {props.labelText ? props.labelText : props.placeholder}
+                <StyledLabel {...labelProps} htmlFor={props.id} form={props.form} active={active}>
+                    {labelText ? labelText : inputProps.placeholder}
                 </StyledLabel>
             </FullWidthDiv>
             <FullWidthDiv>
-                <StyledInput
-                    {...props}
-                    id={props.id}
-                    type={props.type}
-                    styles={props.inputStyles}
-                    onChange={(e) => handleChange(e)}
-                />
+                <StyledInput {...inputProps} onChange={(e) => handleChange(e)} />
             </FullWidthDiv>
         </OuterDiv>
     );

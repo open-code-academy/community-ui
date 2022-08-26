@@ -1,18 +1,12 @@
 import { MouseEventHandler } from 'react';
-import { CuiComponent, Disableable, Sizeable, Styleable } from '../../../core';
+import { Themeable, Disableable, Sizeable, Styleable } from '../../../core';
 
 export enum ButtonVariant {
     SOLID = 'solid',
     OUTLINE = 'outline',
 }
 
-export enum ButtonShapes {
-    PILL = 'pill',
-    DEFAULT = 'rounded',
-    RECTANGLE = 'rectangle',
-}
-
-export interface ButtonProps extends Disableable, Styleable, CuiComponent {
+export interface ButtonProps extends Disableable, Styleable, Themeable {
     onClick?: MouseEventHandler<HTMLButtonElement>;
     children?: any;
     form?: string;
@@ -26,7 +20,6 @@ export interface TextButtonProps extends ButtonProps {
 export interface StyledButtonProps extends ButtonProps, Sizeable {
     buttonPadding?: string;
     buttonVariant?: typeof ButtonVariant.OUTLINE | typeof ButtonVariant.SOLID;
-    buttonShape?: ButtonShapes;
     borderRadius?: string;
     fontSize?: string;
 }

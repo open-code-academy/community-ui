@@ -1,14 +1,11 @@
 import { PartialTheme, Theme, Themeable } from './types';
 import { merge } from '../util';
 import React, { Component } from 'react';
-import * as defaultConfig from './defaultTheme';
+import DefaultTheme from './DefaultTheme.theme';
 import { Subtract } from 'utility-types';
 
 let theme: Theme;
-const themeSubscribers: Map<
-    React.Component<Themeable>,
-    React.Component<Themeable>
-> = new Map();
+const themeSubscribers: Map<React.Component<Themeable>, React.Component<Themeable>> = new Map();
 
 export const getGlobalTheme = (): Theme => {
     return theme;
@@ -34,13 +31,7 @@ export function themed<T extends Themeable>(Component: React.ComponentType<T>) {
         }
 
         render() {
-            return (
-                <Component
-                    {...(this.props as T)}
-                    theme={this.state.theme}
-                    localTheme={this.state.localTheme}
-                />
-            );
+            return <Component {...(this.props as T)} theme={this.state.theme} localTheme={this.state.localTheme} />;
         }
     };
 }
@@ -60,7 +51,7 @@ export const applyCustomTheme = (customTheme: Theme | {}): Theme | {} => {
 };
 
 const resolveDefaultTheme = (): Theme => {
-    return defaultConfig.default;
+    return DefaultTheme;
 };
 
 (function init() {

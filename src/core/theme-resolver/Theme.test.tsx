@@ -1,6 +1,6 @@
 import * as React from 'react';
 import '@testing-library/jest-dom';
-import { applyCustomTheme, getGlobalTheme } from './theme.module';
+import { applyCustomTheme, getGlobalTheme } from './Theme.module';
 import { CuiColors } from './constants';
 import { render, screen } from '@testing-library/react';
 import { PlainButton } from '../../components';

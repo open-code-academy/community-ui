@@ -1,2 +1,2 @@
-export * from './Buttons';
-export * from './FormElements';
+export * from './buttons';
+export * from './forms';

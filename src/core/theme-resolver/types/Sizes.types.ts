@@ -21,8 +21,8 @@ export enum Size {
 }
 
 export enum CSSDirection {
-    UP = 'up',
-    DOWN = 'down',
-    LEFT = 'left',
-    RIGHT = 'right',
+    TOP = 0,
+    RIGHT = 1,
+    BOTTOM = 2,
+    LEFT = 3,
 }

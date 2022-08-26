@@ -69,14 +69,14 @@ const DefaultColorPalettes: Palettes = {
 };
 
 const DefaultFormInputHeight: Sizes = {
-    default: '1.5rem',
-    xs: '1rem',
-    sm: '1.25rem',
-    md: '1.5rem',
-    lg: '2rem',
-    xl: '2.5rem',
-    xxl: '3rem',
-    '3xl': '4rem',
+    default: '1.6rem',
+    xs: '1.1rem',
+    sm: '1.35rem',
+    md: '1.6rem',
+    lg: '2.1rem',
+    xl: '2.6rem',
+    xxl: '3.1rem',
+    '3xl': '4.1rem',
 };
 
 const DefaultFormInputWidth: Sizes = {

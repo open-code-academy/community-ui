@@ -1,26 +1,26 @@
 import * as React from 'react';
 import { Meta, Story } from '@storybook/react';
 
-import { AnimatedButton as Button } from './AnimatedButton.component';
-import { ButtonShapes, ButtonVariant, StyledTextButtonProps } from '../types';
+import { PlainButton as Button } from './PlainButton.component';
+import { ButtonVariant, StyledTextButtonProps } from '../types';
 import { Palette, Size } from '../../../core';
 
 export default {
-    title: 'Components/Buttons',
+    title: 'Components/buttons',
     component: Button,
     argTypes: {},
 } as Meta<typeof Button>;
 
 const Template: Story<StyledTextButtonProps> = (args) => <Button {...args} children={args.children} />;
 
-export const AnimatedButton = Template.bind({});
-AnimatedButton.args = {
-    buttonVariant: ButtonVariant.OUTLINE,
+export const PlainButton = Template.bind({});
+PlainButton.args = {
+    buttonVariant: ButtonVariant.SOLID,
     disabled: false,
-    children: 'Animated Button',
+    children: 'Plain Button',
 };
 
-AnimatedButton.argTypes = {
+PlainButton.argTypes = {
     buttonVariant: {
         options: [0, 1],
         mapping: [ButtonVariant.SOLID, ButtonVariant.OUTLINE],
@@ -51,14 +51,6 @@ AnimatedButton.argTypes = {
         control: {
             type: 'select',
             labels: ['default', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl', '3xl'],
-        },
-    },
-    buttonShape: {
-        options: [0, 1, 2],
-        mapping: [ButtonShapes.DEFAULT, ButtonShapes.RECTANGLE, ButtonShapes.PILL],
-        control: {
-            type: 'select',
-            labels: ['rounded', 'rectangle', 'pill'],
         },
     },
     fontSize: {

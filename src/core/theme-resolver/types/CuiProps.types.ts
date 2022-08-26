@@ -16,10 +16,6 @@ export interface Disableable {
     disabled?: boolean;
 }
 
-export interface Accessible {
-    ariaSettings?: object;
-}
-
 export interface Sizeable {
     size?: Size;
 }
@@ -29,5 +25,3 @@ export interface TextComponent {
     textColor?: string;
     fontFamily?: string;
 }
-
-export interface CuiComponent extends Themeable, Accessible {}

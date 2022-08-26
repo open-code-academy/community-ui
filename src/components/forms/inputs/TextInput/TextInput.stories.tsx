@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { Meta, Story } from '@storybook/react';
 
-import { BorderVariant, StyleableInputGroupProps } from '../types/Input.types';
-import { StyledTextInput } from './StyledTextInput.component';
-import { Palette } from '../../../core';
+import { BorderVariant, StyleableInputGroupProps } from '../../types/Input.types';
+import { TextInput as Input } from './TextInput.component';
+import { Palette } from '../../../../core';
 
 export default {
-    title: 'Components/Forms',
-    component: StyledTextInput,
+    title: 'Components/forms',
+    component: Input,
     argTypes: {},
-} as Meta<typeof StyledTextInput>;
+} as Meta<typeof TextInput>;
 
-const Template: Story<StyleableInputGroupProps> = (args) => <StyledTextInput {...args} />;
+const Template: Story<StyleableInputGroupProps> = (args) => <Input {...args} />;
 
 export const TextInput = Template.bind({});
 TextInput.args = {

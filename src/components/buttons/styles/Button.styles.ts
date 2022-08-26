@@ -1,5 +1,4 @@
 import { ButtonVariant, StyledTextButtonProps } from '../types';
-import { getBorderRadius } from './ButtonStyle.utils';
 import { resolveSize } from '../../../core/theme-resolver/util/resolveSize.util';
 import { resolvePalette } from '../../../core/theme-resolver/util/resolvePalette.util';
 import { CuiColors } from '../../../core';
@@ -25,5 +24,5 @@ export const textButtonStyles = (props: StyledTextButtonProps) => `
     border: solid 0.125rem ${resolvePalette(props).primary};
     cursor: ${props.disabled ? 'not-allowed' : 'pointer'};
     box-sizing: content-box;
-    border-radius: ${getBorderRadius(props)};
+    border-radius: ${props.borderRadius || props.theme?.sizes.global.borderRadius};
 `;

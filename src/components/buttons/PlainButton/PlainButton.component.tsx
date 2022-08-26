@@ -10,12 +10,14 @@ const StyledButton = themed(
     styled(BaseButton)<StyledTextButtonProps>(
         (props) => `
   ${textButtonStyles(props)}
-  
+ 
   position: relative;
   transition: all 0.2s;
   
   &:hover {
-    border: solid 0.125rem ${resolvePalette(props).primary};
+    border:  ${props.theme?.common.borderStyle} ${props.theme?.sizes.common.borderWidth} ${
+            resolvePalette(props).primary
+        };
     box-shadow: 0px 0px 5px ${CuiColors.GRAY['80']}
   }`
     )

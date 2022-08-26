@@ -40,7 +40,7 @@ const StyledButton = themed(
     position: absolute;
     top: -3%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) scaleX(1.1) scaleY(1.1);
     background-color: ${
         props.buttonVariant == ButtonVariant.OUTLINE ? resolvePalette(props).primary : resolvePalette(props).dark
     };
@@ -50,7 +50,9 @@ const StyledButton = themed(
   }
 
   &:hover {
-    border: solid 0.125rem ${resolvePalette(props).primary};
+    border:  ${props.theme?.common.borderStyle} ${props.theme?.sizes.common.borderWidth} ${
+            resolvePalette(props).primary
+        };
     color: ${resolvePalette(props).contrast};
   }`
     )

@@ -56,12 +56,15 @@ const StyledInput = themed(
 
 const resolveBorderType = (props: StyleableInputProps): string => {
     if (props.borderVariant === BorderVariant.OUTLINE || props.borderVariant == undefined) {
-        return `border: solid 0.125rem  ${props.borderColor ? props.borderColor : props.theme?.typography.textColor};`;
+        return `border:  ${props.theme?.common.borderStyle} ${props.theme?.sizes.common.borderWidth} ${
+            props.borderColor ? props.borderColor : props.theme?.typography.textColor
+        };
+        `;
     }
     if (props.borderVariant === BorderVariant.UNDERLINE) {
         return `
         border: none;
-        border-bottom: solid ${props.theme?.sizes.common.borderWidth} ${
+        border-bottom: ${props.theme?.common.borderStyle} ${props.theme?.sizes.common.borderWidth} ${
             props.borderColor ? props.borderColor : props.theme?.typography.textColor
         };
         `;

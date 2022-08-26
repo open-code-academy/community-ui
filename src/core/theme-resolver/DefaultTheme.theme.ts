@@ -93,7 +93,7 @@ const DefaultFormInputWidth: Sizes = {
 const DefaultSizes: ThemeSizes = {
     common: {
         borderRadius: '0.5rem',
-        borderWidth: '0.125rem',
+        borderWidth: '0.1rem',
     },
     buttons: {
         buttonPadding: DefaultButtonPadding,

@@ -77,7 +77,11 @@ describe('Running tests for TextInput', () => {
         );
         const component1 = screen.getByPlaceholderText(placeholder1);
         const styles1 = window.getComputedStyle(component1);
-        expect(styles1.borderBottom).toEqual('1px solid ' + getGlobalTheme().typography.textColor);
+        expect(styles1.borderBottom).toEqual(
+            `${getGlobalTheme().sizes.common.borderWidth} ${getGlobalTheme().common.borderStyle} ${
+                getGlobalTheme().typography.textColor
+            }`
+        );
 
         const placeholder2 = 'Test Input2';
         render(

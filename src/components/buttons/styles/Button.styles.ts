@@ -22,7 +22,9 @@ export const textButtonStyles = (props: StyledTextButtonProps) => `
     background-color: ${
         props.buttonVariant === ButtonVariant.OUTLINE ? CuiColors.TRANSPARENT : resolvePalette(props).primary
     };
-    border: solid 0.125rem ${resolvePalette(props).primary};
+    border:  ${props.theme?.common.borderStyle} ${props.theme?.sizes.common.borderWidth} ${
+    resolvePalette(props).primary
+};
     cursor: ${props.disabled ? 'not-allowed' : 'pointer'};
     border-radius: ${props.borderRadius || props.theme?.sizes.common.borderRadius};
 `;

@@ -54,6 +54,7 @@ const StyledInput = themed(
 );
 
 const resolveBorderType = (props: StyleableInputProps): string => {
+    console.log(props.theme);
     if (props.borderVariant === BorderVariant.OUTLINE || props.borderVariant == undefined) {
         return `border:  1px solid ${props.borderColor ? props.borderColor : props.theme?.typography.textColor};`;
     }

@@ -1,3 +1,41 @@
-import { Styleable, Themeable } from '../../../core';
+import { BoxComponent, Styleable, Themeable } from '../../../core';
 
-export interface GridProps extends Themeable, Styleable {}
+export interface GridProps extends Themeable, Styleable, BoxComponent {
+    gridTemplateArea?: string;
+    gridTemplateColumns?: string;
+    gridTemplateRows?: string;
+    gap?: string;
+    columnGap?: string;
+    rowGap?: string;
+    gridAutoRows?: string;
+    gridAutoColumns?: string;
+    alignItems?: Align;
+    justifyItems?: Justify;
+}
+
+export interface GridItemProps extends Themeable, Styleable, BoxComponent {
+    gridArea?: string;
+    alignSelf?: Align;
+    justifySelf?: Justify;
+    gridColumnStart?: string;
+    gridColumnEnd?: string;
+    gridRowStart?: string;
+    gridRowEnd?: string;
+}
+
+export enum Align {
+    stretch = 'stretch',
+    start = 'start',
+    center = 'center',
+    end = 'end',
+}
+
+export enum Justify {
+    end = 'end',
+    center = 'center',
+    flexStart = 'flex-start',
+    flexEnd = 'flex-end',
+    spaceBetween = 'space-between',
+    spaceAround = 'space-around',
+    spaceEvenly = 'space-evenly',
+}

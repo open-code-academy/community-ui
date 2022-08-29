@@ -1,10 +1,11 @@
 import { ButtonVariant, StyledTextButtonProps } from '../types';
-import { resolveSize } from '../../../core/theme-resolver/util/resolveSize.util';
-import { resolvePalette } from '../../../core/theme-resolver/util/resolvePalette.util';
+import { resolveSize } from '../../../core/theme/util/resolveSize.util';
+import { resolvePalette } from '../../../core/theme/util/resolvePalette.util';
 import { CuiColors } from '../../../core';
 
+// using outline instead of border because of weird bug with whitespace
 export const textButtonStyles = (props: StyledTextButtonProps) => `
-    box-sizing: border-box;
+    box-sizing: content-box;
     padding: ${
         props.buttonPadding
             ? resolveSize(props.buttonPadding, props.theme?.sizes.buttons.buttonPadding)
@@ -22,9 +23,10 @@ export const textButtonStyles = (props: StyledTextButtonProps) => `
     background-color: ${
         props.buttonVariant === ButtonVariant.OUTLINE ? CuiColors.TRANSPARENT : resolvePalette(props).primary
     };
-    border:  ${props.theme?.common.borderStyle} ${props.theme?.sizes.common.borderWidth} ${
-    resolvePalette(props).primary
+    outline: ${resolvePalette(props).primary}   ${props.theme?.sizes.common.borderWidth}  ${
+    props.theme?.common.borderStyle
 };
     cursor: ${props.disabled ? 'not-allowed' : 'pointer'};
+    border: none;
     border-radius: ${props.borderRadius || props.theme?.sizes.common.borderRadius};
 `;

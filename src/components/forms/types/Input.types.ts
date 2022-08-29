@@ -11,6 +11,7 @@ export interface InputProps extends Themeable, Styleable {
     id: string;
     form: string;
     onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+    noPreventDefault?: boolean;
     type: string;
     placeholder: string;
     required?: boolean;

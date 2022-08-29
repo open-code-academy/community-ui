@@ -4,10 +4,11 @@ import { themed, CuiColors } from '../../../core';
 import { BaseButton } from '../BaseButton';
 import { textButtonStyles } from '../styles';
 import { StyledTextButtonProps } from '../types';
-import { resolvePalette } from '../../../core/theme-resolver/util/resolvePalette.util';
+import { resolvePalette } from '../../../core';
 
 const StyledButton = themed(
     styled(BaseButton)<StyledTextButtonProps>(
+        // using outline instead of border because of weird bug with whitespace
         (props) => `
   ${textButtonStyles(props)}
  
@@ -15,9 +16,9 @@ const StyledButton = themed(
   transition: all 0.2s;
   
   &:hover {
-    border:  ${props.theme?.common.borderStyle} ${props.theme?.sizes.common.borderWidth} ${
-            resolvePalette(props).primary
-        };
+    outline: ${resolvePalette(props).primary} ${props.theme?.common.borderStyle} ${
+            props.theme?.sizes.common.borderWidth
+        } ${resolvePalette(props).primary};
     box-shadow: 0px 0px 5px ${CuiColors.GRAY['80']}
   }`
     )

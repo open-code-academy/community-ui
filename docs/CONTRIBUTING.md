@@ -1,4 +1,4 @@
-# CommunityUI Contributing Guidelins
+# CommunityUI Contributing Guidelines
 
 ## Getting started
 
@@ -40,7 +40,7 @@ Join the [OpenCodeAcademy.org discord server](https://discord.gg/feCpvsXFBf) (if
       use the flag `--no-verify` to prevent husky from screening your commit.
 4. Branch naming standards will be followed using very similar names as conventional commits
     - same as you would with a commit message, prefix the branch with the type of change being made
-    - Follow that keyword with a "/" then the issue number, then and "\_" then use kabob case for the rest of the branch name
+    - Follow that keyword with a `/` then the issue number, then and "`_"` then use kabob case for the rest of the branch name
     - Example: feat/#3_add-readme, perf/#40_fix-slow-component, fix/#22_padding-error
 5. When raising a pull request, you should use the [pull request template](https://github.com/open-code-academy/community-ui/tree/main/docs/PR_TEMPLATE.md)
     - PR's must include the following sections: "Summary", "What was changed?", "Why was this important?", "Testing?" (with an explanation why not, if none)
@@ -49,16 +49,3 @@ Join the [OpenCodeAcademy.org discord server](https://discord.gg/feCpvsXFBf) (if
 6. Getting an issue assigned to you:
     - If you think you would like to get an issue assigned to you, comment that you would like to work on it, and we will assign it to you.
 7. PLEASE make sure you update/add documentation where appropriate
-
-## Project structure and naming conventions
-
--   The root directory should have project-level configuration files and folders and the `src` directory
--   The `src` directory should contain directories that act as modules, for example, the `components` module and `core` module. These modules will contain the source code for the library.
--   Inside the `components` module, there should be directories for different types of components, for example, a `Buttons` module
--   A component module may have directories for different variations of the component, and a `common` module for things that are necessary for that component module; for example, `Buttons` module could have directories like `AnimatedButton`, `PlainButton` and so on
--   The `core` module should contain things that are needed by the `components` module
--   File naming conventions:
-    -   File names should start with the component or name of the file, as you usually would name a file, followed by the function of the file, then the file extension.
-    -   We will use .ts or .js for all non-jsx/tsx related files, and we will use .tsx and .jsx for all files which contain tsx/jsx respectively
-    -   Example: `Button.component.tsx`, `Button.test.ts`, `Button.types.ts`, `Button.constants.ts`, `Button.stories.tsx`
-    -   Exception to this rule is the mandatory `index.ts` that must reside in each of the directories that are meant to act as modules.

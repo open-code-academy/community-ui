@@ -2,21 +2,21 @@ import { CuiColors, themed } from '../../../../core';
 import styled from 'styled-components';
 
 import React, { ChangeEvent, FC, useState } from 'react';
-import {
-    BorderVariant,
-    StyleableInputGroupProps,
-    StyleableInputProps,
-    StyleableLabelProps,
-} from '../../types/Input.types';
-import { BaseInput } from '../../base/BaseInput.component';
-import { BaseLabel } from '../../base/BaseLabel.component';
-import { CssSize } from '../../../../core/theme-resolver/util/CssSize.util';
-import { resolveSize } from '../../../../core/theme-resolver/util/resolveSize.util';
-import { resolvePalette } from '../../../../core/theme-resolver/util/resolvePalette.util';
+import { BorderVariant, StyleableInputGroupProps, StyleableInputProps, StyleableLabelProps } from '../../types';
+import { BaseInput, BaseLabel } from '../../base';
+import { CssSize, resolveSize, resolvePalette } from '../../../../core';
 
 const StyledInput = themed(
     styled(BaseInput)<StyleableInputProps>(
         (props: StyleableInputProps) => `
+        position: relative;
+        z-index: ${props.theme?.common.baseZIndex};
+        width: ${resolveSize(props.width || props.size, props.theme?.sizes.forms.inputWidth)};
+        height: ${resolveSize(props.height || props.size, props.theme?.sizes.forms.inputHeight)};
+        border-radius: ${props.borderRadius || props.theme?.sizes.common.borderRadius};
+        padding: ${new CssSize(resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize))
+            .multiply(0.1)
+            .get()} ${resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize)} 0;
         background-color: ${
             props.backgroundColor
                 ? props.backgroundColor
@@ -26,15 +26,8 @@ const StyledInput = themed(
         };
         font-size: ${resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize)};
         color: ${props.textColor ? props.textColor : props.theme?.typography.textColor}; 
-        width: ${resolveSize(props.width || props.size, props.theme?.sizes.forms.inputWidth)};
-        max-width: 100%;
-        height: ${resolveSize(props.height || props.size, props.theme?.sizes.forms.inputHeight)};        
         outline: none;
         ${resolveBorderType(props)}
-        border-radius: ${props.borderRadius || props.theme?.sizes.common.borderRadius};
-        padding: ${new CssSize(resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize))
-            .multiply(0.1)
-            .get()} ${resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize)} 0;
         font-family: ${props.fontFamily ? props.fontFamily : props.theme?.typography.fontFamily};
 
         &::placeholder {
@@ -77,13 +70,13 @@ const resolveBorderType = (props: StyleableInputProps): string => {
 
 const StyledLabel = themed(
     styled(BaseLabel)<StyleableLabelProps>(
-        (props) => `
+        (props: StyleableLabelProps) => `
         position: absolute;
         font-size: ${new CssSize(resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize))
             .multiply(props.active ? 0.6 : 1)
             .get()};
-        font-family: ${props.fontFamily ? props.fontFamily : props.theme?.typography.fontFamily};
-        color: ${props.labelColor ? props.labelColor : props.theme?.typography.textColor};
+        font-family: ${props.fontFamily || props.theme?.typography.fontFamily};
+        color: ${props.labelColor || props.theme?.typography.textColor};
         align-self: start;
         top: ${new CssSize(resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize))
             .multiply(props.active ? 0.2 : 0.9)
@@ -91,6 +84,7 @@ const StyledLabel = themed(
         left: ${resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize)};
         opacity: ${props.active ? '1' : '0'};
         transition: all 0.2s ease-in;
+        z-index: ${props.theme ? props.theme.common.baseZIndex - 1 : ''};
         ${props.styles}
     `
     )
@@ -111,12 +105,15 @@ export const TextInput: FC<StyleableInputGroupProps> = (props) => {
     const { labelProps, labelText, ...inputProps } = props;
     const [active, setActive] = useState(false);
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        if (!props.noPreventDefault) {
+            e.preventDefault();
+        }
         if (e.target.value.length > 0) {
             setActive(true);
         } else {
             setActive(false);
         }
-        inputProps.onChange(e);
+        if (inputProps.onChange !== undefined) inputProps.onChange(e);
     };
 
     return (

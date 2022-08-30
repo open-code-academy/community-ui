@@ -112,7 +112,15 @@ describe('Running tests for TextInput', () => {
         );
         const component3 = screen.getByPlaceholderText(placeholder3);
         const styles3 = window.getComputedStyle(component3);
-        expect(styles3.borderBottom).toEqual('1px solid ' + getGlobalTheme().typography.textColor);
-        expect(styles3.border).toEqual('1px solid ' + getGlobalTheme().typography.textColor);
+        expect(styles3.borderBottom).toEqual(
+            `${getGlobalTheme().sizes.common.borderWidth} ${getGlobalTheme().common.borderStyle} ${
+                getGlobalTheme().typography.textColor
+            }`
+        );
+        expect(styles3.border).toEqual(
+            `${getGlobalTheme().sizes.common.borderWidth} ${getGlobalTheme().common.borderStyle} ${
+                getGlobalTheme().typography.textColor
+            }`
+        );
     });
 });

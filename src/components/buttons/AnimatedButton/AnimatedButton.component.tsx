@@ -15,11 +15,6 @@ const StyledButton = themed(
   transition: all 0.4s;
   overflow: hidden;
   ${props.theme ? `z-index: ${props.theme.common.baseZIndex + 1};` : ''}
-  
-  &:focus,
-  &:active {
-    outline: ${resolvePalette(props).primary};
-  }
 
 
   &::after {

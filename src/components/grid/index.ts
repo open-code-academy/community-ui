@@ -1,3 +1,3 @@
-export * from './types/index';
-export * from './base/index';
-export * from './CssGrid/index';
+export * from './types';
+export * from './base';
+export * from './CssGrid';

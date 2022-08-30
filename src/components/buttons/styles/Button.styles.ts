@@ -26,7 +26,16 @@ export const textButtonStyles = (props: StyledTextButtonProps) => `
     outline: ${resolvePalette(props).primary}   ${props.theme?.sizes.common.borderWidth}  ${
     props.theme?.common.borderStyle
 };
+
     cursor: ${props.disabled ? 'not-allowed' : 'pointer'};
     border: none;
     border-radius: ${props.borderRadius || props.theme?.sizes.common.borderRadius};
+    
+    &:focus,
+    &:active {
+        // the pseudo-border disappears without this
+        outline: ${resolvePalette(props).primary}   ${props.theme?.sizes.common.borderWidth}  ${
+    props.theme?.common.borderStyle
+};
+    }
 `;

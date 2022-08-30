@@ -120,5 +120,8 @@
         "commitizen": {
             "path": "./node_modules/cz-conventional-changelog"
         }
+    },
+    "dependencies": {
+        "ts-loader": "^9.3.1"
     }
 }

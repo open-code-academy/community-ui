@@ -84,7 +84,8 @@ const StyledLabel = themed(
         left: ${resolveSize(props.fontSize || props.size, props.theme?.typography.fontSize)};
         opacity: ${props.active ? '1' : '0'};
         transition: all 0.2s ease-in;
-        z-index: ${props.theme ? props.theme.common.baseZIndex - 1 : ''};
+        z-index: ${props.theme ? props.theme.common.baseZIndex + (props.active ? 1 : -1) : ''};
+        user-select: none;
         ${props.styles}
     `
     )

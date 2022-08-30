@@ -31,6 +31,7 @@ export enum Align {
 }
 
 export enum Justify {
+    start = 'start',
     end = 'end',
     center = 'center',
     flexStart = 'flex-start',

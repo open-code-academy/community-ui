@@ -1,3 +1,10 @@
+## [2.0.4](https://github.com/open-code-academy/community-ui/compare/v2.0.3...v2.0.4) (2022-08-31)
+
+
+### Bug Fixes
+
+* fixes props issue ([dafddf4](https://github.com/open-code-academy/community-ui/commit/dafddf44bdc32cf95620adfe81b40bb8645f1e93))
+
 ## [2.0.3](https://github.com/open-code-academy/community-ui/compare/v2.0.2...v2.0.3) (2022-08-31)
 
 

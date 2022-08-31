@@ -10,5 +10,5 @@ const BaseGridComponent = themed(
 );
 
 export const BaseGrid: FC<GridProps> = (props) => {
-    return <BaseGridComponent {...props} />;
+    return <BaseGridComponent {...props}>{props.children}</BaseGridComponent>;
 };

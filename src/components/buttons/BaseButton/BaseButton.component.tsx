@@ -14,5 +14,5 @@ const BaseButtonStyledComponent = themed(
 );
 
 export const BaseButton: FC<ButtonProps> = (props) => {
-    return <BaseButtonStyledComponent {...props} />;
+    return <BaseButtonStyledComponent {...props}>{props.children}</BaseButtonStyledComponent>;
 };

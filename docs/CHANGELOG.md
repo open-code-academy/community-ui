@@ -1,3 +1,30 @@
+# [2.0.0](https://github.com/open-code-academy/community-ui/compare/v1.2.1...v2.0.0) (2022-08-31)
+
+
+### Bug Fixes
+
+* fixed form element height ([276e4aa](https://github.com/open-code-academy/community-ui/commit/276e4aa2730302a0f74b3ddcb5c8d116bc59a578))
+* fixed label on input ([4564567](https://github.com/open-code-academy/community-ui/commit/45645670b9ab0a5c2c44a63fe87d258ab5582a56))
+* fixing typo ([d497198](https://github.com/open-code-academy/community-ui/commit/d497198c7f471704de168b21308f455042ae43df))
+* fixing whitespace issue with buttons ([ab755fe](https://github.com/open-code-academy/community-ui/commit/ab755fee61a6082e17f469c00878fa1d84702722))
+
+
+### Features
+
+* adding css grid- WIP ([f591117](https://github.com/open-code-academy/community-ui/commit/f591117f7405384a8e4898ea858776f68f0b7ab6))
+* adding form inputs ([52fb3fe](https://github.com/open-code-academy/community-ui/commit/52fb3fe8920d289edb29e545467d329ade9d8a7f))
+* finishing up grid item and form ([313fbbe](https://github.com/open-code-academy/community-ui/commit/313fbbe8fe31b8fc4ff6002a84d3192610e7463c))
+* restructured project, renamed directories, restructured theme object ([4b0152d](https://github.com/open-code-academy/community-ui/commit/4b0152dfb7c315508ca3ffda7699cad05a509524))
+* restructuring Theme to rely on a single source of truth ([d732e30](https://github.com/open-code-academy/community-ui/commit/d732e30e13f5392ff9b295b489853a111f6efe9f))
+* updating gitignore ([a3af756](https://github.com/open-code-academy/community-ui/commit/a3af7561834d829dad7ede3849ee5a35fde2828e))
+* wip- adding form elements ([e2f6b7f](https://github.com/open-code-academy/community-ui/commit/e2f6b7f02008bd02e1a658b1cf86051cecb9afc6))
+
+
+### BREAKING CHANGES
+
+* Removed the button border radius
+* Restructured theme object
+
 ## [1.2.1](https://github.com/open-code-academy/community-ui/compare/v1.2.0...v1.2.1) (2022-08-07)
 
 

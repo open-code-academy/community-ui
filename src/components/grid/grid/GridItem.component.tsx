@@ -26,5 +26,5 @@ const StyledGridItem = themed(
 );
 
 export const GridItem: FC<GridItemProps> = (props) => {
-    return <StyledGridItem {...props} />;
+    return <StyledGridItem {...props}>{props.children}</StyledGridItem>;
 };

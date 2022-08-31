@@ -21,13 +21,7 @@
             [
                 "@semantic-release/npm",
                 {
-                    "npmPublish": true,
-                    "assets": [
-                        "dist/**/*.{js,css}",
-                        "/types/**/*.ts",
-                        "README.md",
-                        "package.json"
-                    ]
+                    "npmPublish": true
                 }
             ],
             [

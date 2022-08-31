@@ -34,5 +34,5 @@ const StyledGrid = themed(
 );
 
 export const CSSGrid: FC<GridProps> = (props) => {
-    return <StyledGrid {...props} />;
+    return <StyledGrid {...props}>{props.children}</StyledGrid>;
 };

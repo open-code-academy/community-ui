@@ -27,7 +27,7 @@ export interface TextComponent {
 }
 
 export interface BoxComponent {
-    children: string;
+    children?: any;
     height?: string;
     width?: string;
     backgroundColor?: string;

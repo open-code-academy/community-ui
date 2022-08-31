@@ -17,7 +17,7 @@ to the top of your file.
 ### Theming
 
 By default, community-ui has a default theme applied. 
-For the full documentation on theming, view the [theme-resolver docs](https://github.com/open-code-academy/community-ui/tree/main/src/core/theme-resolver/README.md)
+For the full documentation on theming, view the [theme docs](https://github.com/open-code-academy/community-ui/tree/main/src/core/theme/README.md)
 
 ### Storybook
 In order to view the storybook documentation, until the project is hosted in a production environement, simply follow the
@@ -25,7 +25,7 @@ In order to view the storybook documentation, until the project is hosted in a p
 Then, you should see the storybook documentation, which will continue to grow as the project does.
 
 ## Contributing
-We always welcome contributions. Check out our [contributing guidelines](https://github.com/open-code-academy/community-ui/tree/develop/docs/CONTRIBUTING.md)
+We always welcome contributions. Check out our [contributing guidelines](https://github.com/open-code-academy/community-ui/tree/main/docs/CONTRIBUTING.md)
 
 
 

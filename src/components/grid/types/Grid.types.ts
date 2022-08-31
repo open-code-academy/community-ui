@@ -1,7 +1,7 @@
 import { BoxComponent, Styleable, Themeable } from '../../../core';
 
 export interface GridProps extends Themeable, Styleable, BoxComponent {
-    gridTemplateArea?: string;
+    gridTemplateAreas?: string;
     gridTemplateColumns?: string;
     gridTemplateRows?: string;
     gap?: string;

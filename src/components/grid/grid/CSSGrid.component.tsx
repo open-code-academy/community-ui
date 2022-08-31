@@ -15,7 +15,7 @@ const StyledGrid = themed(
             props.padding || '0'
         }; // TODO: look into whether I should really be setting this 0 or some global value
         background-color: ${props.backgroundColor || CuiColors.TRANSPARENT};  
-        ${props.gridTemplateArea ? `grid-template-areas: ${props.gridTemplateArea};` : ''};
+        ${props.gridTemplateAreas ? `grid-template-areas: ${props.gridTemplateAreas};` : ''};
         ${props.gridTemplateColumns ? `grid-template-columns: ${props.gridTemplateColumns};` : ''};
         ${props.gridTemplateRows ? `grid-template-rows: ${props.gridTemplateRows};` : ''};
         ${props.gridAutoRows ? `grid-auto-columns: ${props.gridAutoRows};` : ''};

@@ -94,8 +94,7 @@ const DefaultSizes: ThemeSizes = {
     common: {
         borderRadius: '0.5rem',
         borderWidth: '0.1rem',
-        gridGap: '.1rem',
-        margin: '0.5rem',
+        gridGap: '0.1rem',
     },
     buttons: {
         buttonPadding: DefaultButtonPadding,

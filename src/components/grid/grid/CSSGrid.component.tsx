@@ -10,12 +10,12 @@ const StyledGrid = themed(
         display: grid;
         width: ${props.width || '100%'};
         height: ${props.height || '100%'};
-        margin: ${props.margin || props.theme?.sizes.common.margin};
+        margin: ${props.margin || '0'};
         padding: ${
             props.padding || '0'
         }; // TODO: look into whether I should really be setting this 0 or some global value
         background-color: ${props.backgroundColor || CuiColors.TRANSPARENT};  
-        ${props.gridTemplateArea ? `grid-template-area: ${props.gridTemplateArea};` : ''};
+        ${props.gridTemplateArea ? `grid-template-areas: ${props.gridTemplateArea};` : ''};
         ${props.gridTemplateColumns ? `grid-template-columns: ${props.gridTemplateColumns};` : ''};
         ${props.gridTemplateRows ? `grid-template-rows: ${props.gridTemplateRows};` : ''};
         ${props.gridAutoRows ? `grid-auto-columns: ${props.gridAutoRows};` : ''};

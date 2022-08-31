@@ -9,7 +9,7 @@ const StyledGridItem = themed(
         (props: GridItemProps) => `
         width: ${props.width || 'fit-content'};
         height: ${props.height || 'fit-content'};
-        margin: ${props.margin || props.theme?.sizes.common.margin};
+        margin: ${props.margin || '0'};
         padding: ${props.padding || '0'};
         background-color: ${props.backgroundColor || CuiColors.TRANSPARENT};
         ${props.gridArea ? `grid-area: ${props.gridArea};` : ''};

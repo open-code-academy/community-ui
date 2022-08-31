@@ -60,7 +60,6 @@ export type CommonSizes = {
     borderRadius: string;
     borderWidth: string;
     gridGap: string;
-    margin: string;
 };
 
 export type Common = {

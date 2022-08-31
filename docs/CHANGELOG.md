@@ -1,3 +1,11 @@
+## [2.0.3](https://github.com/open-code-academy/community-ui/compare/v2.0.2...v2.0.3) (2022-08-31)
+
+
+### Bug Fixes
+
+* fixing the types ([6408324](https://github.com/open-code-academy/community-ui/commit/6408324295cc3d415c4cf3b856b7a150a28d8311))
+* just cleanup, this is just to trigger a release ([ef548d1](https://github.com/open-code-academy/community-ui/commit/ef548d1b4031b51f4c8b6e5d8b2368d5a8c6f967))
+
 ## [2.0.2](https://github.com/open-code-academy/community-ui/compare/v2.0.1...v2.0.2) (2022-08-31)
 
 

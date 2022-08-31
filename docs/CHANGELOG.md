@@ -1,3 +1,11 @@
+## [2.0.1](https://github.com/open-code-academy/community-ui/compare/v2.0.0...v2.0.1) (2022-08-31)
+
+
+### Bug Fixes
+
+* fixing build ([82d89d4](https://github.com/open-code-academy/community-ui/commit/82d89d43f6f181e2e7c494d496df2c31c594329c))
+* fixing deployed package ([a11e187](https://github.com/open-code-academy/community-ui/commit/a11e18748545c199e147d9aad54b17a0ce3c0146))
+
 # [2.0.0](https://github.com/open-code-academy/community-ui/compare/v1.2.1...v2.0.0) (2022-08-31)
 
 
